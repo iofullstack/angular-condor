@@ -1,0 +1,171 @@
+.container {
+  margin: 32px auto;
+  width: 90%;
+}
+
+.list-item {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
+  grid-gap: 15px;
+}
+
+.item {
+  background: rgba(255,255,255,0.99);
+  background: -moz-linear-gradient(top, rgba(255,255,255,0.99) 2%, rgba(236,239,241,0.86) 29%, rgba(202,211,216,0.81) 40%, rgba(120,144,156,0.86) 66%, rgba(96,125,139,0.91) 78%, rgba(69,90,100,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(2%, rgba(255,255,255,0.99)), color-stop(29%, rgba(236,239,241,0.86)), color-stop(40%, rgba(202,211,216,0.81)), color-stop(66%, rgba(120,144,156,0.86)), color-stop(78%, rgba(96,125,139,0.91)), color-stop(100%, rgba(69,90,100,1)));
+  background: -webkit-linear-gradient(top, rgba(255,255,255,0.99) 2%, rgba(236,239,241,0.86) 29%, rgba(202,211,216,0.81) 40%, rgba(120,144,156,0.86) 66%, rgba(96,125,139,0.91) 78%, rgba(69,90,100,1) 100%);
+  background: -o-linear-gradient(top, rgba(255,255,255,0.99) 2%, rgba(236,239,241,0.86) 29%, rgba(202,211,216,0.81) 40%, rgba(120,144,156,0.86) 66%, rgba(96,125,139,0.91) 78%, rgba(69,90,100,1) 100%);
+  background: -ms-linear-gradient(top, rgba(255,255,255,0.99) 2%, rgba(236,239,241,0.86) 29%, rgba(202,211,216,0.81) 40%, rgba(120,144,156,0.86) 66%, rgba(96,125,139,0.91) 78%, rgba(69,90,100,1) 100%);
+  background: linear-gradient(to bottom, rgba(255,255,255,0.99) 2%, rgba(236,239,241,0.86) 29%, rgba(202,211,216,0.81) 40%, rgba(120,144,156,0.86) 66%, rgba(96,125,139,0.91) 78%, rgba(69,90,100,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#455a64', GradientType=0 );
+
+  display: grid;
+  grid-template: 50px 1fr 50px / repeat(2, 1fr);
+  grid-gap: 10px;
+  grid-template-areas: "table order"
+                       "orders orders"
+                       "ready cancel";
+  border-radius: 10px;
+  padding: 15px;
+  /* border: 1px solid #263238; */
+}
+.item:nth-child(odd) {
+  grid-template-areas: "table order"
+                       "orders orders"
+                       "cancel ready";
+}
+
+.item .item-1 {
+  font-size: 1.3em;
+  grid-area: table;
+  display: flex;
+  align-items: center;
+}
+.text-space {
+  margin-right: 10px;
+}
+
+.item .item-2 {
+  font-size: 1.3em;
+  grid-area: order;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.item .item-3 {
+  grid-area: orders;
+  padding: 15px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 100px);
+  grid-gap: 15px;
+  justify-content: center;
+  align-content: center;
+}
+.item .item-4 {
+  grid-area: ready;
+  /* background-color: #283593; */
+}
+.item .item-5 {
+  grid-area: cancel;
+  /* background-color: #D84315; */
+}
+.button-expand {
+  border-radius: 5px;
+  font-size: 1.3em;
+  width: 100%;
+  height: 100%;
+}
+
+.color-1 {
+  background-color: #3F51B5;
+}
+.color-ligth-1 {
+  background-color: #9FA8DA;
+}
+.color-2 {
+  background-color: #E91E63;
+}
+.color-ligth-2 {
+  background-color: #F48FB1;
+}
+.color-3 {
+  background-color: #9C27B0;
+}
+.color-ligth-3 {
+  background-color: #CE93D8;
+}
+.color-4 {
+  background-color: #00BCD4;
+}
+.color-ligth-4 {
+  background-color: #80DEEA;
+}
+
+.order {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  /* background-color: #3F51B5; 500 */
+  color: white;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.order span {
+  font-weight: bold;
+  font-family: 'Kaushan Script', Arial, Helvetica, sans-serif;
+}
+.order .quantity {
+  border-radius: 50%;
+  width: 60%;
+  height: 60%;
+  /* background-color: #9FA8DA; 200 */
+  color: #263238;
+  position: absolute;
+  bottom: -25%;
+  display: flex;
+  justify-content: center;
+}
+.order .quantity span {
+  margin-top: 8px;
+  font-size: 1.1em;
+}
+
+@media screen and (max-width: 650px) {
+  .list-item {
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+  }
+  .item {
+    grid-gap: 5px;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .item {
+    grid-template: repeat(3, auto) repeat(2, 50px) / 1fr;
+    grid-template-areas: "order"
+                         "table"
+                         "orders"
+                         "ready"
+                         "cancel";
+  }
+  .item:nth-child(odd) {
+    grid-template-areas: "order"
+                         "table"
+                         "orders"
+                         "ready"
+                         "cancel";
+  }
+  .item .item-1 {
+    justify-content: center;
+  }
+  .item .item-2 {
+    justify-content: center;
+  }
+  .item-5 {
+    margin-top: 3px;
+  }
+}
