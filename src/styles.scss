@@ -3,3 +3,47 @@
 
 // Import app.theme.scss
 @import "app/app.theme";
+
+/* You can add global styles to this file, and also import other style files */
+// @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+/* Application-wide Styles */
+// h1 {
+//   color: #369;
+//   font-family: 'Roboto', Helvetica, sans-serif, Arial;
+//   font-size: 250%;
+// }
+// h2, h3 {
+//   color: #444;
+//   font-family: 'Roboto', Helvetica, sans-serif, Arial;
+//   font-weight: lighter;
+// }
+// body {
+//   background-color: #eceff169;
+// }
+body, input[text], button {
+  color: #37474F;
+  font-family: Cambria, Georgia;
+}
+/* everywhere else */
+* {
+  font-family: 'Roboto', Helvetica, sans-serif, Arial;
+  font-weight: normal;
+}
+
+img[alt] {
+  display: block;
+  height: 100%;
+  color: #0000;
+  position: relative;
+}
+img[alt]:after {
+  display: block;
+  content: "";
+  background: #455A64;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+}

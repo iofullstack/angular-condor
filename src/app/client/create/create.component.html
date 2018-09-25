@@ -1,0 +1,22 @@
+<div>
+  <h2>Create Client</h2>
+  <!-- <h2>{{client.nit_passport | uppercase}} Details</h2> -->
+</div>
+
+<div>
+  <label>NIT or PASSPORT:
+    <input [(ngModel)]="client.nit_passport" placeholder="nit_passport"/>
+  </label>
+  <label>Nombre:
+    <input [(ngModel)]="client.firstName" placeholder="firstName" />
+
+  </label>
+  <label>Apellido:
+    <input [(ngModel)]="client.lastName" placeholder="lastName" />
+
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add()">
+    add
+  </button>
+</div>
