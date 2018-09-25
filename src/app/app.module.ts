@@ -21,6 +21,7 @@ import { SampleModule } from 'app/main/sample/sample.module';
 import { CashierComponent } from './cashier/cashier.component';
 import { CookComponent } from './cook/cook.component';
 import { WaiterComponent } from './waiter/waiter.component';
+import { UserComponent } from './user/user.component';
 
 const appRoutes: Routes = [
     // {
@@ -38,7 +39,8 @@ const appRoutes: Routes = [
         AppComponent,
         CashierComponent,
         CookComponent,
-        WaiterComponent
+        WaiterComponent,
+        UserComponent
     ],
     imports     : [
         BrowserModule,
