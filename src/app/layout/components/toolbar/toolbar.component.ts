@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { TranslateService } from '@ngx-translate/core';
 import * as _ from 'lodash';
 
 import { FuseConfigService } from '@fuse/services/config.service';
@@ -21,10 +20,10 @@ export class ToolbarComponent implements OnInit, OnDestroy
     horizontalNavbar: boolean;
     rightNavbar: boolean;
     hiddenNavbar: boolean;
-    languages: any;
     navigation: any;
     selectedLanguage: any;
     userStatusOptions: any[];
+    stateScreen: boolean;
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -38,11 +37,11 @@ export class ToolbarComponent implements OnInit, OnDestroy
      */
     constructor(
         private _fuseConfigService: FuseConfigService,
-        private _fuseSidebarService: FuseSidebarService,
-        private _translateService: TranslateService
+        private _fuseSidebarService: FuseSidebarService
     )
     {
         // Set the defaults
+        this.stateScreen = true;
         this.userStatusOptions = [
             {
                 'title': 'Online',
@@ -71,19 +70,6 @@ export class ToolbarComponent implements OnInit, OnDestroy
             }
         ];
 
-        this.languages = [
-            {
-                id   : 'en',
-                title: 'English',
-                flag : 'us'
-            },
-            {
-                id   : 'tr',
-                title: 'Turkish',
-                flag : 'tr'
-            }
-        ];
-
         this.navigation = navigation;
 
         // Set the private defaults
@@ -107,9 +93,6 @@ export class ToolbarComponent implements OnInit, OnDestroy
                 this.rightNavbar = settings.layout.navbar.position === 'right';
                 this.hiddenNavbar = settings.layout.navbar.hidden === true;
             });
-
-        // Set the selected language from default languages
-        this.selectedLanguage = _.find(this.languages, {'id': this._translateService.currentLang});
     }
 
     /**
@@ -136,6 +119,35 @@ export class ToolbarComponent implements OnInit, OnDestroy
         this._fuseSidebarService.getSidebar(key).toggleOpen();
     }
 
+   
+    toggleFullScreen(): void
+    {
+      if(this.stateScreen){
+        this.openFullScreen();
+        this.stateScreen = false;
+      }else{
+        this.closeFullScreen();
+        this.stateScreen = true;
+      }
+    }
+    
+    openFullScreen(){
+      let elem = document.documentElement;
+
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+        elem.webkitRequestFullscreen();
+      }
+
+    }
+    closeFullScreen(){
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+        document.webkitExitFullscreen();
+      }
+    }
     /**
      * Search
      *
@@ -156,8 +168,5 @@ export class ToolbarComponent implements OnInit, OnDestroy
     {
         // Set the selected language for the toolbar
         this.selectedLanguage = lang;
-
-        // Use the selected language for translations
-        this._translateService.use(lang.id);
     }
 }

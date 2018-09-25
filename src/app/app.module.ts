@@ -21,7 +21,6 @@ import { SampleModule } from 'app/main/sample/sample.module';
 import { CashierComponent } from './cashier/cashier.component';
 import { CookComponent } from './cook/cook.component';
 import { WaiterComponent } from './waiter/waiter.component';
-import { UserComponent } from './user/user.component';
 
 const appRoutes: Routes = [
     // {
@@ -31,7 +30,11 @@ const appRoutes: Routes = [
     { path: '', redirectTo: '/mesero', pathMatch: 'full' },
     { path: 'cajero', component: CashierComponent },
     { path: 'mesero', component: WaiterComponent },
-    { path: 'cocina', component: CookComponent }
+    { path: 'cocina', component: CookComponent },
+    {
+      path        : 'usuarios',
+      loadChildren: './user/user.module#UserModule'
+    },
 ];
 
 @NgModule({
@@ -39,8 +42,7 @@ const appRoutes: Routes = [
         AppComponent,
         CashierComponent,
         CookComponent,
-        WaiterComponent,
-        UserComponent
+        WaiterComponent
     ],
     imports     : [
         BrowserModule,

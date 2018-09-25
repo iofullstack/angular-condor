@@ -68,6 +68,7 @@ export class FuseSplashScreenService
     /**
      * Show the splash screen
      */
+    
     show(): void
     {
         this.player =

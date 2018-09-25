@@ -224,3 +224,17 @@ body.theme-pink-dark {
 
     @include fuse-color-classes($palettes);
 }
+.site-menu{
+  width: 25px;
+  height: 19px;
+  stroke-width: 2.5;
+}
+.site-menu svg{
+  width: 25px;
+}
+.site-menu-white{
+  stroke: #ffffff;
+}
+.site-menu-blue{
+  stroke: #1e2129;
+}
