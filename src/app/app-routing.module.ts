@@ -5,7 +5,11 @@ import { CashierComponent } from './cashier/cashier.component'
 import { WaiterComponent } from './waiter/waiter.component'
 import { CookComponent } from './cook/cook.component'
 
-// import { ClientModule } from './client/client.module'
+const components = [
+  CashierComponent,
+  WaiterComponent,
+  CookComponent
+]
 
 const routes: Routes = [
   { path: '', redirectTo: '/cajero', pathMatch: 'full' },
@@ -23,9 +27,10 @@ const routes: Routes = [
 ]
 
 @NgModule({
+  declarations: components,
   imports: [
     RouterModule.forRoot(routes)
   ],
-  exports: [ RouterModule ]
+  exports: [RouterModule, components]
 })
 export class AppRoutingModule {}
