@@ -29,8 +29,9 @@ const components = [
 ]
 
 const routes = [
-  { path: '', component: ListComponent },
-  { path: 'registrar', component: CreateComponent }
+  { path: 'registrar', component: CreateComponent },
+  { path: 'listar', component: ListComponent },
+  { path: '', redirectTo:'/clientes/listar' },
 ]
 
 @NgModule({

@@ -18,9 +18,9 @@ import { CreateComponent } from './create/create.component';
 import { ListComponent } from './list/list.component';
 
 const routes = [
-  { path: '', redirect:'/listar' },
   { path: 'registrar', component: CreateComponent },
   { path: 'listar', component: ListComponent },
+  { path: '', redirectTo:'/usuarios/listar' },
 ];
 
 @NgModule({

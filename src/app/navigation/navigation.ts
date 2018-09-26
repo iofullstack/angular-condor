@@ -26,7 +26,28 @@ export const navigation: FuseNavigation[] = [
                     url      : '/usuarios/registrar'
                   }
                 ]
-            }
+            },
+            {
+              id       : 'clientes',
+              title    : 'Clientes',
+              type     : 'collapsable',
+              children: [
+                {
+                  id       : 'c0',
+                  title    : 'Listar',
+                  type     : 'item',
+                  icon     : 'user',
+                  url      : '/clientes/listar'
+                },
+                {
+                  id       : 'c1',
+                  title    : 'Registrar',
+                  type     : 'item',
+                  icon     : 'user',
+                  url      : '/clientes/registrar'
+                }
+              ]
+          }
         ]
     }
 ];
