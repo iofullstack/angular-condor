@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core'
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router'
 
-import { Client } from '../client'
-// import { ClientService } from '../client.service'
+import { Client } from '../client.model'
+import { ClientService } from '../client.service'
 
 @Component({
   selector: 'app-create',
@@ -9,34 +11,26 @@ import { Client } from '../client'
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent implements OnInit {
-  // clients: Client[]
-  client: Client = {
-    id: 1,
-    nit_passport: 'puta',
-    firstName: 'barata',
-    lastName: 'Jose'
-  }
 
   constructor(
-    // private clientService: ClientService
+    private clientService: ClientService,
+    private router: Router
   ) { }
 
-  ngOnInit() {
-    // this.getClients()
-  }
+  ngOnInit() { }
 
-  // getClients(): void {
-  //   this.clientService.getClients()
-  //     .subscribe(clients => this.clients = clients)
-  // }
-
-  add(): void {
-    console.log(this.client)
-    // if (!data) { return }
-    // this.clientService.addClient({ data } as Client)
-    //   .subscribe(client => {
-    //     this.clients.push(client)
-    //   })
+  onSubmit(form: NgForm) {
+    const c = new Client(
+      form.value.nit_passport,
+      form.value.firstName,
+      form.value.lastName
+    )
+    // console.log(c);
+    this.clientService.addClient( c )
+        .subscribe(
+          ({ _id }) => this.router.navigate(['/clientes'])
+        );
+    form.resetForm();
   }
 
 }

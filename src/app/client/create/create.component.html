@@ -1,22 +1,27 @@
-<div>
-  <h2>Create Client</h2>
-  <!-- <h2>{{client.nit_passport | uppercase}} Details</h2> -->
-</div>
+<h2>Create Client</h2>
 
-<div>
-  <label>NIT or PASSPORT:
-    <input [(ngModel)]="client.nit_passport" placeholder="nit_passport"/>
-  </label>
-  <label>Nombre:
-    <input [(ngModel)]="client.firstName" placeholder="firstName" />
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Nit or Passport"
+      name="nit_passport"
+      ngModel>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Nombre"
+      name="firstName"
+      ngModel>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Apellido"
+      name="lastName"
+      ngModel>
+  </mat-form-field>
 
-  </label>
-  <label>Apellido:
-    <input [(ngModel)]="client.lastName" placeholder="lastName" />
-
-  </label>
-  <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)="add()">
-    add
-  </button>
-</div>
+  <button type="submit" mat-raised-button color="accent">Enviar</button>
+</form>
