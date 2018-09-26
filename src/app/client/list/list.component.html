@@ -1,0 +1,9 @@
+<h2>List Clients</h2>
+
+<ul *ngIf="clients">
+  <li *ngFor="let client of clients">
+    <a routerLink="/detail/{{client.nit_passport}}">
+      <span>{{client.nit_passport}}</span> {{client.firstName}} {{client.lastName}}
+    </a>
+  </li>
+</ul>
