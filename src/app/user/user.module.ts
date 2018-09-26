@@ -1,6 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, MatSelectModule, MatStepperModule } from '@angular/material';
+import 
+{ MatButtonModule,
+  MatRadioModule,
+  MatDividerModule,
+  MatFormFieldModule, 
+  MatIconModule, 
+  MatInputModule, 
+  MatSelectModule, 
+  MatStepperModule,
+  MatDatepickerModule 
+} from '@angular/material';
 
 /* Components */
 import { FuseSharedModule } from '@fuse/shared.module';
@@ -15,11 +25,14 @@ const routes = [
   imports: [
     RouterModule.forChild(routes),
     MatButtonModule,
+    MatRadioModule,
+    MatDividerModule,
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
     MatSelectModule,
     MatStepperModule,
+    MatDatepickerModule,
     FuseSharedModule
   ],
   declarations: [CreateComponent]

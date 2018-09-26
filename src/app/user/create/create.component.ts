@@ -1,6 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
+/* interface */
+import { City } from './city.interface';
+import { Gender } from './gender.interface';
 
 @Component({
     selector   : 'create',
@@ -11,16 +14,27 @@ export class CreateComponent implements OnInit, OnDestroy
 {
     form: FormGroup;
 
-    // Horizontal Stepper
-    horizontalStepperStep1: FormGroup;
-    horizontalStepperStep2: FormGroup;
-    horizontalStepperStep3: FormGroup;
-
     // Vertical Stepper
     verticalStepperStep1: FormGroup;
     verticalStepperStep2: FormGroup;
     verticalStepperStep3: FormGroup;
-
+    // Dates
+    cities: City[] = [
+      {value: 'CH', viewValue: 'Chuquisaca'},
+      {value: 'PT', viewValue: 'Potosí'},
+      {value: 'OR', viewValue: 'Oruro'},
+      {value: 'LP', viewValue: 'La Paz'},
+      {value: 'SC', viewValue: 'Santa Cruz'},
+      {value: 'CB', viewValue: 'Cochabamba'},
+      {value: 'BN', viewValue: 'Beni'},
+      {value: 'PA', viewValue: 'Pando'},
+      {value: 'TJ', viewValue: 'Tarija'}
+    ];
+    genders: Gender[] = [
+      {value: 'Masculino', viewValue: 'Masculino'},
+      {value: 'Femenino', viewValue: 'Femenino'},
+      {value: 'Otro', viewValue: 'Otro'}
+    ];
     // Private
     private _unsubscribeAll: Subject<any>;
 
@@ -46,54 +60,25 @@ export class CreateComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // Reactive Form
-        this.form = this._formBuilder.group({
-            company   : [
-                {
-                    value   : 'Google',
-                    disabled: true
-                }, Validators.required
-            ],
-            firstName : ['', Validators.required],
-            lastName  : ['', Validators.required],
-            address   : ['', Validators.required],
-            address2  : ['', Validators.required],
-            city      : ['', Validators.required],
-            state     : ['', Validators.required],
-            postalCode: ['', [Validators.required, Validators.maxLength(5)]],
-            country   : ['', Validators.required]
-        });
-
-        // Horizontal Stepper form steps
-        this.horizontalStepperStep1 = this._formBuilder.group({
-            firstName: ['', Validators.required],
-            lastName : ['', Validators.required]
-        });
-
-        this.horizontalStepperStep2 = this._formBuilder.group({
-            address: ['', Validators.required]
-        });
-
-        this.horizontalStepperStep3 = this._formBuilder.group({
-            city      : ['', Validators.required],
-            state     : ['', Validators.required],
-            postalCode: ['', [Validators.required, Validators.maxLength(5)]]
-        });
 
         // Vertical Stepper form stepper
         this.verticalStepperStep1 = this._formBuilder.group({
-            firstName: ['', Validators.required],
-            lastName : ['', Validators.required]
+            ci: ['', Validators.required],
+            exp : ['', Validators.required]
         });
 
         this.verticalStepperStep2 = this._formBuilder.group({
-            address: ['', Validators.required]
+            firstName: ['', Validators.required],
+            lastName: ['', Validators.required],
+            email: ['', Validators.required],
+            password: ['', Validators.required],
+            gender: [{value:'Masculino'}, Validators.required]
         });
 
         this.verticalStepperStep3 = this._formBuilder.group({
-            city      : ['', Validators.required],
-            state     : ['', Validators.required],
-            postalCode: ['', [Validators.required, Validators.maxLength(5)]]
+            birthday  : ['', Validators.required],
+            address   : ['', Validators.required],
+            cellphone : ['', [ Validators.required,Validators.maxLength(8) ] ]
         });
     }
 

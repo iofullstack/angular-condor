@@ -27,25 +27,29 @@
 
                   <form fxLayout="column" [formGroup]="verticalStepperStep1">
 
-                      <ng-template matStepLabel>Fill out your name</ng-template>
+                      <ng-template matStepLabel>Identidad</ng-template>
 
                       <div fxFlex="1 0 auto" fxLayout="column">
 
                           <mat-form-field fxFlex="100">
-                              <input matInput placeholder="First name" formControlName="firstName" required>
-                              <mat-error>First Name is required!</mat-error>
+                              <input matInput placeholder="Carnet de Identidad" formControlName="ci" required>
+                              <mat-error>El Carnet de Identidad es Obligario!</mat-error>
                           </mat-form-field>
 
                           <mat-form-field fxFlex="100">
-                              <input matInput placeholder="Last name" formControlName="lastName" required>
-                              <mat-error>Last Name is required!</mat-error>
+                            <mat-select placeholder="Expedido" formControlName="exp">
+                              <mat-option *ngFor="let city of cities" [value]="city.value">
+                                {{city.viewValue}}
+                              </mat-option>
+                            </mat-select>
+                            <mat-error>Indique fue expedido su carnet.</mat-error>
                           </mat-form-field>
 
                       </div>
 
                       <div class="pt-24" fxLayout="row" fxLayoutAlign="center center">
                           <button mat-raised-button matStepperNext type="button" color="accent">
-                              Next
+                              Siguiente
                           </button>
                       </div>
 
@@ -57,25 +61,47 @@
 
                   <form fxLayout="column" [formGroup]="verticalStepperStep2">
 
-                      <ng-template matStepLabel>Fill out your address</ng-template>
+                      <ng-template matStepLabel>Datos Principales</ng-template>
 
-                      <div fxFlex="1 0 auto" fxLayout="row">
+                      <div fxFlex="1 0 auto" fxLayout="column">
 
                           <mat-form-field fxFlex="100">
-                              <textarea matInput placeholder="Address" formControlName="address" required>
-                                  1600 Amphitheatre Pkwy
-                              </textarea>
-                              <mat-error>Address is required!</mat-error>
+                              <input matInput placeholder="Nombres" formControlName="firstName" required>
+                              <mat-error>Tu(s) Nombre(s) es Importante.</mat-error>
+                          </mat-form-field>
+
+                          <mat-form-field fxFlex="100">
+                              <input matInput placeholder="Apellidos" formControlName="lastName" required>
+                              <mat-error>Tu(s) Apellido(s) es Importante.</mat-error>
+                          </mat-form-field>
+
+                          <div>
+                            <label for="">Genero: </label>
+                            <mat-radio-group class="user-radio-group" formControlName="gender">
+                              <mat-radio-button class="user-radio-button" *ngFor="let gender of genders; let i=index" [value]="gender.value" [checked]="i === 0" required>
+                                {{gender.viewValue}}
+                              </mat-radio-button>
+                            </mat-radio-group>
+                          </div>
+
+                          <mat-form-field fxFlex="100">
+                              <input matInput placeholder="Correo Electronico" [email]="true" formControlName="email" required>
+                              <mat-error>Ingresa tu Correo Electronico.</mat-error>
+                          </mat-form-field>
+
+                          <mat-form-field fxFlex="100">
+                              <input matInput type="password" placeholder="Contraseña" formControlName="password" required>
+                              <mat-error>Ingresa tu Contraseña.</mat-error>
                           </mat-form-field>
 
                       </div>
 
                       <div class="pt-24" fxLayout="row" fxLayoutAlign="center center">
                           <button class="mr-8" mat-raised-button matStepperPrevious type="button" color="accent">
-                              Previous
+                              Anterior
                           </button>
                           <button mat-raised-button matStepperNext type="button" color="accent">
-                              Next
+                              Siguiente
                           </button>
                       </div>
 
@@ -87,35 +113,35 @@
 
                   <form fxLayout="column" [formGroup]="verticalStepperStep3">
 
-                      <ng-template matStepLabel>Fill out your address</ng-template>
+                      <ng-template matStepLabel>Datos Secundarios</ng-template>
 
-                      <div fxFlex="1 0 auto" fxLayout="row">
+                      <div fxFlex="1 0 auto" fxLayout="column">
 
-                          <mat-form-field fxFlex="100">
-                              <input matInput placeholder="City" formControlName="city" required>
-                              <mat-error>City is required!</mat-error>
+                          <mat-form-field fxFlex="100" class="example-full-width">
+                            <input matInput [matDatepicker]="picker" placeholder="Fecha de Nacimiento" formControlName="birthday">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker touchUi #picker></mat-datepicker>
+                            <mat-error>Ingrese Fecha de Nacimiento.</mat-error>
                           </mat-form-field>
 
                           <mat-form-field fxFlex="100">
-                              <input matInput placeholder="State" formControlName="state" required>
-                              <mat-error>State is required!</mat-error>
+                              <input matInput placeholder="Dirección" formControlName="address" required>
+                              <mat-error>Ingrese Dirección.</mat-error>
                           </mat-form-field>
 
                           <mat-form-field fxFlex="100">
-                              <input matInput #postalCode placeholder="Postal Code" formControlName="postalCode"
-                                     maxlength="5" required>
-                              <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
-                              <mat-error>Postal Code is required!</mat-error>
+                              <input matInput type="number" placeholder="Número de Celular" formControlName="cellphone" required>
+                              <mat-error>Ingrese Número de Celular.</mat-error>
                           </mat-form-field>
 
                       </div>
 
                       <div class="pt-24" fxLayout="row" fxLayoutAlign="center center">
                           <button class="mr-8" mat-raised-button matStepperPrevious type="button" color="accent">
-                              Previous
+                              Anterior
                           </button>
                           <button mat-raised-button matStepperNext type="button" color="accent">
-                              Next
+                              Siguiente
                           </button>
                       </div>
 

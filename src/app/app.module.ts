@@ -24,8 +24,12 @@ import { AppRoutingModule } from './app-routing.module'
 
 /* Module Café Cóndor */
 import { MessagesComponent } from './messages/messages.component'
+import { MAT_DATE_LOCALE } from '@angular/material';
 
 @NgModule({
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue:'es'},
+  ],
   declarations: [
     AppComponent,
     MessagesComponent
