@@ -9,14 +9,23 @@ export const navigation: FuseNavigation[] = [
             {
                 id       : 'usuarios',
                 title    : 'Usuarios',
-                type     : 'item',
-                icon     : 'user',
-                url      : '/usuarios',
-                badge    : {
-                    title    : '25',
-                    bg       : '#F44336',
-                    fg       : '#FFFFFF'
-                }
+                type     : 'collapsable',
+                children: [
+                  {
+                    id       : 'u0',
+                    title    : 'Listar',
+                    type     : 'item',
+                    icon     : 'user',
+                    url      : '/usuarios/listar'
+                  },
+                  {
+                    id       : 'u1',
+                    title    : 'Registrar',
+                    type     : 'item',
+                    icon     : 'user',
+                    url      : '/usuarios/registrar'
+                  }
+                ]
             }
         ]
     }

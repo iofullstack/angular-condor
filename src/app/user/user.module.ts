@@ -15,10 +15,12 @@ import
 /* Components */
 import { FuseSharedModule } from '@fuse/shared.module';
 import { CreateComponent } from './create/create.component';
+import { ListComponent } from './list/list.component';
 
 const routes = [
-  { path: '', component: CreateComponent },
+  { path: '', redirect:'/listar' },
   { path: 'registrar', component: CreateComponent },
+  { path: 'listar', component: ListComponent },
 ];
 
 @NgModule({
@@ -35,6 +37,6 @@ const routes = [
     MatDatepickerModule,
     FuseSharedModule
   ],
-  declarations: [CreateComponent]
+  declarations: [CreateComponent, ListComponent]
 })
 export class UserModule { }
