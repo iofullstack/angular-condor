@@ -1,3 +1,115 @@
-<h1>
-  Aún no se registro usuarios
-</h1>
+<div id="users" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+  
+    <!-- CENTER -->
+    <div class="center">
+  
+        <!-- HEADER -->
+      <div class="header accent"
+           fxLayout="row" fxLayoutAlign="center center"
+           fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between center"
+           style="flex-direction: row; box-sizing: border-box; display: flex; max-height: 100%; place-content: center space-between; align-items: center;">
+          <!-- Bread -->
+          <div fxLayout="column" fxLayoutAlign="center start">
+            <div class="black-fg" fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="secondary-text s-18">home</mat-icon>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">Clientes</span>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">Listar</span>
+            </div>
+            <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">Usuarios</span>
+      </div>
+
+          <!-- SEARCH -->
+          <div class="search-input-wrapper ml-sm-16"
+              fxFlex="1 0 auto"
+              fxLayout="row"
+              fxLayoutAlign="start center"
+              style="flex: 1 0 auto; box-sizing: border-box; flex-direction: row; display: flex; place-content: center flex-start; align-items: center;"
+              >
+              <label for="search" class="mr-8">
+                  <mat-icon class="secondary-text">search</mat-icon>
+              </label>
+              <mat-form-field 
+                floatLabel="never" 
+                fxFlex="1 0 auto"
+                style="flex: 1 0 auto; box-sizing: border-box;"
+              >
+                  <input id="search" matInput placeholder="Buscar...">
+              </mat-form-field>
+          </div>
+
+          <button mat-raised-button
+                    [routerLink]="'/usuarios/registrar'"
+                  class="add-product-button fuse-white my-12 mt-sm-0">
+              <span>Agregar Usuario</span>
+          </button>
+          <!-- / SEARCH -->
+      </div>
+        <!-- / HEADER -->
+  
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+  
+            <mat-table class="orders-table"
+                       #table [dataSource]="dataSource"
+                       matSort
+                       [@animateStagger]="{value:'50'}"
+                       fusePerfectScrollbar>
+  
+                <!-- ID Column -->
+                <ng-container matColumnDef="_id">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+                    <mat-cell *matCellDef="let usuario">
+                        <p class="text-truncate">{{usuario._id}}</p>
+                    </mat-cell>
+                </ng-container>
+  
+                <!-- nit_passport Column -->
+                <ng-container matColumnDef="ci">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-sm>Nit/Pasaporte</mat-header-cell>
+                    <mat-cell *matCellDef="let usuario" fxHide fxShow.gt-sm>
+                        <p class="text-truncate">{{usuario.ci}}</p>
+                    </mat-cell>
+                </ng-container>
+  
+                <!-- firstName Column -->
+                <ng-container matColumnDef="firstName">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre(s)</mat-header-cell>
+                    <mat-cell *matCellDef="let usuario">
+                        <p class="text-truncate">
+                            {{usuario.firstName}}
+                        </p>
+                    </mat-cell>
+                </ng-container>
+  
+                <!-- lastName Column -->
+                <ng-container matColumnDef="lastName">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-md>Apellido(s)</mat-header-cell>
+                    <mat-cell *matCellDef="let usuario" fxHide fxShow.gt-md>
+                        <p class="total-price text-truncate">
+                            {{usuario.lastName}}
+                        </p>
+                    </mat-cell>
+                </ng-container>
+  
+                <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
+  
+                <mat-row *matRowDef="let client; columns: displayedColumns;"
+                         class="order"
+                         matRipple
+                         [routerLink]="'/detail/'+client.nit_passport">
+                </mat-row>
+  
+            </mat-table>
+  
+        </div>
+        <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+  </div>
+  

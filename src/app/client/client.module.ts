@@ -12,7 +12,10 @@ import {
   MatIconModule,
   MatInputModule,
   MatFormFieldModule,
-  MatRippleModule
+  MatRippleModule,
+  MatTableModule,
+  MatOptionModule,
+  MatSelectModule
 } from '@angular/material'
 
 const modules = [
@@ -20,7 +23,10 @@ const modules = [
   MatIconModule,
   MatInputModule,
   MatFormFieldModule,
-  MatRippleModule
+  MatRippleModule,
+  MatTableModule,
+  MatOptionModule,
+  MatSelectModule
 ]
 
 const components = [

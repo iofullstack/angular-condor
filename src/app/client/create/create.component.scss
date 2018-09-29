@@ -1,13 +1,36 @@
-button {
-  background-color: #eee;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  cursor: hand;
-  font-family: Arial;
-}
+:host {
 
-button:hover {
-  background-color: #cfd8dc;
+  .content {
+
+      form {
+          width: 100%;
+          max-width: 800px !important;
+      }
+
+      .form-errors-model {
+          flex: 1;
+
+          code {
+              background: none !important;
+          }
+      }
+
+      .horizontal-stepper-wrapper,
+      .vertical-stepper-wrapper {
+          max-width: 800px;
+      }
+  }
+}
+.form-grupper{
+  flex: 1 0 auto;
+  box-sizing: border-box;
+  flex-direction: row;
+  display: flex;
+  place-content: center flex-start;
+  align-items: center;
+}
+.form-grupper-item{
+  flex: 1 1 100%;
+  box-sizing: border-box;
+  max-width: 100%;
 }

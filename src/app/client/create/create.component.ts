@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
 import { Router } from '@angular/router'
 
 import { Client } from '../client.model'
@@ -12,25 +12,54 @@ import { ClientService } from '../client.service'
 })
 export class CreateComponent implements OnInit {
 
+  form: FormGroup;
+
+  /**
+   * Constructor
+   *
+   * @param {FormBuilder} _formBuilder
+   */
   constructor(
     private clientService: ClientService,
-    private router: Router
+    private router: Router,
+    private _formBuilder: FormBuilder
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    // Reactive Forms
+    this.form = this._formBuilder.group({
+        nit_passport : ['', Validators.required],
+        firstName    : ['', Validators.required],
+        lastName     : ['', Validators.required]
+    });
+  }
 
-  onSubmit(form: NgForm) {
-    const c = new Client(
-      form.value.nit_passport,
-      form.value.firstName,
-      form.value.lastName
-    )
-    // console.log(c);
-    this.clientService.addClient( c )
+  onSubmit(myform:NgForm) {
+    let result = this.form.getRawValue();
+    if(this.checkFullInfo(result)){
+      const c = new Client(
+        String(result.nit_passport),
+        result.firstName,
+        result.lastName
+      );
+      this.clientService.addClient( c )
         .subscribe(
           ({ _id }) => this.router.navigate(['/clientes'])
         );
-    form.resetForm();
+        myform.resetForm();
+    }else{
+      return false;
+    }
+  }
+
+  checkFullInfo(obj): Boolean{
+    var k = Object.keys(obj);
+    for(let i=0;i<k.length;i++){
+      if(!(obj[k[i]] != '')){
+        return false;
+      }
+    }
+    return true;
   }
 
 }

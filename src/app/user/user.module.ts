@@ -9,7 +9,8 @@ import
   MatInputModule, 
   MatSelectModule, 
   MatStepperModule,
-  MatDatepickerModule 
+  MatDatepickerModule,
+  MatTableModule
 } from '@angular/material';
 
 /* Components */
@@ -35,7 +36,8 @@ const routes = [
     MatSelectModule,
     MatStepperModule,
     MatDatepickerModule,
-    FuseSharedModule
+    FuseSharedModule,
+    MatTableModule
   ],
   declarations: [CreateComponent, ListComponent]
 })
