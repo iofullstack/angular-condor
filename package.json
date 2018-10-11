@@ -61,7 +61,9 @@
     "rxjs-compat": "6.2.2",
     "url-join": "4.0.0",
     "web-animations-js": "2.3.1",
-    "zone.js": "0.8.26"
+    "zone.js": "0.8.26",
+    "@types/socket.io-client": "^1.4.32",
+    "socket.io-client": "^2.1.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.7.5",
@@ -85,6 +87,8 @@
     "ts-node": "5.0.1",
     "tslint": "5.9.1",
     "typescript": "2.7.2",
-    "webpack-bundle-analyzer": "2.13.1"
+    "webpack-bundle-analyzer": "2.13.1",
+    "@types/socket.io": "^1.4.36",
+    "socket.io": "^2.1.1"
   }
 }

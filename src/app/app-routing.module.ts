@@ -5,6 +5,8 @@ import { CashierComponent } from './cashier/cashier.component'
 import { WaiterComponent } from './waiter/waiter.component'
 import { CookComponent } from './cook/cook.component'
 
+import { MaterialModule } from './material.module'
+
 const components = [
   CashierComponent,
   WaiterComponent,
@@ -29,6 +31,7 @@ const routes: Routes = [
 @NgModule({
   declarations: components,
   imports: [
+    MaterialModule,
     RouterModule.forRoot(routes)
   ],
   exports: [RouterModule, components]

@@ -24,15 +24,30 @@ import { AppRoutingModule } from './app-routing.module'
 
 /* Module Café Cóndor */
 import { MessagesComponent } from './messages/messages.component'
-import { MAT_DATE_LOCALE } from '@angular/material';
+// import { CookComponent } from './cook/cook.component'
+// import { WaiterComponent } from './waiter/waiter.component'
+// import { CashierComponent } from './cashier/cashier.component'
+
+import { MAT_DATE_LOCALE } from '@angular/material'
+
+import { SocketIoModule } from './socket-io/socket-io.module'
+import { SocketIoConfig } from './socket-io/socket-io-config'
+
+import { SocketioService } from './socketio.service'
+
+const config: SocketIoConfig = { url: 'http://localhost:3500', options: {} }
 
 @NgModule({
   providers: [
     { provide: MAT_DATE_LOCALE, useValue:'es'},
+    SocketioService
   ],
   declarations: [
     AppComponent,
-    MessagesComponent
+    MessagesComponent,
+    // CookComponent,
+    // WaiterComponent,
+    // CashierComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +55,8 @@ import { MAT_DATE_LOCALE } from '@angular/material';
     HttpClientModule,
     AppRoutingModule,
     TranslateModule.forRoot(),
+
+    SocketIoModule.forRoot(config),
 
     // Material moment date module
     MatMomentDateModule,

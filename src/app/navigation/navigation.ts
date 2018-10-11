@@ -47,7 +47,35 @@ export const navigation: FuseNavigation[] = [
                   url      : '/clientes/registrar'
                 }
               ]
-          }
+            },
+            {
+              id       : 'pedido',
+              title    : 'Pedido',
+              type     : 'collapsable',
+              children: [
+                {
+                  id       : 'p0',
+                  title    : 'Cajero',
+                  type     : 'item',
+                  icon     : 'user',
+                  url      : '/cajero'
+                },
+                {
+                  id       : 'p1',
+                  title    : 'Mesero',
+                  type     : 'item',
+                  icon     : 'user',
+                  url      : '/mesero'
+                },
+                {
+                  id       : 'p2',
+                  title    : 'Cocina',
+                  type     : 'item',
+                  icon     : 'user',
+                  url      : '/cocina'
+                }
+              ]
+            }
         ]
     }
 ];

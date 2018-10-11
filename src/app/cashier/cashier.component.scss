@@ -44,6 +44,52 @@
 .ms {
   position: relative;
 }
+.ms-cap-1 {
+  color: white;
+  position: absolute;
+  font-size: 2em;
+  text-align: right;
+  top: 12px;
+  bottom: 0;
+  left: 0;
+  right: 9px;
+}
+.ms-cap-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: white;
+  font-size: 2em;
+}
+.ms-cap-3 {
+  margin: 0 18px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  color: white;
+  font-size: 2em;
+}
+.ms-cap-4 {
+  color: white;
+  position: absolute;
+  font-size: 2em;
+  text-align: right;
+  top: 9px;
+  bottom: 0;
+  left: 0;
+  right: 18px;
+}
+.ms-cap-x {
+  color: white;
+  position: absolute;
+  font-size: 2em;
+  text-align: right;
+  top: 33.5px;
+  bottom: 0;
+  left: 0;
+  right: 17px;
+}
 .ms-number {
   background-image: url('../../assets/img/base-num.png');
   background-repeat: no-repeat;
@@ -65,7 +111,7 @@
 .mesa1 {
   background-image: url('../../assets/img/mesa1.png');
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   border-radius: 5px;
 }
 .mesa2 {
@@ -128,19 +174,15 @@
 }
 .mesa-6 {
   grid-column: 4 / span 2;
-
 }
 .mesa-3 {
   grid-column: 1 / span 2;
-
 }
 .mesa-5 {
   grid-column: 4 / span 2;
-
 }
 .mesa-2 {
   grid-column: 1 / span 2;
-
 }
 .bar-2 {
   grid-column: 4 / span 2;
@@ -157,6 +199,7 @@
   margin: 6.5px auto;
   font-weight: bold;
   color: #ECEFF1;
+  font-size: 17px;
 }
 
 .mesa-1 {
@@ -196,7 +239,6 @@
 .sillas {
   /* background-color: #d7ccc861; */
   grid-column: 1 / -1;
-
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 10px;
@@ -216,6 +258,8 @@
   text-align: center;
   height: 100%;
   font-weight: bold;
+  font-size: 1.4em;
+  letter-spacing: 10px;
   color: #ECEFF1;
   margin: 0;
   display: flex;
