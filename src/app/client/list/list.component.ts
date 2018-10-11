@@ -22,11 +22,13 @@ export class ListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.getClients()
+    this.getClients()
+  }
+
+  getClients(): void {
     this.clientService.getClients()
         .subscribe(clients => {
           this.dataSource = clients
-          console.log('ohh sii', this.dataSource)
         })
     this.socket
       .getMessage()
@@ -41,5 +43,4 @@ export class ListComponent implements OnInit {
   sendMsg1(msg) {
     this.socket.sendMessage(msg);
   }
-
 }

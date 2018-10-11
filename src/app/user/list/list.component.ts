@@ -1,10 +1,8 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core'
 import { User } from '../user.model'
-//import { ClientService } from '../client.service'
+import { UserService } from '../user.service'
 
-
-import { fuseAnimations } from '@fuse/animations';
-
+import { fuseAnimations } from '@fuse/animations'
 
 @Component({
   selector: 'app-list',
@@ -14,29 +12,21 @@ import { fuseAnimations } from '@fuse/animations';
 })
 export class ListComponent implements OnInit {
   dataSource: User[]
-  displayedColumns = ['_id','ci', 'firstName', 'lastName'];
-  
+  // displayedColumns = ['_id','ci', 'exp', 'firstname', 'lastname', 'avatar', 'email', 'gender', 'birthday', 'address', 'cellphone', 'createdAt']
+
   constructor(
-    //private clientService: ClientService
+    private userService: UserService
   ) { }
 
   ngOnInit() {
-    // this.getClients()
-    /*
-    this.clientService.getClients()
-        .subscribe(clients => {
-          this.dataSource = clients
-          console.log('ohh sii', this.dataSource)
-        });
-    */
-   //only test
-    this.dataSource =[ {
-        _id: "0",
-        ci: "0",
-        firstName: "No Existe",
-        lastName: "Usuarios Registrados"
-      }
-    ]
+    this.getUsers()
   }
 
+  getUsers(): void {
+    this.userService.getUsers()
+        .subscribe(users => {
+          console.log(users)
+          // this.dataSource = users
+        })
+  }
 }
