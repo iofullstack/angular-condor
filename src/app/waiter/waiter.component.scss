@@ -5,14 +5,14 @@
 
 .list-item {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
   grid-gap: 15px;
 }
 
 .item {
   background-color: #ffcc8047;
   display: grid;
-  grid-template: 70px / 210px 1fr 70px;
+  grid-template: 70px / 170px 1fr 70px;
   grid-gap: 10px;
   grid-template-areas: "badge title action"
                        "badge detail action";
@@ -30,6 +30,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.badge figure img {
+  height: auto;
 }
 .icon-select {
   position: relative;
