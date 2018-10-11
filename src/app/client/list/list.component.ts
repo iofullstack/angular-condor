@@ -2,9 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Client } from '../client.model'
 import { ClientService } from '../client.service'
 
-
 import { fuseAnimations } from '@fuse/animations';
-
 
 @Component({
   selector: 'app-list',
@@ -21,12 +19,13 @@ export class ListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.getClients()
+    this.getClients()
+  }
+
+  getClients(): void {
     this.clientService.getClients()
         .subscribe(clients => {
           this.dataSource = clients
-          console.log('ohh sii', this.dataSource)
         });
   }
-
 }
