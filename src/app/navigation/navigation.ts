@@ -49,6 +49,20 @@ export const navigation: FuseNavigation[] = [
               ]
             },
             {
+              id       : 'mesas',
+              title    : 'Tomar Pedido',
+              type     : 'collapsable',
+              children: [
+                {
+                  id       : 'c0',
+                  title    : 'Mesas',
+                  type     : 'item',
+                  icon     : 'user',
+                  url      : '/mesas'
+                }
+              ]
+            },
+            {
               id       : 'pedido',
               title    : 'Pedido',
               type     : 'collapsable',

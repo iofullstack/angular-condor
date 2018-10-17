@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { RouterModule } from '@angular/router'
-import { FormsModule, ReactiveFormsModule } from '@angular/forms' // <-- NgModel lives here
+
+/* NgModel lives here */
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { CreateComponent } from './create/create.component'
 import { ListComponent } from './list/list.component'
