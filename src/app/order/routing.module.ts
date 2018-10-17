@@ -2,16 +2,15 @@ import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { RouterModule } from '@angular/router'
 import { TablesComponent } from './tables/tables.component'
-// import { MaterialModule } from './material.module'
+import { PrepareOrderComponent } from './prepare-order/prepare-order.component'
 
 const routes = [
-  { path: '', component: TablesComponent }
-  // { path: '', redirectTo:'/mesas/listar' }
+  { path: '', component: TablesComponent },
+  { path: '/preparar/orden', component: PrepareOrderComponent }
 ]
 
 @NgModule({
   imports: [
-    // MaterialModule,
     CommonModule,
     RouterModule.forChild(routes),
   ],
