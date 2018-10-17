@@ -27,7 +27,7 @@ const routes: Routes = [
     loadChildren: './user/user.module#UserModule'
   },
   {
-    path        : 'mesas',
+    path        : 'orden',
     loadChildren: './order/order.module#OrderModule'
   }
 ]

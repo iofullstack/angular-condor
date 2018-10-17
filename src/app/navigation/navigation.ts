@@ -58,7 +58,14 @@ export const navigation: FuseNavigation[] = [
                   title    : 'Mesas',
                   type     : 'item',
                   icon     : 'user',
-                  url      : '/mesas'
+                  url      : '/orden/mesas'
+                },
+                {
+                  id       : 'c0',
+                  title    : 'Preparar Orden',
+                  type     : 'item',
+                  icon     : 'user',
+                  url      : '/orden/preparar'
                 }
               ]
             },

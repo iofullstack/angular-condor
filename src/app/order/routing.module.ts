@@ -5,8 +5,8 @@ import { TablesComponent } from './tables/tables.component'
 import { PrepareOrderComponent } from './prepare-order/prepare-order.component'
 
 const routes = [
-  { path: '', component: TablesComponent },
-  { path: '/preparar/orden', component: PrepareOrderComponent }
+  { path: 'mesas', component: TablesComponent },
+  { path: 'preparar', component: PrepareOrderComponent }
 ]
 
 @NgModule({
