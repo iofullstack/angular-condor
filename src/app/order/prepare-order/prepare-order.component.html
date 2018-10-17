@@ -1,3 +1,149 @@
-<p>
-  prepare-order works!
-</p>
+<div id="prepareOrder" class="page-layout simple">
+  <!-- HEADER -->
+  <div class="header accent p-16 p-sm-24" fxLayout="column" fxLayoutAlign="center center">
+
+      <div class="hero-text">
+          <mat-icon class="hero-icon">attach_money</mat-icon>
+          <h1 [@animate]="{value:'*',params:{delay:'100ms', y:'25px'}}">
+              Pedido Nro XXXX
+          </h1>
+          
+          <div class="container-order" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+            <form 
+              (ngSubmit)="onSubmit(f)"
+              [formGroup]="form"
+              fxLayout="column" 
+              name="form" 
+            >
+              <div fxLayout="row" fxLayoutAlign="space-between center">
+                  <mat-form-field fxFlex="100">
+                      <input matInput class="input-prepare" type="number" autocomplete="off" placeholder="Mesas" formControlName="mesas" required>
+                      <mat-error>Ingrese número de mesas.</mat-error>
+                  </mat-form-field>
+              </div>
+
+              <div fxLayout="row" fxLayoutAlign="space-between center">
+                  <mat-form-field fxFlex="100">
+                      <input matInput class="input-prepare" type="number" autocomplete="off" placeholder="Comensales" formControlName="comensales" required>
+                      <mat-error>Ingrese número de comensales.</mat-error>
+                  </mat-form-field>
+              </div>
+
+              <h3 [@animate]="{value:'*',params:{delay:'100ms', y:'25px'}}">
+                  Lista de Pedidos
+              </h3>
+              <div class="mesas-container" [@animate]="{value:'*',params:{delay:'100ms', y:'25px'}}">
+                <button mat-mini-fab class="mesas-add">
+                  <mat-icon aria-label="Agregar mesa">add</mat-icon>
+                </button>
+                <div class="mesas-list">
+    
+                  <div class="mesas-item">
+                    <h3>TUC</h3>
+                    <div class="mesas-number">2</div>
+                  </div>
+    
+                  <div class="mesas-item">
+                    <h3>TE-01</h3>
+                    <div class="mesas-number">1</div>
+                  </div>
+    
+                  <div class="mesas-item">
+                    <h3>JU-02</h3>
+                    <div class="mesas-number">3</div>
+                  </div>
+
+                  <div class="mesas-item">
+                    <h3>CA-01</h3>
+                    <div class="mesas-number">4</div>
+                  </div>
+
+                  <div class="mesas-item">
+                    <h3>MO-TA</h3>
+                    <div class="mesas-number">10</div>
+                  </div>
+  
+                  <div class="mesas-item">
+                    <h3>Ga-Ry</h3>
+                    <div class="mesas-number">Gay</div>
+                  </div>
+
+                  <div class="mesas-item">
+                    <h3>PU-TO</h3>
+                    <div class="mesas-number">Gary</div>
+                  </div>
+                </div>
+              </div>
+
+            </form>
+          </div>
+      </div>
+    </div>
+
+    <!-- Buscador -->
+
+    <div class="container-order" fxLayout="column" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+        <div fxLayout="row" fxLayoutAlign="center" fxFlex="80%">
+            <mat-chip-list>
+              <mat-chip (click)="test()">Default</mat-chip>
+              <mat-chip color="primary" selected>Item 2</mat-chip>
+              <mat-chip color="accent" selected>Item 3</mat-chip>
+            </mat-chip-list>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center">
+            <mat-form-field fxFlex="80%">
+                <input matInput class="input-prepare" type="search" autocomplete="off" placeholder="Buscar">
+                <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+        </div>
+    </div>
+    
+    <!-- List of Products -->
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <div fxLayout="column" fxLayoutAlign="center">
+
+
+            <div class="courses" fxLayout="row wrap" fxLayoutAlign="center" [@animate]="{value:'50'}">
+
+                <div class="course" fxFlex="100" fxFlex.gt-xs="50"
+                     fxFlex.gt-sm="33" [@animate]="{value:'*',params:{y:'100%'}}">
+
+                    <div class="course-content" fxLayout="column" fxFlex="1 1 auto">
+
+                        <div class="header" fxLayout="row" fxLayoutAlign="center center">
+
+                            <div class="category" fxFlex>
+                                Comidas
+                            </div>
+
+                            <div class="length" fxLayout="row" fxLayoutAlign="center center">
+                                <mat-icon class="length-icon s-20">attach_money</mat-icon>
+                                <div class="min">48 Bs</div>
+                            </div>
+
+                        </div>
+
+                        <div class="content" fxLayout="column" fxLayoutAlign="center center" fxFlex="1 1 auto">
+                            <div class="h1">Picante de Pollo Super Picante</div>
+                            <div class="updated">Tiempo de Coccion 20min</div>
+                        </div>
+
+                        <div class="footer" fxLayout="row" fxLayoutAlign="center center">
+                            <button mat-button color="accent">
+                                Agregar
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- / CONTENT -->
+</div>
