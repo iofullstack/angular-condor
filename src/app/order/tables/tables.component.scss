@@ -1,0 +1,359 @@
+.grid-caja {
+  display: grid;
+  grid-template: repeat(2, 300px) 90px / repeat(3, 220px);
+  justify-content: center;
+  grid-gap: 25px 10px;
+  grid-template-areas: "seccion-1 seccion-1 seccion-2"
+                       "seccion-3 seccion-4 seccion-4"
+                       "seccion-5 seccion-5 seccion-5";
+}
+
+/********************* Secciones *********************/
+.sec-1 {
+  grid-area: seccion-1;
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(8, 1fr);
+  grid-row-gap: 10px;
+}
+.sec-2 {
+  grid-area: seccion-2;
+  display: grid;
+  grid-template: repeat(4, 1fr) / repeat(2, 1fr) 20px repeat(2, 1fr);
+  grid-row-gap: 10px;
+}
+.sec-3 {
+  grid-area: seccion-3;
+  display: grid;
+  grid-template: repeat(5, 1fr) / repeat(2, 1fr);
+  grid-gap: 5px;
+}
+.sec-4 {
+  grid-area: seccion-4;
+  display: grid;
+  grid-template: 40px 33px 60px 1fr / repeat(5, 1fr);
+  grid-gap: 7px;
+}
+.sec-5 {
+  grid-area: seccion-5;
+  display: grid;
+  grid-template: 90px / repeat(auto-fill, 128px);
+  grid-gap: 10px;
+}
+
+/********************* Números de Mesas *********************/
+.ms {
+  position: relative;
+  cursor: pointer;
+}
+.ms-cap-1 {
+  color: white;
+  position: absolute;
+  font-size: 2em;
+  text-align: right;
+  top: 12px;
+  bottom: 0;
+  left: 0;
+  right: 9px;
+}
+.ms-cap-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: white;
+  font-size: 2em;
+}
+.ms-cap-3 {
+  margin: 0 18px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  color: white;
+  font-size: 2em;
+}
+.ms-cap-4 {
+  color: white;
+  position: absolute;
+  font-size: 2em;
+  text-align: right;
+  top: 9px;
+  bottom: 0;
+  left: 0;
+  right: 18px;
+}
+.ms-cap-x {
+  color: white;
+  position: absolute;
+  font-size: 2em;
+  text-align: right;
+  top: 33.5px;
+  bottom: 0;
+  left: 0;
+  right: 17px;
+}
+.ms-number {
+  background-image: url('../../../assets/img/base-num.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 30px;
+  height: 25px;
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/********************* Mesas Seccion 1 *********************/
+.mesa1 {
+  background-image: url('../../../assets/img/mesa1.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 5px;
+}
+.mesa2 {
+  background-image: url('../../../assets/img/mesa2.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 5px;
+}
+.patio {
+  background-image: url('../../../assets/img/mesa3.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 5px;
+}
+.ms-extra {
+  background-image: url('../../../assets/img/mesa4.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 5px;
+}
+.ms-redonda {
+  background-image: url('../../../assets/img/mesa5.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+}
+.bar {
+  background-image: url('../../../assets/img/mesa-bara.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px;
+}
+
+.mesa-9 {
+  grid-column: 1 / span 2;
+}
+.mesa-8 {
+  grid-column: 4 / span 2;
+}
+.mesa-7 {
+  grid-column: 7 / span 2;
+}
+.mesa-10 {
+  grid-column: 2 / span 2;
+}
+.mesa-13 {
+  grid-column: 6 / span 2;
+}
+.mesa-11 {
+  grid-column: 1 / span 2;
+}
+.mesa-12 {
+  grid-column: 7 / span 2;
+}
+
+/********************* Mesas Seccion 2 *********************/
+.mesa-4 {
+  grid-column: 1 / span 2;
+}
+.mesa-6 {
+  grid-column: 4 / span 2;
+}
+.mesa-3 {
+  grid-column: 1 / span 2;
+}
+.mesa-5 {
+  grid-column: 4 / span 2;
+}
+.mesa-2 {
+  grid-column: 1 / span 2;
+}
+.bar-2 {
+  grid-column: 4 / span 2;
+  grid-row: span 2;
+  display: grid;
+  grid-template: repeat(2, 1fr) / repeat(3, 1fr);
+  align-items: center;
+  justify-items: center;
+}
+.bar-2 h3 {
+  width:20px;
+  word-wrap: break-word;
+  text-align:center;
+  margin: 6.5px auto;
+  font-weight: bold;
+  color: #ECEFF1;
+  font-size: 17px;
+}
+
+.mesa-1 {
+  grid-column: 1 / span 2;
+}
+
+.silla-v {
+  width: 25px;
+  height: 30px;
+  background-color: sienna;
+}
+.bar-item-1 {
+  border-radius: 0px 10px 10px 0px;
+}
+.bar-item-2 {
+  grid-column: 2 / span 1;
+  grid-row: span 2;
+  width: 100%;
+  height: 100%;
+}
+.bar-item-3 {
+  border-radius: 10px 0px 0px 10px;
+}
+.bar-item-4 {
+  border-radius: 0px 10px 10px 0px;
+}
+.bar-item-5 {
+  border-radius: 10px 0px 0px 10px;
+}
+
+/********************* Mesas Seccion 3 *********************/
+.patio {
+  background-color: peru;
+}
+
+/********************* Mesas Seccion 4 *********************/
+.sillas {
+  /* background-color: #d7ccc861; */
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 10px;
+  align-items: center;
+  justify-items: center;
+}
+.silla-h {
+  width: 40px;
+  height: 30px;
+  background-color: sienna;
+  border-radius: 0 0 10px 10px;
+}
+.bar-1 {
+  grid-column: 1 / -1;
+}
+.bar-1 h3 {
+  text-align: center;
+  height: 100%;
+  font-weight: bold;
+  font-size: 1.4em;
+  letter-spacing: 10px;
+  color: #ECEFF1;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-cj {
+  grid-column: 1 / -1;
+
+  background-image: url('../../../assets/img/escritorio.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+
+  display: grid;
+  grid-template: 60px / 1px 60px repeat(4, 1fr);
+  grid-gap: 10px;
+  text-align: center;
+}
+.menu-cj figure {
+  margin: 0;
+}
+.menu-cj img {
+  width: 100%;
+  height: 100%;
+}
+
+.avatar-cj {
+  /* background-color: #d7ccc861; */
+  grid-column: 1 / span 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.avatar-cj figure {
+  margin: 0;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background-color: #455A64;
+  overflow: hidden;
+}
+.avatar-cj img {
+  width: 100%;
+}
+
+.detail-cj {
+  grid-column: 3 / -1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.detail-cj .description {
+  background-color: #455A64;
+  width: 100%;
+  height: 125px;
+  position: relative;
+  border-radius: 10px;
+  padding: 10px;
+  color: white;
+  font-size: .9em;
+}
+.detail-cj .description:after {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: -18px;
+  border-right: 20px solid #455A64;
+  border-bottom: 15px solid transparent;
+  border-top: 15px solid transparent;
+}
+.detail-cj .description p {
+  margin: 0;
+  overflow: auto;
+  height: 100%;
+}
+
+/********************* Mesas Seccion 5 *********************/
+.ms-extra {
+  background-color: chartreuse;
+}
+
+/********************* Responsive *********************/
+@media screen and (max-width: 750px) {
+  .grid-caja {
+    grid-template: repeat(3, 300px) 190px / repeat(2, 220px);
+    grid-gap: 50px 7px;
+    grid-template-areas: "seccion-4 seccion-4"
+                         "seccion-2 seccion-3"
+                         "seccion-1 seccion-1"
+                         "seccion-5 seccion-5";
+  }
+}
