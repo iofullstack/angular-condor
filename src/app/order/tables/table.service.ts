@@ -33,6 +33,29 @@ export class TableService {
       )
   }
 
+  /** GET table by id. Will 404 if id not found */
+  getTable(id: string): Observable<Table> {
+    const url = `${this.tableUrl}/${id}`
+    return this.http.get<Table>(url).pipe(
+      tap(_ => console.log(`fetched table id=${id}`)),
+      catchError(this.handleError<Table>(`getTable id=${id}`))
+    )
+  }
+
+  /** GET table by id. Return `undefined` when id not found */
+  getTableNo404<Data>(id: number): Observable<Table> {
+    const url = `${this.tableUrl}/?id=${id}`
+    return this.http.get<Table[]>(url)
+      .pipe(
+        map(tables => tables[0]), // returns a {0|1} element array
+        tap(t => {
+          const outcome = t ? `fetched` : `did not find`
+          console.log(`${outcome} table id=${id}`)
+        }),
+        catchError(this.handleError<Table>(`getTable id=${id}`))
+      )
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.

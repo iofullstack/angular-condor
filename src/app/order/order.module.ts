@@ -10,10 +10,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 /* Components */
 import { TablesComponent } from './tables/tables.component'
 import { PrepareOrderComponent } from './prepare-order/prepare-order.component'
+import { ListOrderComponent } from './list-order/list-order.component'
 
 const components = [
   TablesComponent,
-  PrepareOrderComponent
+  PrepareOrderComponent,
+  ListOrderComponent
 ]
 
 @NgModule({

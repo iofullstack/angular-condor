@@ -20,8 +20,8 @@
               <h4 class="form-label">
                 Mesas
               </h4>
-              <span class="form-chip">
-                1
+              <span class="form-chip" *ngFor="let tb of tables">
+                {{ tb.numTable }}
               </span>
               <button mat-mini-fab class="form-add">
                 <mat-icon aria-label="Agregar mesa">add</mat-icon>

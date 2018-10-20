@@ -29,8 +29,8 @@ export class TablesComponent implements OnInit {
   }
 
   onSelect(_id): void {
-    // this.router.navigate(['/orden/preparar', _id])
-    this.router.navigate(['/orden/preparar'])
+    this.router.navigate(['/orden/preparar', _id])
+    // this.router.navigate(['/orden/preparar'])
   }
 
 }
