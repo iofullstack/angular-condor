@@ -1,256 +1,68 @@
 @import "src/@fuse/scss/fuse";
 
-#prepareOrder {
-    .container-order{
-      padding: 15px 0px;
-      width: 650px;
-      margin: 0 auto;
-    }
-    .header {
-        position: relative;
-        flex: 1 0 auto;
-        height: 450px;
-        max-height: 450px;
-        text-align: center;
-        overflow: hidden;
-        background: #005C97;  /* fallback for old browsers */
-        background: -webkit-linear-gradient(to right, #363795, #005C97);  /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to right, #363795, #005C97); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-        @include media-breakpoint('xs') {
-            height: 240px;
-            padding: 16px;
-        }
-        .input-prepare{
-          font-size: 25px;
-        }
-        .mesas-container{
-          position: relative;
-          width: 650px;
-          padding: 25px;
-          background: rgba(0, 0, 0, 0.3686274509803922);
-          border-radius: 10px;
-        }
-        .mesas-add{
-          position: absolute;
-          left: 24px;
-          top: 55px;
-        }
-        .mesas-list{
-          padding-left: 75px;
-          height: 100px;
-          text-align: left;
-          white-space: nowrap;
-          overflow-x: auto;
-          overflow-y: hidden;
-          padding: 5px 5px 5px 60px;
-        }
-        .mesas-item{
-          display: inline-block;
-          width: 80px;
-          height: 80px;
-          margin: 0px 10px;
-          border-radius: 50%;
-          background-color: #ffffff;
-          overflow: hidden;
-          user-select: none;
-          cursor: pointer;
-          h3{
-            color: #095696;
-            font-weight: bold!important;
-            font-size: 18px;
-            line-height: 50px;
-          }
-        }
-        .mesas-number{
-          background: #3F51B5;
-          width: 70px;
-          height: 70px;
-          border-radius: 50%;
-          margin: 0 auto;
-          text-align: center;
-          line-height: 27px;
-          font-size: 18px;
-        }
-        .hero-text {
-
-            .hero-icon {
-                position: absolute;
-                top: -64px;
-                left: 0px;
-                opacity: 0.1;
-                font-size: 512px !important;
-                width: 512px !important;
-                height: 512px !important;
-            }
-
-            h1 {
-                font-size: 40px;
-                font-weight: 300;
-                letter-spacing: 0.01em;
-                text-align: center;
-                margin-top: 0;
-                margin-bottom: 16px;
-
-                @include media-breakpoint-down('xs') {
-                    font-size: 24px;
-                }
-            }
-
-            h3 {
-                max-width: 480px;
-                text-align: center;
-                font-weight: 300;
-                letter-spacing: 0.03em;
-                margin: 0 auto;
-
-                @include media-breakpoint-down('xs') {
-                    font-size: 14px;
-                }
-            }
-        }
-    }
-
-    .content {
-
-        .category-selector {
-            min-width: 200px;
-        }
-
-        .filters {
-            width: 100%;
-            max-width: 1040px;
-            margin: 24px auto;
-            padding: 0 20px;
-
-            @include media-breakpoint-down('xs') {
-                margin: 0 auto;
-            }
-
-            .course-search {
-                width: 200px;
-
-                @include media-breakpoint-down('xs') {
-                    margin-bottom: 16px;
-                }
-
-                @include media-breakpoint-up('sm') {
-                    margin-right: 16px;
-                }
-            }
-        }
-
-        .courses {
-            width: 100%;
-            max-width: 1040px;
-            margin: 0 auto;
-
-            .no-courses {
-                font-size: 24px;
-                margin: 24px 0;
-                text-align: center;
-            }
-
-            .course {
-                padding: 16px;
-
-                &:hover {
-
-                    .course-content {
-                        @include mat-elevation(8);
-                    }
-                }
-
-                .course-content {
-                    min-height: 240px;
-                    transition: box-shadow 150ms ease-in-out;
-
-                    @include mat-elevation(3);
-
-                    .header {
-                        padding: 16px 24px;
-                        height: 64px !important;
-                        min-height: 64px !important;
-                        max-height: 64px !important;
-
-                        &.web-bg {
-                            background: mat-color($mat-blue, 500);
-                        }
-
-                        &.android-bg {
-                            background: mat-color($mat-green, 500);
-                        }
-
-                        &.firebase-bg {
-                            background: mat-color($mat-amber, 800);
-                        }
-
-                        &.cloud-bg {
-                            background: mat-color($mat-blue-grey, 500);
-                        }
-
-                        .category {
-                            text-transform: capitalize;
-                            text-align: left;
-                            font-weight: 500;
-                            color: #ffffff;
-                        }
-
-                        .length {
-                          color: #e9eaeb;
-                          .length-icon {
-                            margin-right: 8px;
-                          }
-
-                          .min {
-                            font-size: 16px;
-                          }
-                        }
-                    }
-
-                    .content {
-                        padding: 24px;
-
-                        .h1 {
-                            font-size: 16px;
-                            text-align: center;
-                        }
-
-                        .updated {
-                            font-size: 13px;
-                            font-weight: 500;
-                            margin-top: 4px;
-                        }
-                    }
-
-                    .footer {
-                        padding: 16px;
-                        height: 48px !important;
-                        min-height: 48px !important;
-                        max-height: 48px !important;
-                        box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 0.12);
-                    }
-                }
-            }
-        }
-    }
-    .product-card {
-      max-width: 300px;
-    }
-    .product-card img{
-      height: 150px;
-    }
-    @media (max-width: 700px){
-      .container-order{
-        width: 90vw;
-      }
-      .mesas-container{
-        width: 90vw!important;
-      }
-    }
-    @media (max-width: 599px){
-      .header{
-        height: 450px;
-      }
-    }
+.prepare-header{
+  background: #3F51B5;
+  padding: 15px;
+  display: grid;
+  grid-template-columns: minmax(auto, 1024px);
+  justify-content: center;
 }
+.prepare-header-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "pedido pedido"
+                       "mesas comensales"
+                       "llevar llevar";
+  gap:10px;
+}
+
+.prepare-header-pedido{
+  grid-area: pedido;
+  text-align: center;
+}
+
+.prepare-header-comensales{
+  grid-area: comensales;
+}
+
+.prepare-header-mesas{
+  grid-area: mesas;
+}
+
+.prepare-header-llevar{
+  grid-area: llevar;
+  text-align: center;
+}
+
+/* forms */
+.form-inline{
+  display: inline-block;
+}
+.form-title{
+  color: #fff;
+}
+.form-label{
+  display: inline-block;
+  font-size: 20px;
+  color:#fff;
+}
+.form-chip{
+  display: inline-block;
+  background: #d7d7d7;
+  color: #2d2d2d;
+  font-weight: bold;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 5px 15px;
+  margin-left: 15px;
+}
+.form-add{
+  margin-left: 15px;
+}
+.form-input-number{
+  padding: 5px;
+  border-radius: 6px;
+  margin-left: 15px;
+  width: 60px;
+  font-size: 16px;
+}   

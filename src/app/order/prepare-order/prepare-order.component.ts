@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
 import { fuseAnimations } from '@fuse/animations';
 
+
 @Component({
   selector: 'app-prepare-order',
   templateUrl: './prepare-order.component.html',
@@ -22,7 +23,7 @@ export class PrepareOrderComponent implements OnInit {
   ) { }
 
   test():void {
-    console.log('hola');
+    // console.log('hola');
   }
   ngOnInit() {
     // Reactive Forms

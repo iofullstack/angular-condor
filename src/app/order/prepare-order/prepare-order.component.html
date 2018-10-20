@@ -1,4 +1,63 @@
 <div id="prepareOrder" class="page-layout simple">
+
+  <!-- HEADER -->
+  <div class="prepareOrder-container">
+
+    <div class="prepare-header">
+      <div class="prepare-header-container">
+        <!-- pedido -->
+        <div class="prepare-header-pedido">
+          <div class="form-inline">
+            <h1 class="form-title">
+              Pedido Nro. 0000015
+            </h1>
+          </div>         
+        </div>
+
+        <!-- mesas -->
+        <div class="prepare-header-mesas">
+            <div class="form-inline">
+              <h4 class="form-label">
+                Mesas
+              </h4>
+              <span class="form-chip">
+                1
+              </span>
+              <button mat-mini-fab class="form-add">
+                <mat-icon aria-label="Agregar mesa">add</mat-icon>
+              </button>
+            </div>          
+        </div>
+
+        <!-- comensales -->
+        <div class="prepare-header-comensales">
+            <div class="form-inline">
+              <h4 class="form-label">
+                Comensales
+              </h4>
+              <input type="number" id="comensales" class="form-input-number">
+              <button mat-mini-fab class="form-add">
+                <mat-icon aria-label="Agregar mesa">add</mat-icon>
+              </button>
+              <button mat-mini-fab color="warn" class="form-add">
+                  <mat-icon aria-label="Agregar mesa">remove</mat-icon>
+              </button>
+            </div>          
+        </div>
+
+        <!-- llevar -->
+        <div class="prepare-header-llevar">
+          <div class="form-inline">
+            <h4 class="form-label">
+              <mat-slide-toggle>Llevar</mat-slide-toggle>
+            </h4>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
   <!-- HEADER -->
   <div class="header accent p-16 p-sm-24" fxLayout="column" fxLayoutAlign="center center">
 
@@ -33,9 +92,6 @@
                   Lista de Pedidos
               </h3>
               <div class="mesas-container" [@animate]="{value:'*',params:{delay:'100ms', y:'25px'}}">
-                <button mat-mini-fab class="mesas-add">
-                  <mat-icon aria-label="Agregar mesa">add</mat-icon>
-                </button>
                 <div class="mesas-list">
     
                   <div class="mesas-item">
@@ -99,7 +155,6 @@
     </div>
     
     <!-- List of Products -->
-    <!-- CONTENT -->
     <div class="content p-24">
 
         <div fxLayout="column" fxLayoutAlign="center">
@@ -107,43 +162,42 @@
 
             <div class="courses" fxLayout="row wrap" fxLayoutAlign="center" [@animate]="{value:'50'}">
 
-                <div class="course" fxFlex="100" fxFlex.gt-xs="50"
-                     fxFlex.gt-sm="33" [@animate]="{value:'*',params:{y:'100%'}}">
-
-                    <div class="course-content" fxLayout="column" fxFlex="1 1 auto">
-
-                        <div class="header" fxLayout="row" fxLayoutAlign="center center">
-
-                            <div class="category" fxFlex>
-                                Comidas
-                            </div>
-
-                            <div class="length" fxLayout="row" fxLayoutAlign="center center">
-                                <mat-icon class="length-icon s-20">attach_money</mat-icon>
-                                <div class="min">48 Bs</div>
-                            </div>
-
-                        </div>
-
-                        <div class="content" fxLayout="column" fxLayoutAlign="center center" fxFlex="1 1 auto">
-                            <div class="h1">Picante de Pollo Super Picante</div>
-                            <div class="updated">Tiempo de Coccion 20min</div>
-                        </div>
-
-                        <div class="footer" fxLayout="row" fxLayoutAlign="center center">
-                            <button mat-button color="accent">
-                                Agregar
-                            </button>
-                        </div>
-
-                    </div>
-
-                </div>
+              <!-- Component -->
+              <section class="waiter-container" style="margin: 2em auto;">
+                  <article class="waiter-list-item">
+                    <section class="waiter-item">
+                      <div class="waiter-badge">
+                        <figure class="waiter-icon-select">
+                          <img [src]="'./assets/img/plato2.png'" alt="">
+                        </figure>
+                      </div>
+                      <div class="waiter-title">
+                        <h3>Nombre del plato</h3>
+                      </div>
+                      <div class="waiter-detail">
+                          <mat-chip-list>
+                            <mat-chip (click)="test()">Default</mat-chip>
+                            <mat-chip color="primary" selected>Item 2</mat-chip>
+                            <mat-chip color="accent" selected>Item 3</mat-chip>
+                          </mat-chip-list>
+                      </div>
+                      <div class="waiter-action">
+                        <span>
+                          <i class="icon-chevron-up"></i>
+                        </span>
+                        <span class="waiter-count"> 1 </span>
+                        <span>
+                          <i class="icon-chevron-down"></i>
+                        </span>
+                      </div>
+                    </section>
+                  </article>
+              </section>
 
             </div>
 
         </div>
 
     </div>
-    <!-- / CONTENT -->
+    <!-- / end list-products -->
 </div>
