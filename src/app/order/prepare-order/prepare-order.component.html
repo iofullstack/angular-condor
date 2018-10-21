@@ -35,11 +35,11 @@
               <h4 class="form-label">
                 Comensales
               </h4>
-              <input type="number" id="comensales" class="form-input-number">
-              <button mat-mini-fab class="form-add">
+              <input type="number" id="comensales" [(ngModel)]="comensales" min="0" class="form-input-number">
+              <button mat-mini-fab class="form-add" (click)="addComensal()">
                 <mat-icon aria-label="Agregar mesa">add</mat-icon>
               </button>
-              <button mat-mini-fab color="warn" class="form-add">
+              <button mat-mini-fab color="warn" class="form-add" (click)="removeComensal()">
                   <mat-icon aria-label="Agregar mesa">remove</mat-icon>
               </button>
             </div>          
@@ -92,7 +92,7 @@
         
         <!-- Guardar Pedido -->
         <div class="prepare-header-guardar">
-          <button mat-raised-button class="form-btn-big" color="accent">
+          <button mat-raised-button class="form-btn-big" (click)="pedido(1)" color="accent">
               Terminar Pedido
           </button>
         </div>
@@ -124,32 +124,89 @@
   <!-- List Products -->
   <section class="waiter-container" style="margin: 2em auto;">
       <article class="waiter-list-item">
-        <section class="waiter-item">
-          <div class="waiter-badge">
-            <figure class="waiter-icon-select">
-              <img [src]="'./assets/img/plato2.png'" alt="">
-            </figure>
-          </div>
-          <div class="waiter-title">
-            <h3>Nombre del plato</h3>
-          </div>
-          <div class="waiter-detail">
-              <mat-chip-list>
-                <mat-chip (click)="test()">Default</mat-chip>
-                <mat-chip color="default" selected>Item 2</mat-chip>
-                <mat-chip color="default" selected>Item 3</mat-chip>
-              </mat-chip-list>
-          </div>
-          <div class="waiter-action">
-            <span>
-              <i class="icon-chevron-up"></i>
-            </span>
-            <span class="waiter-count"> 1 </span>
-            <span>
-              <i class="icon-chevron-down"></i>
-            </span>
-          </div>
-        </section>
+        <div *ngFor="let product of products; index as indexProduct">
+
+          <!--Item para elegir opciones -->
+          <section class="waiter-item" *ngIf="product.contain">
+              <div class="waiter-badge">
+                <figure class="waiter-icon-select">
+                  <img [src]="'./assets/img/plato2.png'" alt="">
+                </figure>
+              </div>
+              <div class="waiter-title">
+                <h3>{{ product.name }}</h3>
+              </div>
+              <div class="waiter-detail">
+                  <mat-chip-list>
+                    <span *ngFor="let content of product.contain; index as indexContain">
+                      <mat-chip color="default" color="warn" *ngIf="content.selected" (click)="toggleContainProduct(indexProduct,indexContain)" selected>{{ content.name }}</mat-chip>
+                      <mat-chip color="default" *ngIf="!content.selected" (click)="toggleContainProduct(indexProduct,indexContain)" selected>{{ content.name }}</mat-chip>
+                    </span>
+                  </mat-chip-list>
+              </div>
+              <div class="waiter-action">
+                <span>
+                  <i class="icon-chevron-up"></i>
+                </span>
+                <span class="waiter-count"> 1 </span>
+                <span>
+                  <i class="icon-chevron-down"></i>
+                </span>
+              </div>
+    
+              <div class="waiter-divider">
+                <mat-divider></mat-divider>
+              </div>
+    
+              <div class="waiter-price">
+                <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style">
+                  <mat-button-toggle *ngFor="let price of product.prices; index as indexPrice" (click)="togglePriceProduct(indexProduct,indexPrice)">{{ price.name }} : Bs.{{ price.value }}</mat-button-toggle>
+                </mat-button-toggle-group>
+              </div>
+    
+          </section>
+  
+          <!--Item para elegir una opcion -->
+          <section class="waiter-item" *ngIf="product.type">
+              <div class="waiter-badge">
+                <figure class="waiter-icon-select">
+                  <img [src]="'./assets/img/plato2.png'" alt="">
+                </figure>
+              </div>
+              <div class="waiter-title">
+                <h3>{{ product.name }}</h3>
+              </div>
+              <div class="waiter-detail">
+                  <mat-chip-list>
+                    <span *ngFor="let type of product.type; index as indexType">
+                      <mat-chip color="default" color="warn" *ngIf="type.selected" (click)="toggleTypeProduct(indexProduct,indexType)" selected>{{ type.name }}</mat-chip>
+                      <mat-chip color="default" *ngIf="!type.selected" (click)="toggleTypeProduct(indexProduct,indexType)" selected>{{ type.name }}</mat-chip>
+                    </span>
+                  </mat-chip-list>
+              </div>
+              <div class="waiter-action">
+                <span>
+                  <i class="icon-chevron-up"></i>
+                </span>
+                <span class="waiter-count"> 1 </span>
+                <span>
+                  <i class="icon-chevron-down"></i>
+                </span>
+              </div>
+    
+              <div class="waiter-divider">
+                <mat-divider></mat-divider>
+              </div>
+    
+              <div class="waiter-price">
+                <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style">
+                  <mat-button-toggle *ngFor="let price of product.prices; index as indexPrice" (click)="togglePriceProduct(indexProduct,indexPrice)">{{ price.name }} : Bs.{{ price.value }}</mat-button-toggle>
+                </mat-button-toggle-group>
+              </div>
+    
+          </section>
+
+        </div>
       </article>
   </section>
 

@@ -116,12 +116,15 @@
 }
 
 .waiter-item {
-  background-color: #ffcc8047;
+  background-color: #ffffff;
+  box-shadow: 1px 1px 5px -2px #2d2d2d;
   display: grid;
   grid-template: 70px / 170px 1fr 70px;
   grid-gap: 10px;
   grid-template-areas: "badge title action"
-                       "badge detail action";
+                       "badge detail action"
+                       "divider divider divider"
+                       "price price price";
   border-radius: 10px;
   padding: 15px;
 }
@@ -145,6 +148,7 @@
   height: 100%;
 }
 .waiter-icon-select:before {
+  font-family: 'icomoon' !important;
   content: "\e904";
   font-size: 10em;
   color: #263238cf;
@@ -193,7 +197,12 @@
 .waiter-action span i {
   font-weight: bold;
 }
-
+.waiter-divider{
+  grid-area: divider;
+}
+.waiter-price{
+  grid-area: price;
+}
 
 @media screen and (max-width: 650px) {
   .waiter-list-item {
@@ -205,7 +214,9 @@
     grid-gap: 5px;
     grid-template-areas: "title title"
                          "badge action"
-                         "badge detail";
+                         "badge detail"
+                         "divider divider"
+                         "price price";
   }
 
   .waiter-action {
@@ -230,7 +241,9 @@
                          "badge badge"
                          "badge badge"
                          "title title"
-                         "detail detail";
+                         "detail detail"
+                         "divider divider"
+                         "price price";
   }
   .waiter-action .waiter-count {
     padding: 0 30px;
@@ -344,6 +357,6 @@
 
 /* btn colors */
 .mat-button-toggle-checked {
-  background-color: #3F51B5!important;
+  background-color: #2d2d2d!important;
   color: #ffffff!important;
 }
