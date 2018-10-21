@@ -62,7 +62,8 @@ export class PrepareOrderComponent implements OnInit {
           value: 25,
           selected: true,
         },
-      ]
+      ],
+      count:0,
     },
     /*  product 2 */
     {
@@ -98,7 +99,8 @@ export class PrepareOrderComponent implements OnInit {
           value: 25,
           selected: true,
         },
-      ]
+      ],
+      count:0,
     },
   ]
 
@@ -121,6 +123,15 @@ export class PrepareOrderComponent implements OnInit {
   removeComensal():void {
     if(this.comensales > 0){
       this.comensales-=1;
+    }
+  }
+  addCount(indexProduct):void {
+    this.products[indexProduct].count+=1;
+
+  }
+  removeCount(indexProduct):void {
+    if(this.products[indexProduct].count > 0){
+      this.products[indexProduct].count-=1;
     }
   }
   toggleContainProduct(indexProduct, indexContain):void {

@@ -146,11 +146,11 @@
               </div>
               <div class="waiter-action">
                 <span>
-                  <i class="icon-chevron-up"></i>
+                  <i class="icon-chevron-up" (click)="addCount(indexProduct)"></i>
                 </span>
-                <span class="waiter-count"> 1 </span>
+                <span class="waiter-count">{{ product.count }}</span>
                 <span>
-                  <i class="icon-chevron-down"></i>
+                  <i class="icon-chevron-down" (click)="removeCount(indexProduct)"></i>
                 </span>
               </div>
     
@@ -186,11 +186,11 @@
               </div>
               <div class="waiter-action">
                 <span>
-                  <i class="icon-chevron-up"></i>
+                  <i class="icon-chevron-up" (click)="addCount(indexProduct)"></i>
                 </span>
-                <span class="waiter-count"> 1 </span>
+                <span class="waiter-count">{{ product.count }} </span>
                 <span>
-                  <i class="icon-chevron-down"></i>
+                  <i class="icon-chevron-down" (click)="removeCount(indexProduct)"></i>
                 </span>
               </div>
     
