@@ -9,7 +9,38 @@ import { TableService } from './table.service'
   styleUrls: ['./tables.component.scss']
 })
 export class TablesComponent implements OnInit {
-  dataSource: Table[]
+  dataSource: Table[] = [
+    { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 },
+  ]
 
   constructor(
     private tableService: TableService,
@@ -31,6 +62,10 @@ export class TablesComponent implements OnInit {
   onSelect(_id): void {
     this.router.navigate(['/orden/preparar', _id])
     // this.router.navigate(['/orden/preparar'])
+  }
+
+  occupied(obj): String {
+    return obj.numTable
   }
 
 }

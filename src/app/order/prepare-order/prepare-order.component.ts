@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms'
 import { fuseAnimations } from '@fuse/animations'
 import { ActivatedRoute } from '@angular/router'
 import { Table } from '../tables/table'
+import { cMenu } from '../cmenu'
 import { Menu } from '../menu'
 import { TableService } from '../tables/table.service'
 import { OrderService } from '../order.service'
@@ -14,14 +15,16 @@ import { OrderService } from '../order.service'
   animations : fuseAnimations
 })
 export class PrepareOrderComponent implements OnInit {
-  tables: Table[] = [
-    {
-      capacity: 4,
-      numTable: 'm-02'
-    }
-  ]
+  tables: Table[] = []
   menus: Menu[]
+  c_menu: cMenu[]
   form: FormGroup
+  order = {
+    numOrder: 0,
+    numPeople: 0,
+    tables: [],
+    saucers: []
+  }
 
   /* Cant Comensales */
   comensales = 0
@@ -84,7 +87,8 @@ export class PrepareOrderComponent implements OnInit {
         }        
       ],
       /* Options precios */
-      prices:[{
+      prices: [
+        {
           name:"Promocion",
           value: 20,
           selected: true,
@@ -98,7 +102,7 @@ export class PrepareOrderComponent implements OnInit {
           name:"Empleado",
           value: 25,
           selected: true,
-        },
+        }
       ],
       count:0,
     },
@@ -115,6 +119,44 @@ export class PrepareOrderComponent implements OnInit {
     private orderService: OrderService,
     private route: ActivatedRoute
   ) { }
+
+  ngOnInit() {
+    // Reactive Forms
+    this.form = this._formBuilder.group({
+        mesas : ['', Validators.required],
+        comensales : ['', Validators.required],
+    })
+    this.getTable()
+    this.getcMenu()
+    this.getMenus()
+    /*
+    */
+  }
+
+  getTable(): void {
+    const id = this.route.snapshot.paramMap.get('id')
+    this.tableService.getTable(id)
+        .subscribe(table => {
+          this.tables.push(table)
+          this.order.tables = this.tables
+        })
+  }
+
+  getcMenu(): void {
+    this.orderService.getcMenu()
+        .subscribe(c_menu => {
+          this.c_menu = c_menu
+          console.log(this.c_menu)
+        })
+  }
+
+  getMenus(): void {
+    this.orderService.getMenus()
+        .subscribe(menus => {
+          this.menus = menus
+          console.log(this.menus)
+        })
+  }
 
   /* methods ui */
   addComensal():void {
@@ -170,35 +212,6 @@ export class PrepareOrderComponent implements OnInit {
     }else{
       console.log('product type')
     }
-  }
-
-  ngOnInit() {
-    // Reactive Forms
-    this.form = this._formBuilder.group({
-        mesas : ['', Validators.required],
-        comensales : ['', Validators.required],
-    })
-    /*
-    this.getTable()
-    this.getMenus()
-    */
-  }
-
-  getTable(): void {
-    const id = this.route.snapshot.paramMap.get('id')
-    this.tableService.getTable(id)
-        .subscribe(table => {
-          this.tables.push(table)
-          console.log(this.tables)
-        })
-  }
-
-  getMenus(): void {
-    this.orderService.getMenus()
-        .subscribe(menus => {
-          this.menus = menus
-          console.log(this.menus)
-        })
   }
 
   onSubmit(myform:NgForm) {

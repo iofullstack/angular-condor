@@ -1,4 +1,5 @@
 export interface Table {
   numTable: string,
-	capacity: number
+  capacity: number,
+  occupied: number
 }

@@ -7,6 +7,7 @@ import urljoin from 'url-join'
 import { environment } from '../../environments/environment'
 
 import { Menu } from './menu'
+import { cMenu } from './cmenu'
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -17,11 +18,13 @@ const httpOptions = {
 })
 export class OrderService {
   private menuUrl: string
+  private c_menuUrl: string
 
   constructor(
     private http: HttpClient
   ) {
     this.menuUrl = urljoin(environment.apiUrl, 'menu')
+    this.c_menuUrl = urljoin(environment.apiUrl, 'c_menu')
   }
 
   /** GET all menu from the server */
@@ -30,6 +33,15 @@ export class OrderService {
       .pipe(
         tap(menu => console.log(menu)),
         catchError(this.handleError('getMenus', []))
+      )
+  }
+
+  /** GET all c_menu from the server */
+  getcMenu (): Observable<cMenu[]> {
+    return this.http.get<cMenu[]>(this.c_menuUrl)
+      .pipe(
+        tap(c_menu => console.log(c_menu)),
+        catchError(this.handleError('getcMenu', []))
       )
   }
 

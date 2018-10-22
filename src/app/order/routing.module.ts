@@ -7,7 +7,7 @@ import { ListOrderComponent } from './list-order/list-order.component'
 
 const routes = [
   { path: 'mesas', component: TablesComponent },
-  /*{ path: 'preparar/:id', component: PrepareOrderComponent },*/
+  { path: 'preparar/:id', component: PrepareOrderComponent },
   { path: 'preparar', component: PrepareOrderComponent },
   { path: 'pedidos', component: ListOrderComponent }
 ]
