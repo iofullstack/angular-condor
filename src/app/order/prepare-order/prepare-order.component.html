@@ -117,10 +117,10 @@
   <!-- List Menu -->
   <section class="waiter-container" style="margin: 2em auto;">
       <article class="waiter-list-item">
-        <div>
+        <div *ngFor="let menu of menus; index as indexProduct">
 
           <!--Item para elegir opciones -->
-          <section class="waiter-item" *ngFor="let menu of menus; index as indexProduct">
+          <section class="waiter-item">
               <div class="waiter-badge">
                 <figure class="waiter-icon-select">
                   <img [src]="'./assets/img/menu.png'" alt="">
