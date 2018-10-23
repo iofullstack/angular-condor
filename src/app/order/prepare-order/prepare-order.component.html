@@ -138,7 +138,7 @@
 
                   <mat-chip-list *ngIf="menu.type.length > 0">
                     <span *ngFor="let type of menu.type; index as indexType">
-                      <mat-chip color="default" color="warn" (click)="toggleTypeProduct(indexProduct,indexType)" selected>{{ type }}</mat-chip>
+                      <mat-chip color="default" color="accent" (click)="toggleTypeProduct(indexProduct,indexType)" selected>{{ type }}</mat-chip>
                     </span>
                   </mat-chip-list>
               </div>
