@@ -9,7 +9,7 @@ const routes = [
   { path: 'mesas', component: TablesComponent },
   { path: 'preparar/:id', component: PrepareOrderComponent },
   { path: 'preparar', component: PrepareOrderComponent },
-  { path: 'pedidos', component: ListOrderComponent }
+  { path: 'listar', component: ListOrderComponent }
 ]
 
 @NgModule({
