@@ -117,13 +117,13 @@
   <!-- List Menu -->
   <section class="waiter-container" style="margin: 2em auto;">
       <article class="waiter-list-item">
-        <div>
+        <div *ngFor="let menu of menus; index as indexProduct">
 
           <!--Item para elegir opciones -->
-          <section class="waiter-item" *ngFor="let menu of menus; index as indexProduct">
+          <section class="waiter-item">
               <div class="waiter-badge">
                 <figure class="waiter-icon-select">
-                  <img [src]="'./assets/img/plato2.png'" alt="">
+                  <img [src]="'./assets/img/menu.png'" alt="">
                 </figure>
               </div>
               <div class="waiter-title">
@@ -138,7 +138,7 @@
 
                   <mat-chip-list *ngIf="menu.type.length > 0">
                     <span *ngFor="let type of menu.type; index as indexType">
-                      <mat-chip color="default" color="warn" (click)="toggleTypeProduct(indexProduct,indexType)" selected>{{ type }}</mat-chip>
+                      <mat-chip color="default" color="accent" (click)="toggleTypeProduct(indexProduct,indexType)" selected>{{ type }}</mat-chip>
                     </span>
                   </mat-chip-list>
               </div>
