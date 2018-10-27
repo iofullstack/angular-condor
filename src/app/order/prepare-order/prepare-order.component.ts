@@ -7,6 +7,7 @@ import { cMenu } from '../cmenu'
 import { Menu } from '../menu'
 import { TableService } from '../tables/table.service'
 import { OrderService } from '../order.service'
+import { PrepareOrderFormat } from './prepare-order.format';
 
 @Component({
   selector: 'app-prepare-order',
@@ -19,6 +20,7 @@ export class PrepareOrderComponent implements OnInit {
   menus: Menu[]
   c_menu: cMenu[]
   form: FormGroup
+
   order = {
     numOrder: 0,
     numPeople: 0,
@@ -29,84 +31,84 @@ export class PrepareOrderComponent implements OnInit {
   /* Cant Comensales */
   comensales = 0
 
-  products = [
-    /*  product 1 */
-    {
-      name: "Capussino",
-      /* Contenido del plato */
-      contain:[
-        {
-          name:"Caliente",
-          selected: true,
-        },
-        {
-          name:"Leche",
-          selected: true,
-        },
-        {
-          name:"Crema",
-          selected: true,
-        },
-      ],
-      /* Options precios */
-      prices:[
-        {
-          name:"Promocion",
-          value: 20,
-          selected: true,
-        },
-        {
-          name:"Pension",
-          value: 30,
-          selected: true,
-        },
-        {
-          name:"Empleado",
-          value: 25,
-          selected: true,
-        },
-      ],
-      count:0,
-    },
-    /*  product 2 */
-    {
-      name: "Cafe",
-      /* Sabores del Plato */
-      type:[
-        {
-          name:"Caliente",
-          selected: false,
-        },
-        {
-          name:"Frio",
-          selected: false,
-        },
-        {
-          name:"Tibio",
-          selected: false,
-        }        
-      ],
-      /* Options precios */
-      prices: [
-        {
-          name:"Promocion",
-          value: 20,
-          selected: true,
-        },
-        {
-          name:"Pension",
-          value: 30,
-          selected: true,
-        },
-        {
-          name:"Empleado",
-          value: 25,
-          selected: true,
-        }
-      ],
-      count:0,
-    },
-  ]
+  // products = [
+  //   /*  product 1 */
+  //   {
+  //     name: "Capussino",
+  //     /* Contenido del plato */
+  //     contain:[
+  //       {
+  //         name:"Caliente",
+  //         selected: true,
+  //       },
+  //       {
+  //         name:"Leche",
+  //         selected: true,
+  //       },
+  //       {
+  //         name:"Crema",
+  //         selected: true,
+  //       },
+  //     ],
+  //     /* Options precios */
+  //     prices:[
+  //       {
+  //         name:"Promocion",
+  //         value: 20,
+  //         selected: true,
+  //       },
+  //       {
+  //         name:"Pension",
+  //         value: 30,
+  //         selected: true,
+  //       },
+  //       {
+  //         name:"Empleado",
+  //         value: 25,
+  //         selected: true,
+  //       },
+  //     ],
+  //     count:0,
+  //   },
+  //   /*  product 2 */
+  //   {
+  //     name: "Cafe",
+  //     /* Sabores del Plato */
+  //     type:[
+  //       {
+  //         name:"Caliente",
+  //         selected: false,
+  //       },
+  //       {
+  //         name:"Frio",
+  //         selected: false,
+  //       },
+  //       {
+  //         name:"Tibio",
+  //         selected: false,
+  //       }        
+  //     ],
+  //     /* Options precios */
+  //     prices: [
+  //       {
+  //         name:"Promocion",
+  //         value: 20,
+  //         selected: true,
+  //       },
+  //       {
+  //         name:"Pension",
+  //         value: 30,
+  //         selected: true,
+  //       },
+  //       {
+  //         name:"Empleado",
+  //         value: 25,
+  //         selected: true,
+  //       }
+  //     ],
+  //     count:0,
+  //   },
+  // ]
 
   /**
    * Constructor
@@ -129,8 +131,6 @@ export class PrepareOrderComponent implements OnInit {
     this.getTable()
     this.getcMenu()
     this.getMenus()
-    /*
-    */
   }
 
   getTable(): void {
@@ -146,16 +146,14 @@ export class PrepareOrderComponent implements OnInit {
     this.orderService.getcMenu()
         .subscribe(c_menu => {
           this.c_menu = c_menu
-          console.log(this.c_menu)
         })
   }
 
   getMenus(): void {
     this.orderService.getMenus()
         .subscribe(menus => {
-          this.menus = menus
-          console.log(this.menus)
-        })
+          this.menus = PrepareOrderFormat.formatting(menus);
+        }
   }
 
   /* methods ui */
@@ -168,23 +166,24 @@ export class PrepareOrderComponent implements OnInit {
     }
   }
   addCount(indexProduct):void {
-    this.products[indexProduct].count+=1;
+    this.menus[indexProduct].count+=1;
 
   }
   removeCount(indexProduct):void {
-    if(this.products[indexProduct].count > 0){
-      this.products[indexProduct].count-=1;
+    if(this.menus[indexProduct].count > 0){
+      this.menus[indexProduct].count-=1;
     }
   }
   toggleContainProduct(indexProduct, indexContain):void {
     //console.log(indexProduct, indexContain);
-    let product = this.products[indexProduct];
+    let product = this.menus[indexProduct];
     let value = product.contain[indexContain].selected;
     product.contain[indexContain].selected = !value;
   }
+
   toggleTypeProduct(indexProduct,indexType):void {
     //console.log(indexProduct, indexType);
-    let product = this.products[indexProduct];
+    let product = this.menus[indexProduct];
     product.type.forEach((type,index)=>{
       if(indexType === index){
         type.selected = true; 
@@ -195,8 +194,7 @@ export class PrepareOrderComponent implements OnInit {
   }
 
   togglePriceProduct(indexProduct, indexPrice):void {
-    //console.log(indexProduct, indexPrice);
-    let product = this.products[indexProduct];
+    let product = this.menus[indexProduct];
     product.prices.forEach((price,index)=>{
       if(indexPrice === index){
         price.selected = true; 
@@ -206,12 +204,47 @@ export class PrepareOrderComponent implements OnInit {
     });
   }
   pedido(indexProduct):void {
-    let productFinal = this.products[indexProduct];
-    if(productFinal.contain){
-      console.log('product contain')
+    let productFinal = JSON.stringify(this.menus[indexProduct]);
+    if(this.order.saucers.length == 0){
+      let save = {
+        product: JSON.parse(productFinal),
+        quantity: 1
+      }
+      this.order.saucers.push(save);
     }else{
-      console.log('product type')
+      let index = this.checkRepeat(productFinal);
+      if(index === -1){
+        let save = {
+          product: JSON.parse(productFinal),
+          quantity: 1
+        }
+        this.order.saucers.push(save);
+      }else{
+        this.order.saucers[index].quantity+=1;
+      }
     }
+    console.log(this.order.saucers);
+  }
+
+  checkRepeat(obj) {
+    let position = -1;
+    if(this.order.saucers.length === 0){
+      return position;
+    }else{
+      this.order.saucers.forEach( (saucer, index)=>{
+        if(JSON.stringify(saucer.product) === obj){
+          position =  index;
+        }
+      });
+      return position;
+    }
+  }
+
+  finishPedido(){
+    this.order.numOrder = 15;
+    this.order.numPeople = this.comensales;
+    this.tables = this.tables;
+    console.log('pedido final',this.order);
   }
 
   onSubmit(myform:NgForm) {

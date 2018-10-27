@@ -167,6 +167,8 @@
 .waiter-badge figure img {
   width: 100%;
   vertical-align: top;
+  border-radius: 50%;
+  border: 12px solid #929aa0;
 }
 
 .waiter-title {
@@ -196,6 +198,7 @@
   padding: 10px 0;
 }
 .waiter-action span i {
+  cursor: pointer;
   font-weight: bold;
 }
 .waiter-divider{

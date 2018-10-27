@@ -1,13 +1,17 @@
+import { count } from "rxjs/operators";
+
 export interface Menu {
   name: string,
   src: string,
-  contain: string[],
-  type: string,
+  contain: any[],
+  type: any[],
   prices: [
     {
       name: string,
       amount: number,
-      createdAt: Date
+      createdAt: Date,
+      selected: boolean
     }
-  ]
+  ],
+  count: number
 }
