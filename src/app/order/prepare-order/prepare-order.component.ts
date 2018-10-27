@@ -153,7 +153,7 @@ export class PrepareOrderComponent implements OnInit {
     this.orderService.getMenus()
         .subscribe(menus => {
           this.menus = PrepareOrderFormat.formatting(menus);
-        }
+        })
   }
 
   /* methods ui */
