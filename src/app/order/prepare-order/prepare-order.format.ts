@@ -1,12 +1,12 @@
 export const PrepareOrderFormat = {
   formatting: (prod: any)=>{
-    let prodFormat:[] = [];
+    let prodFormat = []
 
     prod.forEach(element => {
-      let product:any = element;
-      let contains = [];
-      let prices = [];
-      let types = [];
+      let product:any = element
+      let contains = []
+      let prices = []
+      let types = []
       if( product.type.length !== 0 ){
         product.type.forEach( (typeName, index)=>{
           if(index === 0){
@@ -20,8 +20,8 @@ export const PrepareOrderFormat = {
               selected: false
             })
           }
-        });
-        product.type = types;
+        })
+        product.type = types
       }
       if( product.contain.length !== 0 ){
         product.contain.forEach( (containName)=>{
@@ -29,8 +29,8 @@ export const PrepareOrderFormat = {
             name: containName,
             selected: true,
           })
-        });
-        product.contain = contains;
+        })
+        product.contain = contains
       }
 
       if( product.prices.length !== 0 ){
@@ -46,12 +46,13 @@ export const PrepareOrderFormat = {
               selected: false
             })
           }
-        });
-        product.prices = prices;
-        console.log(product);
+        })
+        product.prices = prices
+        console.log(product)
       }
-      prodFormat.push(product);
-    });
-    return prodFormat;
+      product.selected = false
+      prodFormat.push(product)
+    })
+    return prodFormat
   }
 }

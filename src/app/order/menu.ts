@@ -1,5 +1,3 @@
-import { count } from "rxjs/operators";
-
 export interface Menu {
   name: string,
   src: string,
@@ -13,5 +11,6 @@ export interface Menu {
       selected: boolean
     }
   ],
-  count: number
+  count: number,
+  selected: boolean
 }

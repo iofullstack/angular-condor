@@ -5,9 +5,10 @@ import { ActivatedRoute } from '@angular/router'
 import { Table } from '../tables/table'
 import { cMenu } from '../cmenu'
 import { Menu } from '../menu'
+import { Order } from '../order'
 import { TableService } from '../tables/table.service'
 import { OrderService } from '../order.service'
-import { PrepareOrderFormat } from './prepare-order.format';
+import { PrepareOrderFormat } from './prepare-order.format'
 
 @Component({
   selector: 'app-prepare-order',
@@ -20,6 +21,7 @@ export class PrepareOrderComponent implements OnInit {
   menus: Menu[]
   c_menu: cMenu[]
   form: FormGroup
+  llevar = false
 
   order = {
     numOrder: 0,
@@ -28,87 +30,17 @@ export class PrepareOrderComponent implements OnInit {
     saucers: []
   }
 
-  /* Cant Comensales */
-  comensales = 0
+  prepareOrder = {
+    numOrder: 0,
+    numPeople: 0,
+    carry: false,
+    user: '5bc1f9968cbe090d73731c5f',
+    tables: [],
+    saucers: []
+  }
 
-  // products = [
-  //   /*  product 1 */
-  //   {
-  //     name: "Capussino",
-  //     /* Contenido del plato */
-  //     contain:[
-  //       {
-  //         name:"Caliente",
-  //         selected: true,
-  //       },
-  //       {
-  //         name:"Leche",
-  //         selected: true,
-  //       },
-  //       {
-  //         name:"Crema",
-  //         selected: true,
-  //       },
-  //     ],
-  //     /* Options precios */
-  //     prices:[
-  //       {
-  //         name:"Promocion",
-  //         value: 20,
-  //         selected: true,
-  //       },
-  //       {
-  //         name:"Pension",
-  //         value: 30,
-  //         selected: true,
-  //       },
-  //       {
-  //         name:"Empleado",
-  //         value: 25,
-  //         selected: true,
-  //       },
-  //     ],
-  //     count:0,
-  //   },
-  //   /*  product 2 */
-  //   {
-  //     name: "Cafe",
-  //     /* Sabores del Plato */
-  //     type:[
-  //       {
-  //         name:"Caliente",
-  //         selected: false,
-  //       },
-  //       {
-  //         name:"Frio",
-  //         selected: false,
-  //       },
-  //       {
-  //         name:"Tibio",
-  //         selected: false,
-  //       }        
-  //     ],
-  //     /* Options precios */
-  //     prices: [
-  //       {
-  //         name:"Promocion",
-  //         value: 20,
-  //         selected: true,
-  //       },
-  //       {
-  //         name:"Pension",
-  //         value: 30,
-  //         selected: true,
-  //       },
-  //       {
-  //         name:"Empleado",
-  //         value: 25,
-  //         selected: true,
-  //       }
-  //     ],
-  //     count:0,
-  //   },
-  // ]
+  /* Cant Comensales */
+  comensales = 1
 
   /**
    * Constructor
@@ -152,99 +84,159 @@ export class PrepareOrderComponent implements OnInit {
   getMenus(): void {
     this.orderService.getMenus()
         .subscribe(menus => {
-          this.menus = PrepareOrderFormat.formatting(menus);
+          this.menus = PrepareOrderFormat.formatting(menus)
+          console.log(this.menus)
+        })
+  }
+
+  getMenusCategory(id): void {
+    this.orderService.getMenusCategory(id)
+        .subscribe(menus => {
+          this.menus = PrepareOrderFormat.formatting(menus)
+          console.log(this.menus)
         })
   }
 
   /* methods ui */
   addComensal():void {
-    this.comensales+=1;
+    this.comensales+=1
   }
   removeComensal():void {
-    if(this.comensales > 0){
-      this.comensales-=1;
+    if(this.comensales > 1){
+      this.comensales-=1
     }
   }
   addCount(indexProduct):void {
-    this.menus[indexProduct].count+=1;
-
+    this.menus[indexProduct].count+=1
   }
   removeCount(indexProduct):void {
     if(this.menus[indexProduct].count > 0){
-      this.menus[indexProduct].count-=1;
+      this.menus[indexProduct].count-=1
     }
   }
   toggleContainProduct(indexProduct, indexContain):void {
-    //console.log(indexProduct, indexContain);
-    let product = this.menus[indexProduct];
-    let value = product.contain[indexContain].selected;
-    product.contain[indexContain].selected = !value;
+    this.menus[indexProduct].selected = false
+    //console.log(indexProduct, indexContain)
+    let product = this.menus[indexProduct]
+    let value = product.contain[indexContain].selected
+    product.contain[indexContain].selected = !value
   }
 
   toggleTypeProduct(indexProduct,indexType):void {
-    //console.log(indexProduct, indexType);
-    let product = this.menus[indexProduct];
+    //console.log(indexProduct, indexType)
+    let product = this.menus[indexProduct]
+
+    if ( !product.type[indexType].selected )
+      this.menus[indexProduct].selected = false
+
     product.type.forEach((type,index)=>{
       if(indexType === index){
-        type.selected = true; 
+        type.selected = true 
       }else{
-        type.selected = false;
+        type.selected = false
       }
-    });
+    })
   }
 
   togglePriceProduct(indexProduct, indexPrice):void {
-    let product = this.menus[indexProduct];
+    let product = this.menus[indexProduct]
+
+    if ( !product.prices[indexPrice].selected )
+      this.menus[indexProduct].selected = false
+
     product.prices.forEach((price,index)=>{
       if(indexPrice === index){
-        price.selected = true; 
+        price.selected = true
       }else{
-        price.selected = false;
+        price.selected = false
       }
-    });
+    })
   }
+
   pedido(indexProduct):void {
-    let productFinal = JSON.stringify(this.menus[indexProduct]);
+    this.menus[indexProduct].selected = true
+    let productFinal = JSON.stringify(this.menus[indexProduct])
     if(this.order.saucers.length == 0){
       let save = {
         product: JSON.parse(productFinal),
         quantity: 1
       }
-      this.order.saucers.push(save);
+      this.order.saucers.push(save)
     }else{
-      let index = this.checkRepeat(productFinal);
+      let index = this.checkRepeat(productFinal)
       if(index === -1){
         let save = {
           product: JSON.parse(productFinal),
           quantity: 1
         }
-        this.order.saucers.push(save);
+        this.order.saucers.push(save)
       }else{
-        this.order.saucers[index].quantity+=1;
+        this.order.saucers[index].quantity+=1
       }
     }
-    console.log(this.order.saucers);
+    console.log(this.order.saucers)
   }
 
   checkRepeat(obj) {
-    let position = -1;
+    let position = -1
     if(this.order.saucers.length === 0){
-      return position;
+      return position
     }else{
       this.order.saucers.forEach( (saucer, index)=>{
         if(JSON.stringify(saucer.product) === obj){
-          position =  index;
+          position =  index
         }
-      });
-      return position;
+      })
+      return position
     }
   }
 
   finishPedido(){
-    this.order.numOrder = 15;
-    this.order.numPeople = this.comensales;
-    this.tables = this.tables;
-    console.log('pedido final',this.order);
+    this.prepareOrder.numPeople = this.comensales
+    this.prepareOrder.tables = this.tables
+    
+    let saucers = []
+    this.order.saucers.forEach((saucer, index)=>{
+      let prepare = {
+        quantity: 0,
+        contain: [],
+        type: '',
+        price: '',
+        menu: ''
+      }
+      prepare.quantity = saucer.quantity
+      prepare.menu = saucer.product._id
+      
+      saucer.product.contain.forEach((element) => {
+        if(element.selected)
+          prepare.contain.push(element.name)
+      })
+      saucer.product.type.forEach((element) => {
+        if(element.selected) {
+          prepare.type = element.name
+          return
+        }
+      })
+      saucer.product.prices.forEach((element) => {
+        if(element.selected) {
+          prepare.price = element._id
+          return
+        }
+      })
+
+      saucers.push(prepare)
+    })
+    this.prepareOrder.carry = this.llevar
+    this.prepareOrder.saucers = saucers
+    console.log('pedido final', this.prepareOrder)
+    this.addOrder(this.prepareOrder)
+  }
+
+  addOrder(order): void {
+    this.orderService.addOrder(order as Order)
+      .subscribe(order => {
+        console.log(order)
+      })
   }
 
   onSubmit(myform:NgForm) {
