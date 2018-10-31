@@ -11,11 +11,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { TablesComponent } from './tables/tables.component'
 import { PrepareOrderComponent } from './prepare-order/prepare-order.component'
 import { ListOrderComponent } from './list-order/list-order.component'
+import { DetailOrderComponent } from './detail-order/detail-order.component'
 
 const components = [
   TablesComponent,
   PrepareOrderComponent,
-  ListOrderComponent
+  ListOrderComponent,
+  DetailOrderComponent
 ]
 
 @NgModule({

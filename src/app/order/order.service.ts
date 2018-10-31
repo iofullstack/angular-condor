@@ -63,9 +63,32 @@ export class OrderService {
   getOrder (): Observable<Order[]> {
     return this.http.get<Order[]>(urljoin(this.orderUrl, 'today'))
       .pipe(
-        tap(order => console.log(order)),
+        tap(order => console.log('Orders: ', order)),
         catchError(this.handleError('getOrder', []))
       )
+  }
+
+  /** GET order by id. Return `undefined` when id not found */
+  getOrderIdNo404<Data>(id: string): Observable<Order> {
+    const url = `${this.orderUrl}/?id=${id}`
+    return this.http.get<Order[]>(url)
+      .pipe(
+        map(order => order[0]), // returns a {0|1} element array
+        tap(h => {
+          const outcome = h ? `fetched` : `did not find`
+          console.log(`${outcome} order id=${id}`)
+        }),
+        catchError(this.handleError<Order>(`getOrder id=${id}`))
+      )
+  }
+
+  /** GET order by id. Will 404 if id not found */
+  getOrderId(id: string): Observable<Order> {
+    const url = urljoin(this.orderUrl, id)
+    return this.http.get<Order>(url).pipe(
+      tap(_ => console.log(`fetched order id=${id}`)),
+      catchError(this.handleError<Order>(`getOrder id=${id}`))
+    )
   }
 
   /** POST: add a new order to the server */

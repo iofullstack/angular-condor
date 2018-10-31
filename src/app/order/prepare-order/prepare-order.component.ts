@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms'
 import { fuseAnimations } from '@fuse/animations'
+import { Router } from '@angular/router'
 import { ActivatedRoute } from '@angular/router'
 import { Table } from '../tables/table'
 import { cMenu } from '../cmenu'
@@ -51,6 +52,7 @@ export class PrepareOrderComponent implements OnInit {
     private _formBuilder: FormBuilder,
     private tableService: TableService,
     private orderService: OrderService,
+    private router: Router,
     private route: ActivatedRoute
   ) { }
 
@@ -67,11 +69,13 @@ export class PrepareOrderComponent implements OnInit {
 
   getTable(): void {
     const id = this.route.snapshot.paramMap.get('id')
-    this.tableService.getTable(id)
-        .subscribe(table => {
-          this.tables.push(table)
-          this.order.tables = this.tables
-        })
+    if (id) {
+      this.tableService.getTable(id)
+          .subscribe(table => {
+            this.tables.push(table)
+            this.order.tables = this.tables
+          })
+    }
   }
 
   getcMenu(): void {
@@ -235,6 +239,7 @@ export class PrepareOrderComponent implements OnInit {
   addOrder(order): void {
     this.orderService.addOrder(order as Order)
       .subscribe(order => {
+        this.router.navigate(['/orden/listar'])
         console.log(order)
       })
   }

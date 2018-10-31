@@ -1,3 +1,9 @@
-<p>
-  list-order works!
-</p>
+<ul>
+  <li *ngFor="let order of orders" class="mano">
+    <a routerLink="/orden/detalle/{{order._id}}">
+      <h2>{{ order.numOrder }} <small *ngIf="order.carry">Llevar</small></h2>
+      <h3>Mesa(s): <strong *ngFor="let table of order.tables">{{ table.numTable }}</strong> <span> Comensales: {{ order.numPeople }}</span></h3>
+    </a>
+    <hr>
+  </li>
+</ul>
