@@ -33,9 +33,17 @@ export class TableService {
       )
   }
 
+  resetTable(id: string): Observable<Table> {
+    const url = urljoin(this.tableUrl, 'reset', id)
+    return this.http.get<Table>(url).pipe(
+      tap(_ => console.log(`fetched table id=${id}`)),
+      catchError(this.handleError<Table>(`resetTable id=${id}`))
+    )
+  }
+
   /** GET table by id. Will 404 if id not found */
   getTable(id: string): Observable<Table> {
-    const url = `${this.tableUrl}/${id}`
+    const url = urljoin(this.tableUrl, id)
     return this.http.get<Table>(url).pipe(
       tap(_ => console.log(`fetched table id=${id}`)),
       catchError(this.handleError<Table>(`getTable id=${id}`))

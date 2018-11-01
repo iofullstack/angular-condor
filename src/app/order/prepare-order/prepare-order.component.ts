@@ -237,6 +237,7 @@ export class PrepareOrderComponent implements OnInit {
   }
 
   addOrder(order): void {
+    console.log('Subir una Orden: ', order)
     this.orderService.addOrder(order as Order)
       .subscribe(order => {
         this.router.navigate(['/orden/listar'])
@@ -246,7 +247,6 @@ export class PrepareOrderComponent implements OnInit {
 
   onSubmit(myform:NgForm) {
     let result = this.form.getRawValue()
-    console.log(result)
   }
 
 }

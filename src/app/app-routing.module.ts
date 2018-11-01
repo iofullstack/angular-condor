@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 
@@ -35,6 +36,7 @@ const routes: Routes = [
 @NgModule({
   declarations: components,
   imports: [
+    CommonModule,
     MaterialModule,
     RouterModule.forRoot(routes)
   ],

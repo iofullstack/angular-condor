@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 import { Table } from './table'
 import { TableService } from './table.service'
+import { SocketioService } from '../../socketio.service'
 
 @Component({
   selector: 'app-tables',
   templateUrl: './tables.component.html',
-  styleUrls: ['./tables.component.scss']
+  styleUrls: ['./tables.component.scss'],
+  providers: [ SocketioService ]
 })
 export class TablesComponent implements OnInit {
   dataSource: Table[] = [
@@ -44,11 +46,15 @@ export class TablesComponent implements OnInit {
 
   constructor(
     private tableService: TableService,
-    private router: Router
+    private router: Router,
+    private socket: SocketioService
   ) { }
 
   ngOnInit() {
     this.getTables()
+    this.socket.on('refreshTables', () => {
+      this.getTables()
+    })
   }
 
   getTables(): void {
@@ -56,6 +62,13 @@ export class TablesComponent implements OnInit {
         .subscribe(tables => {
           this.dataSource = tables
           console.log(this.dataSource)
+        })
+  }
+
+  resetTable(id): void {
+    this.tableService.resetTable(id)
+        .subscribe(response => {
+          console.log(response)
         })
   }
 
