@@ -7,3 +7,50 @@ ng g c module/component --module module
 ng g s module/service
 ng g interface module/interface
 ```
+
+## Backup
+
+```shell
+cd Desktop
+mongodump
+mongo
+>use nameDatabase
+>show collections
+>db.dropDatabase()
+>show collections
+>show dbs
+cd ..
+mongorestore   //--> Busca la carpeta dump
+```
+
+## Restaurar una base de datos
+
+```shell
+cd Desktop
+mongorestore --db nameDatabase dump/nameDatabase
+```
+
+## Backup de una base de datos
+
+```shell
+cd Desktop
+mongodump --db nameDatabase
+```
+
+## Backup collection
+
+```shell
+cd Desktop
+mongodump --db nameDatabase --collection nameCollection
+```
+
+## Restaurar una colección
+
+```shell
+mongo
+>use nameDatabase
+>db.dropDatabase()
+>show dbs
+cd Desktop
+mongorestore --db nameDatabase --collection nameCollection dump/nameDatabase/nameCollection.bson
+```
