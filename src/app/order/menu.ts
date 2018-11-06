@@ -2,7 +2,9 @@ export interface Menu {
   name: string,
   src: string,
   contain: any[],
+  extra: any[],
   type: any[],
+  price: number,
   prices: [
     {
       name: string,

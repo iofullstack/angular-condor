@@ -35,7 +35,7 @@ export class PrepareOrderComponent implements OnInit {
     numOrder: 0,
     numPeople: 0,
     carry: false,
-    user: '5bc1f9968cbe090d73731c5f',
+    user: '5bddf0970840dc49651cc956',
     tables: [],
     saucers: []
   }
@@ -125,6 +125,17 @@ export class PrepareOrderComponent implements OnInit {
     let value = product.contain[indexContain].selected
     product.contain[indexContain].selected = !value
   }
+  toggleExtraProduct(indexProduct, indexExtra):void {
+    this.menus[indexProduct].selected = false
+    let product = this.menus[indexProduct]
+    let value = product.extra[indexExtra].selected
+    product.extra[indexExtra].selected = !value
+
+    if (product.extra[indexExtra].selected)
+      this.menus[indexProduct].price += product.extra[indexExtra].price
+    else
+      this.menus[indexProduct].price -= product.extra[indexExtra].price
+  }
 
   toggleTypeProduct(indexProduct,indexType):void {
     //console.log(indexProduct, indexType)
@@ -145,13 +156,20 @@ export class PrepareOrderComponent implements OnInit {
   togglePriceProduct(indexProduct, indexPrice):void {
     let product = this.menus[indexProduct]
 
-    if ( !product.prices[indexPrice].selected )
+    if ( !product.prices[indexPrice].selected ) {
       this.menus[indexProduct].selected = false
+      product.prices.forEach((price,index)=>{
+        if(price.selected)
+          product.price -= this.menus[indexProduct].prices[index].amount
+      })
+    } else
+      product.price -= product.prices[indexPrice].amount
 
     product.prices.forEach((price,index)=>{
-      if(indexPrice === index){
+      if(indexPrice === index) {
         price.selected = true
-      }else{
+        product.price += price.amount
+      } else {
         price.selected = false
       }
     })
@@ -160,21 +178,21 @@ export class PrepareOrderComponent implements OnInit {
   pedido(indexProduct):void {
     this.menus[indexProduct].selected = true
     let productFinal = JSON.stringify(this.menus[indexProduct])
-    if(this.order.saucers.length == 0){
+    if(this.order.saucers.length == 0) {
       let save = {
         product: JSON.parse(productFinal),
         quantity: 1
       }
       this.order.saucers.push(save)
-    }else{
+    } else {
       let index = this.checkRepeat(productFinal)
-      if(index === -1){
+      if(index === -1) {
         let save = {
           product: JSON.parse(productFinal),
           quantity: 1
         }
         this.order.saucers.push(save)
-      }else{
+      } else {
         this.order.saucers[index].quantity+=1
       }
     }
@@ -198,14 +216,15 @@ export class PrepareOrderComponent implements OnInit {
   finishPedido(){
     this.prepareOrder.numPeople = this.comensales
     this.prepareOrder.tables = this.tables
-    
+
     let saucers = []
     this.order.saucers.forEach((saucer, index)=>{
       let prepare = {
         quantity: 0,
         contain: [],
+        extra: [],
         type: '',
-        price: '',
+        price: saucer.product.price,
         menu: ''
       }
       prepare.quantity = saucer.quantity
@@ -223,8 +242,13 @@ export class PrepareOrderComponent implements OnInit {
       })
       saucer.product.prices.forEach((element) => {
         if(element.selected) {
-          prepare.price = element._id
+          prepare.price *= prepare.quantity
           return
+        }
+      })
+      saucer.product.extra.forEach((element) => {
+        if(element.selected) {
+          prepare.extra.push({name: element.name, price: element.price})
         }
       })
 

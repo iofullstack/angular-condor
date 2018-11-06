@@ -117,7 +117,8 @@
                 </figure>
               </div>
               <div class="waiter-title">
-                <h3>{{ menu.name }}</h3>
+                <h3>{{ menu.name }} </h3>
+                <span>Total: {{menu.price}}</span>
               </div>
               <div class="waiter-detail">
                   <mat-chip-list *ngIf="menu.contain.length > 0">
@@ -131,6 +132,13 @@
                     <span *ngFor="let type of menu.type; index as indexType">
                       <mat-chip class="mano" color="default" color="accent" *ngIf="type.selected" (click)="toggleTypeProduct(indexProduct,indexType)" selected>{{ type.name }}</mat-chip>
                       <mat-chip class="mano" color="default" *ngIf="!type.selected" (click)="toggleTypeProduct(indexProduct,indexType)" selected>{{ type.name }}</mat-chip>
+                    </span>
+                  </mat-chip-list>
+
+                  <mat-chip-list *ngIf="menu.extra.length > 0">
+                    <span *ngFor="let extra of menu.extra; index as indexExtra">
+                      <mat-chip class="mano" color="default" color="primary" *ngIf="extra.selected" (click)="toggleExtraProduct(indexProduct, indexExtra)" selected>+{{extra.price}} {{ extra.name }} </mat-chip>
+                      <mat-chip class="mano" color="default" *ngIf="!extra.selected" (click)="toggleExtraProduct(indexProduct, indexExtra)" selected>+{{extra.price}} {{ extra.name }} </mat-chip>
                     </span>
                   </mat-chip-list>
               </div>

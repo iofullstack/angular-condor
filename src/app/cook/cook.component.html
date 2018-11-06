@@ -12,8 +12,8 @@
       </div>
       <div class="item-3">
         <div [ngClass]="['order', 'mano', saucer.menu.category.color]" *ngFor="let saucer of order.saucers">
-          <span>{{ saucer.menu.code }} </span>
-          <div class="quantity color-ligth" [ngClass]="{'quantity': true, 'color-ligth': true, 'color-ligth-2': saucer.contain.length != saucer.menu.contain.length}">
+          <span>{{ saucer.menu.code }}... </span>
+          <div [ngClass]="{'quantity': true, 'color-light': true, 'color-light-2': saucer.contain.length != saucer.menu.contain.length}">
             <span>{{saucer.quantity}} </span>
           </div>
         </div>

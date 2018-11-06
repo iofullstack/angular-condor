@@ -128,6 +128,7 @@
                        "price price price";
   border-radius: 10px;
   padding: 15px;
+  position: relative;
 }
 
 .waiter-badge {
@@ -173,13 +174,20 @@
 
 .waiter-title {
   grid-area: title;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-transform: uppercase;
 }
 .waiter-title h3 {
   font-size: 1.5em;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.waiter-title span {
+  font-weight: 900;
+  font-size: 1.2em;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
 .waiter-detail {
@@ -217,8 +225,11 @@
     grid-template-columns: 1fr;
     grid-gap: 10px;
   }
+  .waiter-badge figure img {
+    border: 7px solid #929aa0;
+  }
   .waiter-item {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 140px 1fr;
     grid-gap: 5px;
     grid-template-areas: "title title"
                          "badge action"
