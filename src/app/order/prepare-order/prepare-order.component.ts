@@ -219,11 +219,13 @@ export class PrepareOrderComponent implements OnInit {
 
     let saucers = []
     this.order.saucers.forEach((saucer, index)=>{
+      console.log(saucer)
       let prepare = {
         quantity: 0,
         contain: [],
         extra: [],
         type: '',
+        namePrice: '',
         price: saucer.product.price,
         menu: ''
       }
@@ -237,6 +239,12 @@ export class PrepareOrderComponent implements OnInit {
       saucer.product.type.forEach((element) => {
         if(element.selected) {
           prepare.type = element.name
+          return
+        }
+      })
+      saucer.product.prices.forEach((element) => {
+        if(element.selected) {
+          prepare.namePrice = element.name
           return
         }
       })

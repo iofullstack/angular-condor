@@ -8,6 +8,8 @@ ng g s module/service
 ng g interface module/interface
 ```
 
+>Si se presenta un error de compilación intentar con 'npm i --save node-sass'
+
 ## Backup
 
 ```shell
