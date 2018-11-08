@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core'
+
 import {
   MatButtonModule,
   MatIconModule,
@@ -10,7 +11,8 @@ import {
   MatSelectModule,
   MatSlideToggleModule,
   MatButtonToggleModule,
-  MatDividerModule
+  MatDividerModule,
+  MatDialogModule
 } from '@angular/material'
 
 const modules = [
@@ -24,7 +26,8 @@ const modules = [
   MatSelectModule,
   MatSlideToggleModule,
   MatButtonToggleModule,
-  MatDividerModule
+  MatDividerModule,
+  MatDialogModule
 ]
 
 @NgModule({

@@ -12,12 +12,14 @@ import { TablesComponent } from './tables/tables.component'
 import { PrepareOrderComponent } from './prepare-order/prepare-order.component'
 import { ListOrderComponent } from './list-order/list-order.component'
 import { DetailOrderComponent } from './detail-order/detail-order.component'
+import { CuentaComponent } from './cuenta/cuenta.component'
 
 const components = [
   TablesComponent,
   PrepareOrderComponent,
   ListOrderComponent,
-  DetailOrderComponent
+  DetailOrderComponent,
+  CuentaComponent
 ]
 
 @NgModule({
@@ -29,6 +31,9 @@ const components = [
     ReactiveFormsModule,
     FlexLayoutModule,
     RoutingModule
+  ],
+  entryComponents: [
+    CuentaComponent
   ],
   exports: components
 })

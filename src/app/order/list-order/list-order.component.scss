@@ -1,0 +1,88 @@
+.list-orders {
+  display: grid;
+  margin: 32px auto;
+  width: 90%;
+  grid-template-columns: minmax(auto, 1024px);
+  justify-content: center;
+  padding: 0;
+  font-size: 12px;
+}
+
+.orders {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  grid-gap: 15px;
+  grid-auto-rows: 50px;
+  padding: 0;
+  list-style-type: none;
+}
+
+.orders li {
+  display: grid;
+  grid-template: repeat(2, 25px) / 50px 1fr;
+  grid-template-areas: "badge content" "badge button";
+  background-color: #EEE;
+  border-radius: 4px;
+}
+
+.orders li:hover {
+  color: #607D8B;
+  background-color: #DDD;
+  left: .1em;
+}
+
+.badge {
+  display: inline-block;
+  grid-area: badge;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #EEE;
+  font-size: 2em;
+  background-color: #607D8B;
+  border-radius: 4px 0 0 4px;
+}
+
+.content {
+  text-decoration: none;
+  display: inline-block;
+  grid-area: content;
+  color: rgb(83, 83, 83);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content div {
+  display: inline-block;
+}
+
+.buttons {
+  grid-area: button;
+  margin-left: 10px;
+}
+
+.great {
+  font-weight: bold;
+  font-size: 1.1em;
+  color: rgb(36, 36, 36);
+}
+
+button {
+  background-color: #eee;
+  border: none;
+  padding: 3px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  cursor: hand;
+  font-family: Arial;
+}
+
+button:hover {
+  background-color: #cfd8dc;
+}
+
+button.delete {
+  background-color: gray !important;
+  color: white;
+}

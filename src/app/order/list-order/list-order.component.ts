@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core'
 import { Order } from '../order'
 import { OrderService } from '../order.service'
+import { MatDialog } from '@angular/material'
+import { CuentaComponent } from '../cuenta/cuenta.component'
 
 @Component({
   selector: 'app-list-order',
@@ -9,8 +11,12 @@ import { OrderService } from '../order.service'
 })
 export class ListOrderComponent implements OnInit {
   orders: Order[]
+  animal: string
+  name: string
 
-  constructor(private orderService: OrderService) { }
+  constructor(
+    public dialog: MatDialog,
+    private orderService: OrderService) { }
 
   ngOnInit() {
     this.getOrder()
@@ -21,6 +27,19 @@ export class ListOrderComponent implements OnInit {
         .subscribe(orders => {
           this.orders = orders
         })
+  }
+
+  openDialog() {
+    let dialogRef = this.dialog.open(CuentaComponent, {
+      data: {
+        myVar: 'MY VAR'
+      }
+    })
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed')
+      console.log(result)
+    })
   }
 
 }

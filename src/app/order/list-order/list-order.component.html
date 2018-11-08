@@ -1,9 +1,17 @@
-<ul>
-  <li *ngFor="let order of orders" class="mano">
-    <a routerLink="/orden/detalle/{{order._id}}">
-      <h2>{{ order.numOrder }} <small *ngIf="order.carry">Llevar</small></h2>
-      <h3>Mesa(s): <strong *ngFor="let table of order.tables">{{ table.numTable }}</strong> <span> Comensales: {{ order.numPeople }}</span></h3>
-    </a>
-    <hr>
-  </li>
-</ul>
+<div class="list-orders">
+  <ul class="orders">
+    <li *ngFor="let order of orders">
+      <div class="badge">{{ order.numOrder }}</div>
+      <a class="content" routerLink="/orden/detalle/{{order._id}}" style="text-decoration:none;">
+        <div>
+          <span class="great" *ngIf="order.carry">Llevar</span>
+          Mesa(s): <span class="great" *ngFor="let table of order.tables">{{ table.numTable }}</span>
+          Comensales: <span class="great">{{ order.numPeople }}</span>
+        </div>
+      </a>
+      <div class="buttons">
+        <button class="delete" title="realizar pago" (click)="openDialog()">Cuenta</button>
+      </div>
+    </li>
+  </ul>
+</div>
