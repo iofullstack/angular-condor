@@ -29,16 +29,16 @@ export class ListOrderComponent implements OnInit {
         })
   }
 
-  openDialog() {
+  cuentaDialog(order) {
+    console.log(order)
     let dialogRef = this.dialog.open(CuentaComponent, {
-      data: {
-        myVar: 'MY VAR'
-      }
+      width: '80%',
+      data: order
     })
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed')
       console.log(result)
+      this.orderService.extractCommand(result)
     })
   }
 

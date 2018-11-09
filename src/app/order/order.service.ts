@@ -14,6 +14,15 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 }
 
+export interface Extract {
+  carry: boolean,
+  fecha: string,
+  numOrder: number,
+  saucers: any[],
+  tables: any[],
+  total: number
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -98,6 +107,15 @@ export class OrderService {
       tap((order: Order) => console.log(order)), //this.log(`added Order w/ id=${order.id}`)
       catchError(this.handleError<Order> ('addOrder'))
     )
+  }
+
+  extractCommand (obj: Extract): Observable<Extract> {
+    const body = JSON.stringify(obj)
+    console.log(this.orderUrl + '/extractCommand')
+    return this.http.post<Extract> (this.orderUrl + '/extractCommand', body, httpOptions).pipe(
+        tap((result: Extract) => console.log(result)),
+        catchError(this.handleError<Extract> ('extractCommand'))
+      )
   }
 
   /**
