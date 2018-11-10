@@ -30,7 +30,6 @@ export class ListOrderComponent implements OnInit {
   }
 
   cuentaDialog(order) {
-    console.log(order)
     let dialogRef = this.dialog.open(CuentaComponent, {
       width: '80%',
       data: order
@@ -38,8 +37,11 @@ export class ListOrderComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(result)
-      this.orderService.extractCommand(result)
     })
+  }
+
+  pagoDialog(order) {
+    console.log(order)
   }
 
 }

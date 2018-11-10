@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material'
+import { OrderService } from '../order.service'
 
 @Component({
   selector: 'app-cuenta',
@@ -18,8 +19,10 @@ export class CuentaComponent implements OnInit {
     total: 0
   }
 
-  constructor(public dialogRef: MatDialogRef<CuentaComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(
+    public dialogRef: MatDialogRef<CuentaComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+    public orderService: OrderService) { }
 
   ngOnInit() {
     this.data.saucers.forEach((element) => {
@@ -39,11 +42,12 @@ export class CuentaComponent implements OnInit {
     this.extracto.carry = this.data.carry
     this.extracto.tables = this.data.tables
     this.extracto.total = this.total
-    console.log(this.extracto)
   }
 
   save() {
-    this.dialogRef.close(this.extracto)
+    this.orderService.extract(this.extracto).subscribe(res => {
+      this.dialogRef.close(res)
+    })
   }
 
 }

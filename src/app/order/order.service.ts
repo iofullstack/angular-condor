@@ -109,13 +109,14 @@ export class OrderService {
     )
   }
 
-  extractCommand (obj: Extract): Observable<Extract> {
+  extract (obj: Extract) {
     const body = JSON.stringify(obj)
-    console.log(this.orderUrl + '/extractCommand')
-    return this.http.post<Extract> (this.orderUrl + '/extractCommand', body, httpOptions).pipe(
-        tap((result: Extract) => console.log(result)),
-        catchError(this.handleError<Extract> ('extractCommand'))
-      )
+    const url = urljoin(this.orderUrl, 'extract')
+
+    return this.http.post(url, body, httpOptions).pipe(
+      tap((res) => console.log(res)),
+      catchError(this.handleError<Extract> ('extract'))
+    )
   }
 
   /**

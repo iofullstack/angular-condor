@@ -77,24 +77,10 @@ export const navigation: FuseNavigation[] = [
               ]
             },
             {
-              id       : 'pedido',
-              title    : 'Pedido',
+              id       : 'detalle',
+              title    : 'Detalle',
               type     : 'collapsable',
               children: [
-                {
-                  id       : 'p0',
-                  title    : 'Cajero',
-                  type     : 'item',
-                  icon     : 'user',
-                  url      : '/cajero'
-                },
-                {
-                  id       : 'p1',
-                  title    : 'Mesero',
-                  type     : 'item',
-                  icon     : 'user',
-                  url      : '/mesero'
-                },
                 {
                   id       : 'p2',
                   title    : 'Cocina',

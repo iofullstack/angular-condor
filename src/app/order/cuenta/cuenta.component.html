@@ -3,7 +3,11 @@
 </h2>
 
 <div mat-dialog-content>
-  <h3 class="tables"><strong>Mesa(s): </strong><span *ngFor="let mesa of data.tables">{{ mesa.numTable }}</span></h3>
+  <h3 class="tables">
+    <strong> Mesa(s): </strong>
+    <span *ngFor="let mesa of data.tables">{{ mesa.numTable }}</span>
+    <strong *ngIf="data.carry">Para llevar</strong>
+  </h3>
   <h3 class="order"><span class="left"><strong>Pedido: </strong>{{ data.numOrder }}</span> <span class="rigth"><strong>Fecha: </strong>{{ data.createdAt | date: 'short' }}</span></h3>
   <table mat-table [dataSource]="data.saucers" class="mat-elevation-z8">
 
@@ -30,7 +34,7 @@
   </table>
 
   <h3 class="total"><strong>TOTAL: </strong>{{ total }}</h3>
-  
+
 </div>
 
 <div mat-dialog-actions>

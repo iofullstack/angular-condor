@@ -2,7 +2,7 @@
   <ul class="orders">
     <li *ngFor="let order of orders">
       <div class="badge">{{ order.numOrder }}</div>
-      <a class="content" routerLink="/orden/detalle/{{order._id}}" style="text-decoration:none;">
+      <a class="content" style="text-decoration:none;"> <!--routerLink="/orden/detalle/{{order._id}}"-->
         <div>
           <span class="great" *ngIf="order.carry">Llevar</span>
           Mesa(s): <span class="great" *ngFor="let table of order.tables">{{ table.numTable }}</span>
@@ -10,7 +10,8 @@
         </div>
       </a>
       <div class="buttons">
-        <button class="buttonModal" title="realizar pago" (click)="cuentaDialog(order)">Cuenta</button>
+        <button class="buttonModal" title="extracto de cuenta" (click)="cuentaDialog(order)">Cuenta</button>
+        <button class="buttonModal" title="realizar pago" (click)="pagoDialog(order)">Pago</button>
       </div>
     </li>
   </ul>

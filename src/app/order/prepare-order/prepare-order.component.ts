@@ -75,6 +75,8 @@ export class PrepareOrderComponent implements OnInit {
             this.tables.push(table)
             this.order.tables = this.tables
           })
+    } else {
+      this.llevar = true
     }
   }
 
