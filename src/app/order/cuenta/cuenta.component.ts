@@ -21,7 +21,7 @@ export class CuentaComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<CuentaComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
     public orderService: OrderService) { }
 
   ngOnInit() {
