@@ -45,9 +45,11 @@ export class CuentaComponent implements OnInit {
   }
 
   save() {
-    this.orderService.extract(this.extracto).subscribe(res => {
-      this.dialogRef.close(res)
-    })
+    console.log(this.extracto)
+    // this.orderService.extract(this.extracto).subscribe(res => {
+    //   console.log(res)
+    //   this.dialogRef.close(res)
+    // })
   }
 
 }
