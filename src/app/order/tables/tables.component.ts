@@ -61,7 +61,7 @@ export class TablesComponent implements OnInit {
     this.tableService.getTables()
         .subscribe(tables => {
           this.dataSource = tables
-          console.log(this.dataSource)
+          // console.log(this.dataSource)
         })
   }
 

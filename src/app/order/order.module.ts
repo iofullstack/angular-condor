@@ -13,13 +13,15 @@ import { PrepareOrderComponent } from './prepare-order/prepare-order.component'
 import { ListOrderComponent } from './list-order/list-order.component'
 import { DetailOrderComponent } from './detail-order/detail-order.component'
 import { CuentaComponent } from './cuenta/cuenta.component'
+import { PaymentComponent } from './payment/payment.component'
 
 const components = [
   TablesComponent,
   PrepareOrderComponent,
   ListOrderComponent,
   DetailOrderComponent,
-  CuentaComponent
+  CuentaComponent,
+  PaymentComponent
 ]
 
 @NgModule({
@@ -33,7 +35,8 @@ const components = [
     RoutingModule
   ],
   entryComponents: [
-    CuentaComponent
+    CuentaComponent,
+    PaymentComponent
   ],
   exports: components
 })

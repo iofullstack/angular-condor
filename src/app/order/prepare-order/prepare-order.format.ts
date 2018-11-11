@@ -59,7 +59,7 @@ export const PrepareOrderFormat = {
           }
         })
         product.prices = prices
-        console.log(product)
+        // console.log(product)
       }
       if (product.prices.length == 0)
         product.price = 0

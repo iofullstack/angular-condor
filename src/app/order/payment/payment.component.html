@@ -1,5 +1,5 @@
 <h2 mat-dialog-title>
-  Extracto de cuenta
+  Pago de cuenta
 </h2>
 
 <div mat-dialog-content>
@@ -10,6 +10,21 @@
   </h3>
   <h3 class="order"><span class="left"><strong>Pedido: </strong>{{ data.numOrder }}</span> <span class="rigth"><strong>Fecha: </strong>{{ data.createdAt | date: 'short' }}</span></h3>
   <table mat-table [dataSource]="data.saucers" class="mat-elevation-z8">
+    <!-- Checkbox Column -->
+    <!-- <ng-container matColumnDef="select" class="mat-column-select">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="$event ? masterToggle() : null"
+                      [checked]="selection.hasValue() && isAllSelected()"
+                      [indeterminate]="selection.hasValue() && !isAllSelected()">
+        </mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()"
+                      (change)="$event ? selection.toggle(row) : null"
+                      [checked]="selection.isSelected(row)">
+        </mat-checkbox>
+      </td>
+    </ng-container> -->
 
     <!-- Position Column -->
     <ng-container matColumnDef="position">
@@ -28,16 +43,30 @@
       <th mat-header-cell *matHeaderCellDef> Precio </th>
       <td mat-cell *matCellDef="let element"> {{element.price}} </td>
     </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef> Agregar </th>
+      <td mat-cell *matCellDef="let element"> <button mat-mini-fab color="primary" (click)="prepararPago(element)">+</button> </td>
+    </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)"></tr>
   </table>
 
   <h3 class="total"><strong>TOTAL: </strong>{{ total }}</h3>
+
+  <ul>
+    <li *ngFor="let p of prepare">
+      <strong>Cant: </strong> {{p.quantity}}
+      <strong>Descripcion: </strong> {{p.menu.name}} ({{p.namePrice}}) <span *ngFor="let ex of p.extra">+{{ex.price}} {{ex.name}} </span>
+      <strong>Precio: </strong> {{p.price}}
+    </li>
+  </ul>
 
 </div>
 
 <div mat-dialog-actions>
   <button mat-button mat-dialog-close>Cancelar</button>
-  <button mat-raised-button (click)="save()">Imprimir</button>
+  <button mat-raised-button (click)="save()">Imprimir Cuenta</button>
 </div>

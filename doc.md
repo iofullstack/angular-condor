@@ -10,6 +10,24 @@ ng g interface module/interface
 
 >Si se presenta un error de compilación intentar con 'npm i --save node-sass'
 
+```shell
+db.menus.update({}, {
+  $set: {
+    "createdAt": "2018-11-04T14:00:00Z"
+  }
+}, {
+  multi:true
+})
+
+db.menus.update({
+  "_id": ObjectId("5bdfa4909f36095878d99a40")
+}, {
+  $set: {
+    "createdAt": "2018-11-04T14:00:43Z"
+  }
+})
+```
+
 ## Backup
 
 ```shell

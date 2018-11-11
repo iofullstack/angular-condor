@@ -119,6 +119,27 @@ export class OrderService {
     )
   }
 
+  printPago (obj: Extract) {
+    const body = JSON.stringify(obj)
+    const url = urljoin(this.orderUrl, 'print', 'pago')
+    // console.log(url, body)
+
+    return this.http.post(url, body, httpOptions).pipe(
+      tap((res) => console.log(res)),
+      catchError(this.handleError<Extract> ('extract'))
+    )
+  }
+
+  printCook (obj: Order) {
+    const body = JSON.stringify(obj)
+    const url = urljoin(this.orderUrl, 'print', 'cook')
+
+    return this.http.post(url, body, httpOptions).pipe(
+      tap((res) => console.log(res)),
+      catchError(this.handleError<Order> ('printCook'))
+    )
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.

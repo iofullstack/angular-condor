@@ -91,17 +91,17 @@
 
   <div class="order-container" fxLayout="column" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
       <div fxLayout="row" fxLayoutAlign="center" fxFlex="80%">
-          <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style">
+          <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style" style="overflow:auto;">
             <mat-button-toggle value="all" checked (click)="getMenus()">Todos</mat-button-toggle>
             <mat-button-toggle value="c.name" *ngFor="let c of c_menu" (click)="getMenusCategory(c._id)">{{ c.name }}</mat-button-toggle>
           </mat-button-toggle-group>
       </div>
-      <div fxLayout="row" fxLayoutAlign="center">
+      <!-- <div fxLayout="row" fxLayoutAlign="center">
           <mat-form-field fxFlex="80%">
               <input matInput class="input-prepare" type="search" autocomplete="off" placeholder="Buscar">
               <mat-icon matSuffix>search</mat-icon>
           </mat-form-field>
-      </div>
+      </div> -->
   </div>
 
   <!-- List Menu -->

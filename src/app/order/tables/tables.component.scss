@@ -284,7 +284,16 @@
 }
 .menu-cj figure {
   margin: 0;
+  position: relative;
 }
+.menu-cj figure:after {
+  content: "Caja";
+  position: absolute;
+  color: white;
+  top: 15px;
+  right: 17px;
+}
+
 .menu-cj img {
   width: 100%;
   height: 100%;

@@ -3,6 +3,7 @@ import { Order } from '../order'
 import { OrderService } from '../order.service'
 import { MatDialog } from '@angular/material'
 import { CuentaComponent } from '../cuenta/cuenta.component'
+import { PaymentComponent } from '../payment/payment.component'
 
 @Component({
   selector: 'app-list-order',
@@ -11,8 +12,6 @@ import { CuentaComponent } from '../cuenta/cuenta.component'
 })
 export class ListOrderComponent implements OnInit {
   orders: Order[]
-  animal: string
-  name: string
 
   constructor(
     public dialog: MatDialog,
@@ -41,7 +40,20 @@ export class ListOrderComponent implements OnInit {
   }
 
   pagoDialog(order) {
-    console.log(order)
+    let dialogRef = this.dialog.open(PaymentComponent, {
+      width: '80%',
+      data: order
+    })
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result)
+    })
+  }
+
+  cocina(order) {
+    this.orderService.printCook(order).subscribe(res => {
+      console.log(res)
+    })
   }
 
 }
