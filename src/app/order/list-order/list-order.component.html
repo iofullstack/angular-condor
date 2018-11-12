@@ -1,7 +1,7 @@
 <div class="list-orders">
   <ul class="orders">
     <li *ngFor="let order of orders">
-      <div class="badge">{{ order.numOrder }}</div>
+      <div class="badge mano" (click)="hideOrder(order._id)">{{ order.numOrder }}</div>
       <a class="content" style="text-decoration:none;"> <!--routerLink="/orden/detalle/{{order._id}}"-->
         <div>
           <span class="great" *ngIf="order.carry">Llevar</span>

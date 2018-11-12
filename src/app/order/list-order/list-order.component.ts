@@ -4,6 +4,7 @@ import { OrderService } from '../order.service'
 import { MatDialog } from '@angular/material'
 import { CuentaComponent } from '../cuenta/cuenta.component'
 import { PaymentComponent } from '../payment/payment.component'
+import swal from 'sweetalert2'
 
 @Component({
   selector: 'app-list-order',
@@ -56,4 +57,27 @@ export class ListOrderComponent implements OnInit {
     })
   }
 
+  hideOrder(id) {
+    swal({
+      title: '¿Estás seguro?',
+      text: "¡No podrás revertir esto, esta acción ocultará el pedido!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Archivar pedido',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.value) {
+        this.orderService.getHideOrderId(id).subscribe(res => {
+          this.getOrder()
+          swal(
+            '¡Pedido Archivado!',
+            'Su pedido se guardó en caja.',
+            'success'
+          )
+        })
+      }
+    })
+  }
 }

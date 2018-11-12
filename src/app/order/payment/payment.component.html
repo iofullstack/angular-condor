@@ -6,9 +6,9 @@
   <h3 class="tables">
     <strong> Mesa(s): </strong>
     <span *ngFor="let mesa of data.tables">{{ mesa.numTable }}</span>
-    <strong *ngIf="data.carry">Para llevar</strong>
+    <strong *ngIf="data.carry" style="margin-left: 5px;">Para llevar</strong>
   </h3>
-  <h3 class="order"><span class="left"><strong>Pedido: </strong>{{ data.numOrder }}</span> <span class="rigth"><strong>Fecha: </strong>{{ data.createdAt | date: 'short' }}</span></h3>
+  <h3 class="order"><span class="left"><strong>Pedido: </strong>{{ data.numOrder }}</span> <span class="rigth"><strong>Fecha: </strong>{{ data.createdAt | date: 'dd/MM/yyyy hh:mm:ss a' : '+0000' }}</span></h3>
   <table mat-table [dataSource]="data.saucers" class="mat-elevation-z8">
     <!-- Checkbox Column -->
     <!-- <ng-container matColumnDef="select" class="mat-column-select">

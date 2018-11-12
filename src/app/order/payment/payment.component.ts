@@ -83,6 +83,7 @@ export class PaymentComponent implements OnInit {
 
     copia.nameSaucer = nameSaucer
     let repite = false
+    let repite2 = false
     if(copia.quantity > 1) {
       if(this.prepare.length > 0) {
         this.prepare.forEach((el, index) => {
@@ -110,8 +111,20 @@ export class PaymentComponent implements OnInit {
         this.prepare.push(copia)
       }
     } else {
-      this.total2 += copia.price
-      this.prepare.push(copia)
+      if(this.prepare.length > 0) {
+        this.prepare.forEach((el, index) => {
+          if(el._id === copia._id)
+            repite2 = true
+        })
+        if(!repite2) {
+          this.total2 += copia.price
+          this.prepare.push(copia)
+        }
+      }
+      else {
+        this.total2 += copia.price
+        this.prepare.push(copia)
+      }
     }
     // console.log(this.prepare)
   }
