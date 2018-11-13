@@ -15,6 +15,7 @@ export class PaymentComponent implements OnInit {
   total2: number = 0
   saucers = []
   pago = {
+    _id: '',
     fecha: '',
     numOrder : 0,
     carry: false,
@@ -57,6 +58,7 @@ export class PaymentComponent implements OnInit {
         price: element.price
       })
     })
+    this.pago._id = this.data._id
     this.pago.fecha = this.data.createdAt
     this.pago.numOrder = this.data.numOrder
     this.pago.carry = this.data.carry

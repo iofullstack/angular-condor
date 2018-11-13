@@ -100,9 +100,9 @@ export class OrderService {
     )
   }
 
-  getHideOrderId(id: string): Observable<Order> {
+  getHideOrderId(id: string): Observable<any> {
     const url = urljoin(this.orderUrl, id, 'hide')
-    return this.http.get<Order>(url).pipe(
+    return this.http.get<any>(url).pipe(
       tap(_ => console.log(`fetched order id=${id}`)),
       catchError(this.handleError<Order>(`getHideOrderId id=${id}`))
     )

@@ -70,12 +70,20 @@ export class ListOrderComponent implements OnInit {
     }).then((result) => {
       if (result.value) {
         this.orderService.getHideOrderId(id).subscribe(res => {
-          this.getOrder()
-          swal(
-            '¡Pedido Archivado!',
-            'Su pedido se guardó en caja.',
-            'success'
-          )
+          if(res.error)
+            swal(
+              '¡Algo esta mal!',
+              res.message,
+              'warning'
+            )
+          else {
+            swal(
+              '¡Pedido Archivado!',
+              res.message,
+              'success'
+            )
+            this.getOrder()
+          }
         })
       }
     })
