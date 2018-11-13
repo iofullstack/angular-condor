@@ -72,7 +72,7 @@ export class OrderService {
   getOrder (): Observable<Order[]> {
     return this.http.get<Order[]>(urljoin(this.orderUrl, 'today'))
       .pipe(
-        tap(order => console.log('Orders: ', order)),
+        tap(_ => console.log('Find All Orders')),
         catchError(this.handleError('getOrder', []))
       )
   }

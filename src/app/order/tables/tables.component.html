@@ -119,14 +119,14 @@
     </div>
     <div class="menu-cj">
       <div></div>
-      <figure class="mano">
+      <figure class="mano" (click)="viewBox()">
         <img src="../../../assets/img/monitor.png" alt="monitor">
       </figure>
       <div class="btn-caja">
-        <button mat-fab color="basic">Abrir</button>
+        <button mat-fab color="basic" (click)="openingBox()">Abrir</button>
       </div>
       <div class="btn-caja">
-        <button mat-fab color="primary">Cerrar</button>
+        <button mat-fab color="primary" (click)="closingBox()">Cerrar</button>
       </div>
       <div class="btn-caja">
         <button mat-fab color="accent">+</button>

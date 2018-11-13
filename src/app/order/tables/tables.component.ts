@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 import { Table } from './table'
+import { MatDialog } from '@angular/material'
 import { TableService } from './table.service'
 import { SocketioService } from '../../socketio.service'
+import { DetailBoxComponent } from '../detail-box/detail-box.component'
+import swal from 'sweetalert2'
 
 @Component({
   selector: 'app-tables',
@@ -47,7 +50,8 @@ export class TablesComponent implements OnInit {
   constructor(
     private tableService: TableService,
     private router: Router,
-    private socket: SocketioService
+    private socket: SocketioService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -79,6 +83,67 @@ export class TablesComponent implements OnInit {
 
   occupied(obj): String {
     return obj.numTable
+  }
+
+  viewBox(): void {
+    this.tableService.getBox()
+        .subscribe(response => {
+          let dialogRef = this.dialog.open(DetailBoxComponent, {
+            width: '80%',
+            data: response
+          })
+          dialogRef.afterClosed().subscribe(result => {
+            console.log(result)
+          })
+        })
+  }
+
+  openingBox(): void {
+    swal({
+      title: 'Ingrese monto para la apertura de caja',
+      input: 'number',
+      inputAttributes: {
+        autocapitalize: 'off'
+      },
+      showCancelButton: true,
+      confirmButtonText: 'Aceptar',
+      cancelButtonText: 'Cancelar',
+      showLoaderOnConfirm: true,
+      preConfirm: (amount: number) => {
+        this.tableService.openingBox(amount)
+          .subscribe(response => {
+            swal({
+              type: 'info',
+              title: 'Apertura de caja',
+              text: response.message
+            })
+          })
+      },
+      allowOutsideClick: () => !swal.isLoading()
+    })
+  }
+
+  closingBox(): void {
+    swal({
+      title: '¿Estás seguro?',
+      text: "¡Esta acción cerrará la caja!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Aceptar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if(result.value)
+        this.tableService.closingBox()
+            .subscribe(response => {
+              swal({
+                type: 'info',
+                title: 'Cierre de caja',
+                text: response.message
+              })
+            })
+    })
   }
 
 }

@@ -10,7 +10,6 @@ export class WrappedSocket {
 
   constructor(@Inject(SOCKET_CONFIG_TOKEN) config: SocketIoConfig,
               ngZone: NgZone) {
-    console.log('SERVICE --> ', ngZone)
     const url: string = config.url || ''
     const options: any = config.options || {}
     ngZone.runOutsideAngular(() => {

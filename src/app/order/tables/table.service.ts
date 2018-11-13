@@ -7,6 +7,7 @@ import urljoin from 'url-join'
 import { environment } from '../../../environments/environment'
 
 import { Table } from './table'
+import { Box } from './box'
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -62,6 +63,34 @@ export class TableService {
         }),
         catchError(this.handleError<Table>(`getTable id=${id}`))
       )
+  }
+
+  getBox(): Observable<Box> {
+    const url = urljoin(environment.apiUrl, 'boxs', 'today')
+    return this.http.get<Box>(url).pipe(
+      tap(_ => console.log(`fetched box day`)),
+      catchError(this.handleError<Box>(`getBox`))
+    )
+  }
+
+  openingBox (amount: number) {
+    const body = JSON.stringify({amount})
+    const url = urljoin(environment.apiUrl, 'boxs', 'opening')
+
+    return this.http.post(url, body, httpOptions).pipe(
+      tap((_) => console.log('Opening box')),
+      catchError(this.handleError<any> ('openingBox'))
+    )
+  }
+
+  closingBox () {
+    const body = JSON.stringify({})
+    const url = urljoin(environment.apiUrl, 'boxs', 'closing')
+
+    return this.http.post(url, body, httpOptions).pipe(
+      tap((_) => console.log('Closing box')),
+      catchError(this.handleError<any> ('openingBox'))
+    )
   }
 
   /**
