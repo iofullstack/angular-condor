@@ -74,3 +74,13 @@ mongo
 cd Desktop
 mongorestore --db nameDatabase --collection nameCollection dump/nameDatabase/nameCollection.bson
 ```
+
+
+
+mongorestore --db db-condor --collection tables dump/db-condor/tables.bson
+
+mongorestore --db db-condor --collection categorymenus dump/db-condor/categorymenus.bson
+
+mongorestore --db db-condor --collection menus dump/db-condor/menus.bson
+
+mongorestore --db db-condor --collection prices dump/db-condor/prices.bson

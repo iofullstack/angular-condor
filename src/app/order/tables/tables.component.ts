@@ -45,6 +45,13 @@ export class TablesComponent implements OnInit {
     { numTable: '', capacity: 0, occupied: 0 },
     { numTable: '', capacity: 0, occupied: 0 },
     { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 },
+    { numTable: '', capacity: 0, occupied: 0 }
   ]
 
   constructor(
@@ -65,7 +72,7 @@ export class TablesComponent implements OnInit {
     this.tableService.getTables()
         .subscribe(tables => {
           this.dataSource = tables
-          // console.log(this.dataSource)
+          console.log(this.dataSource)
         })
   }
 
@@ -74,6 +81,14 @@ export class TablesComponent implements OnInit {
         .subscribe(response => {
           console.log(response)
         })
+  }
+  resetBarra(...ids): void {
+    for(let i = 0; i < ids.length; i++) {
+      this.tableService.resetTable(ids[i])
+        .subscribe(response => {
+          console.log(response)
+        })
+    }
   }
 
   onSelect(_id): void {
