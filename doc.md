@@ -75,7 +75,7 @@ cd Desktop
 mongorestore --db nameDatabase --collection nameCollection dump/nameDatabase/nameCollection.bson
 ```
 
-
+mongorestore --db db-condor dump/db-condor
 
 mongorestore --db db-condor --collection tables dump/db-condor/tables.bson
 
