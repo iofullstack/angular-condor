@@ -5,6 +5,8 @@ import { MatDialog } from '@angular/material'
 import { TableService } from './table.service'
 import { SocketioService } from '../../socketio.service'
 import { DetailBoxComponent } from '../detail-box/detail-box.component'
+import { ReportComponent } from '../report/report.component'
+import { ListOrderComponent } from '../list-order/list-order.component'
 import swal from 'sweetalert2'
 
 @Component({
@@ -100,17 +102,32 @@ export class TablesComponent implements OnInit {
     return obj.numTable
   }
 
+  viewOrders(_id): void {
+    this.dialog.open(ListOrderComponent, {
+      width: '80%'
+    })
+  }
+
   viewBox(): void {
     this.tableService.getBox()
         .subscribe(response => {
           let dialogRef = this.dialog.open(DetailBoxComponent, {
             width: '80%',
-            data: response
+            data: response || {}
           })
           dialogRef.afterClosed().subscribe(result => {
             console.log(result)
           })
         })
+  }
+
+  viewBoxReport(): void {
+    let dialogRef = this.dialog.open(ReportComponent, {
+      width: '80%'
+    })
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result)
+    })
   }
 
   openingBox(): void {

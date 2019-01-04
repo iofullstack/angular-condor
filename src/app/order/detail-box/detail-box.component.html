@@ -3,7 +3,7 @@
 </h2>
 
 <div mat-dialog-content>
-  <table mat-table [dataSource]="data.period" class="mat-elevation-z8">
+  <table mat-table *ngIf="data.period" [dataSource]="data.period" class="mat-elevation-z8">
     <!-- Position Column -->
     <ng-container matColumnDef="position">
       <th mat-header-cell *matHeaderCellDef> Abrió </th>

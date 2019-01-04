@@ -14,7 +14,8 @@ import {
   MatDividerModule,
   MatDialogModule,
   MatTableModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatDatepickerModule
 } from '@angular/material'
 
 const modules = [
@@ -31,7 +32,8 @@ const modules = [
   MatDividerModule,
   MatDialogModule,
   MatTableModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatDatepickerModule
 ]
 
 @NgModule({

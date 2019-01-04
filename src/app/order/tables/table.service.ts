@@ -68,7 +68,7 @@ export class TableService {
   getBox(): Observable<Box> {
     const url = urljoin(environment.apiUrl, 'boxs', 'today')
     return this.http.get<Box>(url).pipe(
-      tap(_ => console.log(`fetched box day`)),
+      tap(orders => console.log(orders)),
       catchError(this.handleError<Box>(`getBox`))
     )
   }
