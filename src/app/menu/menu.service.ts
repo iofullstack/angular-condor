@@ -6,7 +6,8 @@ import { catchError, map, tap } from 'rxjs/operators'
 import urljoin from 'url-join'
 import { environment } from '../../environments/environment'
 
-import { Client } from './client.model'
+import { Menu } from './menu'
+import { Category } from './category'
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -15,30 +16,41 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class ClientService {
-  private clientsUrl: string
+export class MenuService {
+  private menuUrl: string
+  private c_menuUrl: string
 
   constructor(
     private http: HttpClient
   ) {
-    this.clientsUrl = urljoin(environment.apiUrl, 'clients')
+    this.menuUrl = urljoin(environment.apiUrl, 'menu')
+    this.c_menuUrl = urljoin(environment.apiUrl, 'c_menu')
   }
 
   /** GET users from the server */
-  getClients (): Observable<Client[]> {
-    return this.http.get<Client[]>(this.clientsUrl)
+  getMenus (): Observable<Menu[]> {
+    return this.http.get<Menu[]>(this.menuUrl)
       .pipe(
-        tap(clients => console.log(clients)),
-        catchError(this.handleError('getClients', []))
+        tap(_ => console.log('getMenus')),
+        catchError(this.handleError('getmenus', []))
       )
   }
 
-  /** POST: add a new client to the server */
-  addClient (client: Client): Observable<Client>  {
-    const body = JSON.stringify(client)
-    return this.http.post<Client> (this.clientsUrl, body, httpOptions).pipe(
-      tap((client: Client) => console.log(client)), //this.log(`added Client w/ id=${client.id}`)
-      catchError(this.handleError<Client> ('addClient'))
+  /** POST: add a new menu to the server */
+  addMenu (menu: Menu): Observable<Menu>  {
+    const body = JSON.stringify(menu)
+    return this.http.post<Menu> (this.menuUrl, body, httpOptions).pipe(
+      tap((menu: Menu) => console.log(menu)),
+      catchError(this.handleError<Menu> ('addMenu'))
+    )
+  }
+
+  /** POST: add a new menu to the server */
+  addCategoryMenu (c_menu: Category): Observable<Category>  {
+    const body = JSON.stringify(c_menu)
+    return this.http.post<Category | any> (this.c_menuUrl, body, httpOptions).pipe(
+      tap((c_menu: Category) => console.log(c_menu)),
+      catchError(this.handleError<Category> ('addCategoryMenu'))
     )
   }
 

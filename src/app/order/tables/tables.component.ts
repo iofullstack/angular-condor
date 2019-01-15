@@ -6,7 +6,7 @@ import { TableService } from './table.service'
 import { SocketioService } from '../../socketio.service'
 import { DetailBoxComponent } from '../detail-box/detail-box.component'
 import { ReportComponent } from '../report/report.component'
-import { ListOrderComponent } from '../list-order/list-order.component'
+import { ListOrderTableComponent } from '.././list-order-table/list-order-table.component'
 import swal from 'sweetalert2'
 
 @Component({
@@ -103,8 +103,9 @@ export class TablesComponent implements OnInit {
   }
 
   viewOrders(_id): void {
-    this.dialog.open(ListOrderComponent, {
-      width: '80%'
+    this.dialog.open(ListOrderTableComponent, {
+      width: '80%',
+      data: _id
     })
   }
 

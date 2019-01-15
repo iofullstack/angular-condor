@@ -1,4 +1,4 @@
-<div class="list-orders">
+<div class="list-orders" *ngIf="orders">
   <ul class="orders">
     <li *ngFor="let order of orders">
       <div class="badge mano" (click)="hideOrder(order._id)">{{ order.numOrder }}</div>

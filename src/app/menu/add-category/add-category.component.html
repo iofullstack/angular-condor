@@ -1,0 +1,41 @@
+<div id="forms" class="page-layout simple fullwidth" fxLayout="column">
+
+  <!-- HEADER -->
+  <div class="header accent p-24 h-160" fxLayout="row" fxLayoutAlign="start center">
+      <div fxLayout="column" fxLayoutAlign="center start">
+          <div class="black-fg" fxLayout="row" fxLayoutAlign="start center">
+              <mat-icon class="secondary-text s-18">home</mat-icon>
+              <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+              <span class="secondary-text">Menu</span>
+              <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+              <span class="secondary-text">Categoría</span>
+          </div>
+          <div class="h1 mt-16">Nueva Categoría</div>
+      </div>
+  </div>
+  <!-- / HEADER -->
+
+  <!-- CONTENT -->
+  <div class="content p-24">
+    <div class="mb-24" fxLayout="column" fxLayoutAlign="start" fxLayout.gt-md="row">
+
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="mat-card mat-elevation-z4 p-24 mr-24" fxLayout="column" fxLayoutAlign="start"
+              fxFlex="1 0 auto" name="form">
+
+              <div fxFlex="1 0 auto" fxLayout="row" class="form-grupper">
+                <mat-form-field fxFlex="100" class="form-grupper-item">
+                    <input matInput placeholder="Nombre de la categoría" name="name" ngModel required>
+                </mat-form-field>
+              </div>
+
+              <div fxFlex="1 0 auto" fxLayout="row" class="form-grupper">
+                <button type="submit" mat-raised-button color="accent">Enviar</button>
+              </div>
+
+        </form>
+
+    </div>  
+  </div>
+  <!-- / CONTENT -->
+
+</div>

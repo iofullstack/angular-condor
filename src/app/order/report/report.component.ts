@@ -30,6 +30,7 @@ export class ReportComponent implements OnInit {
 
   reportSales(form: NgForm) {
     let date = form.value.fecha.toISOString().substring(0,10)
+    console.log(date)
     this.getReportSales(date)
   }
 
@@ -56,8 +57,8 @@ export class ReportComponent implements OnInit {
       ws_data.push(sales[i])
     }
     ws_data.push(Array('', '', 'TOTAL VENTAS'))
-    ws_data.push(Array())
     ws_data.push(Array('', '', data.totalSales))
+    ws_data.push(Array())
     ws_data.push(Array('NOMBRE EXTRA', 'CANTIDAD', 'PRECIO'))
     for(let i = 0; i < extras.length; i++) {
       ws_data.push(extras[i])

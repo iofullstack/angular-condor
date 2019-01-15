@@ -8,7 +8,6 @@ import { DetailOrderComponent } from './detail-order/detail-order.component'
 
 const routes = [
   { path: 'mesas', component: TablesComponent },
-  { path: 'preparar/:id', component: PrepareOrderComponent },
   { path: 'preparar', component: PrepareOrderComponent },
   { path: 'listar', component: ListOrderComponent },
   { path: 'detalle/:id', component: DetailOrderComponent }

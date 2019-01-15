@@ -273,9 +273,12 @@ export class PrepareOrderComponent implements OnInit {
   addOrder(order): void {
     console.log('Subir una Orden: ', order)
     this.orderService.addOrder(order as Order)
-      .subscribe(order => {
-        this.router.navigate(['/orden/listar'])
-        console.log(order)
+      .subscribe(response => {
+        if(order.carry)
+          this.router.navigate(['/orden/listar'])
+        else
+          this.router.navigate(['/orden/mesas'])
+        console.log(response)
       })
   }
 
