@@ -1,27 +1,27 @@
 export class Menu {
+  category: string
   code: string
   name: string
-  image: string
   contain: any[]
-  extra: any[]
   type: any[]
-  category: string
+  extra: any[]
+  image: string
 
   constructor(
+    category: string,
     code: string,
     name: string,
-    image: string,
     contain: any[],
-    extra: any[],
     type: any[],
-    category: string
+    extra: any[],
+    image: string
   ) {
+    this.category = category
     this.code = code
     this.name = name
-    this.image = image
     this.contain = contain
-    this.extra = extra
     this.type = type
-    this.category = category
+    this.extra = extra
+    this.image = image
   }
 }

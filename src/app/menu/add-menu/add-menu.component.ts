@@ -24,23 +24,28 @@ export interface Extra {
   styleUrls: ['./add-menu.component.scss']
 })
 export class AddMenuComponent implements OnInit {
-  visible = true;
-  selectable1 = true;
-  removable1 = true;
-  selectable2 = true;
-  removable2 = true;
-  addOnBlur1 = true;
-  addOnBlur2 = true;
-  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
+  visible = true
+  selectable1 = true
+  removable1 = true
+  selectable2 = true
+  removable2 = true
+  selectable3 = true
+  removable3 = true
+  addOnBlur1 = true
+  addOnBlur2 = true
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA]
   contain: Tag[] = []
   type: Tag[] = []
   extra: Extra[] = []
 
-  selectedValue: string;
+  menuCode: string
+  menuName: string
+
+  selectedValue: string
   categorys: Category[] = []
 
-  price: number;
-  name: string;
+  price: number
+  name: string
 
   public fileInput: File = null
   public dataImage: any
@@ -53,13 +58,13 @@ export class AddMenuComponent implements OnInit {
     zoomable: false,
     viewMode: 3,
     aspectRatio: 1,
-  } as CropperOptions;
+  } as CropperOptions
 
   constructor(
     private menuService: MenuService,
     public dialog: MatDialog
   ) { }
-  
+
   ngOnInit() {
     this.getCategoryMenu()
   }
@@ -72,48 +77,56 @@ export class AddMenuComponent implements OnInit {
   }
 
   addContain(event: MatChipInputEvent): void {
-    const input = event.input;
-    const value = event.value;
+    const input = event.input
+    const value = event.value
 
     // Add our fruit
     if ((value || '').trim()) {
-      this.contain.push({name: value.trim()});
+      this.contain.push({name: value.trim()})
     }
 
     // Reset the input value
     if (input) {
-      input.value = '';
+      input.value = ''
     }
   }
 
   removeContain(tag: Tag): void {
-    const index = this.contain.indexOf(tag);
+    const index = this.contain.indexOf(tag)
 
     if (index >= 0) {
-      this.contain.splice(index, 1);
+      this.contain.splice(index, 1)
     }
   }
 
   addType(event: MatChipInputEvent): void {
-    const input = event.input;
-    const value = event.value;
+    const input = event.input
+    const value = event.value
 
     // Add our fruit
     if ((value || '').trim()) {
-      this.type.push({name: value.trim()});
+      this.type.push({name: value.trim()})
     }
 
     // Reset the input value
     if (input) {
-      input.value = '';
+      input.value = ''
     }
   }
 
   removeType(tag: Tag): void {
-    const index = this.type.indexOf(tag);
+    const index = this.type.indexOf(tag)
 
     if (index >= 0) {
-      this.type.splice(index, 1);
+      this.type.splice(index, 1)
+    }
+  }
+
+  removeExtra(tag: Extra): void {
+    const index = this.extra.indexOf(tag)
+
+    if (index >= 0) {
+      this.extra.splice(index, 1)
     }
   }
 
@@ -169,15 +182,15 @@ export class AddMenuComponent implements OnInit {
     //           })
     //       }
     //     )
-    form.resetForm();
+    form.resetForm()
   }
 
   getBase64(file) {
     return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = error => reject(error);
-    });
+      const reader = new FileReader()
+      reader.readAsDataURL(file)
+      reader.onload = () => resolve(reader.result)
+      reader.onerror = error => reject(error)
+    })
   }
 }
