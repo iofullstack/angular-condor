@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+import { MenuService } from '../menu.service'
 
 @Component({
   selector: 'app-add-price',
@@ -7,9 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddPriceComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private menuService: MenuService
+  ) { }
 
   ngOnInit() {
+    this.getMenuNonePrice()
+    this.getMenus()
+  }
+
+  getMenuNonePrice(): void {
+    this.menuService.getMenuNonePrice()
+        .subscribe(response => {
+          console.log(response)
+        })
+  }
+
+  getMenus(): void {
+    this.menuService.getMenus()
+        .subscribe(response => {
+          console.log(response)
+        })
   }
 
 }

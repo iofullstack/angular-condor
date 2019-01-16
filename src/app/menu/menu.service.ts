@@ -45,6 +45,15 @@ export class MenuService {
       )
   }
 
+  /** GET users from the server */
+  getMenuNonePrice (): Observable<Menu[]> {
+    return this.http.get<Menu[]>(urljoin(this.menuUrl, 'price', 'none'))
+      .pipe(
+        tap(_ => console.log('getMenuNonePrice')),
+        catchError(this.handleError('getMenuNonePrice', []))
+      )
+  }
+
   /** POST: add a new menu to the server */
   addMenu (menu: Menu): Observable<Menu>  {
     const body = JSON.stringify(menu)

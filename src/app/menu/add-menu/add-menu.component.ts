@@ -8,10 +8,7 @@ import { Menu } from '../menu'
 import { Category } from '../category'
 import { MenuService } from '../menu.service'
 import { AddExtraComponent } from '../add-extra/add-extra.component'
-
-export interface Tag {
-  name: string
-}
+import swal from 'sweetalert2'
 
 export interface Extra {
   price: number
@@ -34,8 +31,8 @@ export class AddMenuComponent implements OnInit {
   addOnBlur1 = true
   addOnBlur2 = true
   readonly separatorKeysCodes: number[] = [ENTER, COMMA]
-  contain: Tag[] = []
-  type: Tag[] = []
+  contain: string[] = []
+  type: string[] = []
   extra: Extra[] = []
 
   menuCode: string
@@ -79,10 +76,10 @@ export class AddMenuComponent implements OnInit {
   addContain(event: MatChipInputEvent): void {
     const input = event.input
     const value = event.value
-
+    
     // Add our fruit
     if ((value || '').trim()) {
-      this.contain.push({name: value.trim()})
+      this.contain.push(value.trim())
     }
 
     // Reset the input value
@@ -91,7 +88,7 @@ export class AddMenuComponent implements OnInit {
     }
   }
 
-  removeContain(tag: Tag): void {
+  removeContain(tag: string): void {
     const index = this.contain.indexOf(tag)
 
     if (index >= 0) {
@@ -105,7 +102,7 @@ export class AddMenuComponent implements OnInit {
 
     // Add our fruit
     if ((value || '').trim()) {
-      this.type.push({name: value.trim()})
+      this.type.push(value.trim())
     }
 
     // Reset the input value
@@ -114,7 +111,7 @@ export class AddMenuComponent implements OnInit {
     }
   }
 
-  removeType(tag: Tag): void {
+  removeType(tag: string): void {
     const index = this.type.indexOf(tag)
 
     if (index >= 0) {
@@ -134,7 +131,6 @@ export class AddMenuComponent implements OnInit {
   onFilePick(event: any) {
     // Feed selected file to cropper
     this.fileInput = event.target.files.item(0)
-    console.log(this.fileInput)
   }
 
   onFail(error) {
@@ -163,26 +159,42 @@ export class AddMenuComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    console.log(form.value)
-    // const m = new Menu(
-    //   form.value.code,
-    //   form.value.code,
-    // )
-
-    // console.log(m)
-    // this.menuService.addCategoryMenu(c)
-    //     .subscribe(
-    //       (response) => {
-    //         if(response)
-    //           swal({
-    //             type: 'success',
-    //             title: 'Cagetoría guardada correctamente',
-    //             showConfirmButton: false,
-    //             timer: 1800
-    //           })
-    //       }
-    //     )
-    form.resetForm()
+    const m = new Menu (
+      form.value.category,
+      form.value.code,
+      form.value.name,
+      this.contain,
+      this.type,
+      this.extra,
+      this.dataImage
+    )
+    console.log(m)
+    this.menuService.addMenu(m)
+        .subscribe(
+          (response) => {
+            if(response) {
+              swal({
+                type: 'success',
+                title: 'Guardado en menú',
+                showConfirmButton: false,
+                timer: 1800
+              })
+              this.contain = []
+              this.type = []
+              this.extra = []
+              this.fileInput = null
+              this.dataImage = ''
+              form.resetForm()
+            } else {
+              swal({
+                type: 'error',
+                title: 'Puede que la imagen esté demasiado grande, intente de nuevo',
+                showConfirmButton: false,
+                timer: 2500
+              })
+            }
+          }
+        )
   }
 
   getBase64(file) {
@@ -192,5 +204,6 @@ export class AddMenuComponent implements OnInit {
       reader.onload = () => resolve(reader.result)
       reader.onerror = error => reject(error)
     })
+
   }
 }

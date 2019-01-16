@@ -49,7 +49,7 @@
                   <mat-chip-list #chipList1>
                     <mat-chip color="primary" *ngFor="let c of contain" [selectable]="selectable1"
                               [removable]="removable1" (removed)="removeContain(c)">
-                      {{c.name}}
+                      {{ c }}
                       <mat-icon matChipRemove *ngIf="removable1">cancel</mat-icon>
                     </mat-chip>
                     <input placeholder="¿Que contiene?"
@@ -66,7 +66,7 @@
                   <mat-chip-list #chipList2>
                     <mat-chip *ngFor="let t of type" [selectable]="selectable2"
                               [removable]="removable2" (removed)="removeType(t)">
-                      {{t.name}}
+                      {{ t }}
                       <mat-icon matChipRemove *ngIf="removable2">cancel</mat-icon>
                     </mat-chip>
                     <input placeholder="¿Tipos de contenido?"
@@ -101,7 +101,7 @@
                 <lib-cropper [imageFile]="fileInput" [options]="options" (fail)="onFail($event)" (fileChange)="onFileChange($event)"></lib-cropper>
               </div>
 
-              <div fxFlex="1 0 auto" fxLayout="row" class="form-grupper">
+              <div fxFlex="1 0 auto" fxLayout="row" class="form-grupper space-top">
                 <button (click)="onSubmit(f)" mat-raised-button color="accent">Enviar</button>
               </div>
 
