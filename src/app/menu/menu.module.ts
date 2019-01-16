@@ -5,18 +5,21 @@ import { RoutingModule } from './routing.module'
 
 /* NgModel lives here */
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { NgxCropperJsModule } from 'ngx-cropperjs-wrapper'
 
 /* Components */
 import { AddCategoryComponent } from './add-category/add-category.component'
 import { AddMenuComponent } from './add-menu/add-menu.component'
 import { AddPriceComponent } from './add-price/add-price.component'
 import { ListMenuComponent } from './list-menu/list-menu.component'
+import { AddExtraComponent } from './add-extra/add-extra.component'
 
 const components = [
   AddCategoryComponent,
   AddMenuComponent,
   AddPriceComponent,
-  ListMenuComponent
+  ListMenuComponent,
+  AddExtraComponent
 ]
 
 @NgModule({
@@ -26,7 +29,11 @@ const components = [
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    RoutingModule
+    RoutingModule,
+    NgxCropperJsModule
+  ],
+  entryComponents: [
+    AddExtraComponent
   ],
   exports: components
 })

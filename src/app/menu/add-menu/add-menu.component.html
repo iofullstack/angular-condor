@@ -10,7 +10,7 @@
               <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
               <span class="secondary-text">Agregar</span>
           </div>
-          <div class="h1 mt-16">Nueva Categoría</div>
+          <div class="h1 mt-16">Nuevo Menú</div>
       </div>
   </div>
   <!-- / HEADER -->
@@ -24,8 +24,73 @@
 
               <div fxFlex="1 0 auto" fxLayout="row" class="form-grupper">
                 <mat-form-field fxFlex="100" class="form-grupper-item">
-                    <input matInput placeholder="Nombre de la categoría" name="name" ngModel required>
+                  <mat-select placeholder="Pertenece *" [(ngModel)]="selectedValue" name="category">
+                    <mat-option *ngFor="let category of categorys" [value]="category._id">
+                      {{category.name}}
+                    </mat-option>
+                  </mat-select>
                 </mat-form-field>
+              </div>
+
+              <div fxFlex="1 0 auto" fxLayout="row" class="form-grupper">
+                <mat-form-field fxFlex="100" class="form-grupper-item">
+                    <input matInput placeholder="Nombre corto" name="code" ngModel required>
+                </mat-form-field>
+              </div>
+
+              <div fxFlex="1 0 auto" fxLayout="row" class="form-grupper">
+                <mat-form-field fxFlex="100" class="form-grupper-item">
+                    <input matInput placeholder="Nombre" name="name" ngModel required>
+                </mat-form-field>
+              </div>
+
+              <div fxFlex="1 0 auto" fxLayout="row" class="form-grupper">
+                <mat-form-field class="example-chip-list">
+                  <mat-chip-list #chipList1>
+                    <mat-chip color="primary" *ngFor="let c of contain" [selectable]="selectable1"
+                              [removable]="removable1" (removed)="removeContain(c)">
+                      {{c.name}}
+                      <mat-icon matChipRemove *ngIf="removable1">cancel</mat-icon>
+                    </mat-chip>
+                    <input placeholder="¿Que contiene?"
+                            [matChipInputFor]="chipList1"
+                            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                            [matChipInputAddOnBlur]="addOnBlur1"
+                            (matChipInputTokenEnd)="addContain($event)">
+                  </mat-chip-list>
+                </mat-form-field>
+              </div>
+
+              <div fxFlex="1 0 auto" fxLayout="row" class="form-grupper">
+                <mat-form-field class="example-chip-list">
+                  <mat-chip-list #chipList2>
+                    <mat-chip *ngFor="let t of type" [selectable]="selectable2"
+                              [removable]="removable2" (removed)="removeType(t)">
+                      {{t.name}}
+                      <mat-icon matChipRemove *ngIf="removable2">cancel</mat-icon>
+                    </mat-chip>
+                    <input placeholder="¿Tipos de contenido?"
+                            [matChipInputFor]="chipList2"
+                            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                            [matChipInputAddOnBlur]="addOnBlur2"
+                            (matChipInputTokenEnd)="addType($event)">
+                  </mat-chip-list>
+                </mat-form-field>
+              </div>
+
+              <div fxFlex="1 0 auto" fxLayout="row" class="form-grupper">
+                <h4>Añadir extra: </h4>
+                <ul *ngFor="let ex of extra" class="reset-list">
+                  <li><strong>{{ex.price}}</strong> {{ex.name}}</li>
+                </ul>
+                <button mat-mini-fab color="primary" (click)="openDialog()">+</button>
+              </div>
+
+              <div fxFlex="1 0 auto" fxLayout="row" class="form-grupper">
+                <input type="file" (change)="onFilePick($event)"/>
+              </div>
+              <div fxFlex="1 0 auto" fxLayout="row" class="form-grupper">
+                <lib-cropper [imageFile]="fileInput" [options]="options" (fail)="onFail($event)" (fileChange)="onFileChange($event)"></lib-cropper>
               </div>
 
               <div fxFlex="1 0 auto" fxLayout="row" class="form-grupper">

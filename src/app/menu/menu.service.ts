@@ -28,6 +28,15 @@ export class MenuService {
   }
 
   /** GET users from the server */
+  getCategoryMenu (): Observable<Category[]> {
+    return this.http.get<Category[]>(this.c_menuUrl)
+      .pipe(
+        tap(_ => console.log('getCategoryMenu')),
+        catchError(this.handleError('getCategoryMenu', []))
+      )
+  }
+
+  /** GET users from the server */
   getMenus (): Observable<Menu[]> {
     return this.http.get<Menu[]>(this.menuUrl)
       .pipe(
