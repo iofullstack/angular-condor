@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { MenuService } from '../menu.service'
+import { Menu } from '../menu'
+import { MatTabChangeEvent } from '@angular/material'
 
 @Component({
   selector: 'app-add-price',
@@ -7,6 +9,7 @@ import { MenuService } from '../menu.service'
   styleUrls: ['./add-price.component.scss']
 })
 export class AddPriceComponent implements OnInit {
+  dataSource: Menu[]
 
   constructor(
     private menuService: MenuService
@@ -14,13 +17,13 @@ export class AddPriceComponent implements OnInit {
 
   ngOnInit() {
     this.getMenuNonePrice()
-    this.getMenus()
   }
 
   getMenuNonePrice(): void {
     this.menuService.getMenuNonePrice()
         .subscribe(response => {
           console.log(response)
+          this.dataSource = response
         })
   }
 
@@ -28,7 +31,18 @@ export class AddPriceComponent implements OnInit {
     this.menuService.getMenus()
         .subscribe(response => {
           console.log(response)
+          this.dataSource = response
         })
+  }
+
+  onLinkClick(event: MatTabChangeEvent) {
+    // console.log('event => ', event);
+    // console.log('index => ', event.index);
+    // console.log('tab => ', event.tab);
+    if (event.index == 0)
+      this.getMenuNonePrice()
+    if (event.index == 1)
+      this.getMenus()
   }
 
 }
