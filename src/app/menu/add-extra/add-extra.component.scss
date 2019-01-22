@@ -1,0 +1,44 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+}
+
+.example-right-align {
+  text-align: right;
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.example-right-align {
+  -moz-appearance: textfield;
+}
+
+.form-grupper{
+  flex: 1 0 auto;
+  box-sizing: border-box;
+  flex-direction: row;
+  display: flex;
+  place-content: center flex-start;
+  align-items: center;
+}
+.form-grupper-item{
+  flex: 1 1 100%;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.form-grupper-short {
+  width: 70px;
+  margin-right: 15px;
+}
+
+.line-block {
+  display: inline-block;
+}

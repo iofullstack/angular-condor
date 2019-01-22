@@ -22,6 +22,10 @@ const routes: Routes = [
     loadChildren: './user/user.module#UserModule'
   },
   {
+    path        : 'menu',
+    loadChildren: './menu/menu.module#MenuModule'
+  },
+  {
     path        : 'orden',
     loadChildren: './order/order.module#OrderModule'
   }

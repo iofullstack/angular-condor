@@ -1,63 +1,75 @@
 <section class="container grid-caja" style="margin: 2em auto;">
   <article class="sec-1">
     <div class="ms mesa2 mesa-9">
-      <div class="ms-number" (click)="resetTable(dataSource[8]._id)">9</div>
+      <div class="ms-number" (click)="viewOrders(dataSource[8]._id)">9</div>
       <div class="ms-cap-3" (click)="onSelect(dataSource[8]._id)"><span>{{ dataSource[8].occupied }}</span>/6</div>
     </div>
     <div class="ms ms-redonda mesa-8">
-      <div class="ms-number" (click)="resetTable(dataSource[7]._id)">8</div>
+      <div class="ms-number" (click)="viewOrders(dataSource[7]._id)">8</div>
       <div class="ms-cap-2" (click)="onSelect(dataSource[7]._id)"><span>{{ dataSource[7].occupied }}</span>/6</div>
     </div>
     <div class="ms mesa2 mesa-7">
-      <div class="ms-number" (click)="resetTable(dataSource[6]._id)">7</div>
+      <div class="ms-number" (click)="viewOrders(dataSource[6]._id)">7</div>
       <div class="ms-cap-3" (click)="onSelect(dataSource[6]._id)"><span>{{ dataSource[6].occupied }}</span>/4</div>
     </div>
     <div class="ms mesa2 mesa-10">
-      <div class="ms-number" (click)="resetTable(dataSource[9]._id)">10</div>
+      <div class="ms-number" (click)="viewOrders(dataSource[9]._id)">10</div>
       <div class="ms-cap-3" (click)="onSelect(dataSource[9]._id)"><span>{{ dataSource[9].occupied }}</span>/2</div>
     </div>
     <div class="ms mesa2 mesa-13">
-      <div class="ms-number" (click)="resetTable(dataSource[12]._id)">13</div>
+      <div class="ms-number" (click)="viewOrders(dataSource[12]._id)">13</div>
       <div class="ms-cap-3" (click)="onSelect(dataSource[12]._id)"><span>{{ dataSource[12].occupied }}</span>/4</div>
     </div>
     <div class="ms mesa2 mesa-11">
-      <div class="ms-number" (click)="resetTable(dataSource[10]._id)">11</div>
+      <div class="ms-number" (click)="viewOrders(dataSource[10]._id)">11</div>
       <div class="ms-cap-3" (click)="onSelect(dataSource[10]._id)"><span>{{ dataSource[10].occupied }}</span>/6</div>
     </div>
     <div class="ms mesa2 mesa-12">
-      <div class="ms-number" (click)="resetTable(dataSource[11]._id)">12</div>
+      <div class="ms-number" (click)="viewOrders(dataSource[11]._id)">12</div>
       <div class="ms-cap-3" (click)="onSelect(dataSource[11]._id)"><span>{{ dataSource[11].occupied }}</span>/4</div>
     </div>
   </article>
   <article class="sec-2">
     <div class="ms mesa1 mesa-4">
-      <div class="ms-number" (click)="resetTable(dataSource[3]._id)">4</div>
+      <div class="ms-number" (click)="viewOrders(dataSource[3]._id)">4</div>
       <div class="ms-cap-1" (click)="onSelect(dataSource[3]._id)"><span>{{ dataSource[3].occupied }}</span>/4</div>
     </div>
     <div class="ms ms-redonda mesa-6">
-      <div class="ms-number" (click)="resetTable(dataSource[5]._id)">6</div>
+      <div class="ms-number" (click)="viewOrders(dataSource[5]._id)">6</div>
       <div class="ms-cap-2" (click)="onSelect(dataSource[5]._id)"><span>{{ dataSource[5].occupied }}</span>/6</div>
     </div>
     <div class="ms mesa1 mesa-3">
-      <div class="ms-number" (click)="resetTable(dataSource[2]._id)">3</div>
+      <div class="ms-number" (click)="viewOrders(dataSource[2]._id)">3</div>
       <div class="ms-cap-1" (click)="onSelect(dataSource[2]._id)"><span>{{ dataSource[2].occupied }}</span>/4</div>
     </div>
     <div class="ms mesa1 mesa-5">
-      <div class="ms-number" (click)="resetTable(dataSource[4]._id)">5</div>
+      <div class="ms-number" (click)="viewOrders(dataSource[4]._id)">5</div>
       <div class="ms-cap-1" (click)="onSelect(dataSource[4]._id)"><span>{{ dataSource[4].occupied }}</span>/4</div>
     </div>
     <div class="ms mesa1 mesa-2">
-      <div class="ms-number" (click)="resetTable(dataSource[1]._id)">2</div>
+      <div class="ms-number" (click)="viewOrders(dataSource[1]._id)">2</div>
       <div class="ms-cap-1" (click)="onSelect(dataSource[1]._id)"><span>{{ dataSource[1].occupied }}</span>/4</div>
     </div>
     <div class="bar-2">
-      <div class="silla-v bar-item-1" (click)="onSelect(dataSource[28]._id)">{{ dataSource[28].occupied }}</div>
+      <div class="ms">
+        <div class="s-number" (click)="viewOrders(dataSource[28]._id)">1</div>
+        <div class="silla-v bar-item-1" (click)="onSelect(dataSource[28]._id)">{{ dataSource[28].occupied }}</div>
+      </div>
       <div class="ms bar bar-item-2" (click)="resetBarra(dataSource[28]._id, dataSource[29]._id, dataSource[30]._id, dataSource[31]._id)">
         <h3>BARRA 2</h3>
       </div>
-      <div class="silla-v bar-item-3" (click)="onSelect(dataSource[29]._id)">{{ dataSource[29].occupied }}</div>
-      <div class="silla-v bar-item-4" (click)="onSelect(dataSource[30]._id)">{{ dataSource[30].occupied }}</div>
-      <div class="silla-v bar-item-5" (click)="onSelect(dataSource[31]._id)">{{ dataSource[31].occupied }}</div>
+      <div class="ms">
+        <div class="s-number" (click)="viewOrders(dataSource[29]._id)">2</div>
+        <div class="silla-v bar-item-3" (click)="onSelect(dataSource[29]._id)">{{ dataSource[29].occupied }}</div>
+      </div>
+      <div class="ms">
+        <div class="s-number" (click)="viewOrders(dataSource[30]._id)">3</div>
+        <div class="silla-v bar-item-4" (click)="onSelect(dataSource[30]._id)">{{ dataSource[30].occupied }}</div>
+      </div>
+      <div class="ms">
+        <div class="s-number" (click)="viewOrders(dataSource[31]._id)">4</div>
+        <div class="silla-v bar-item-5" (click)="onSelect(dataSource[31]._id)">{{ dataSource[31].occupied }}</div>
+      </div>
     </div>
     <div class="ms mesa1 mesa-1">
       <div class="ms-number" (click)="viewOrders(dataSource[0]._id)">1</div>
@@ -66,51 +78,60 @@
   </article>
   <article class="sec-3">
     <div class="ms patio patio-6">
-      <div class="ms-number" (click)="resetTable(dataSource[18]._id)">P6</div>
+      <div class="ms-number" (click)="viewOrders(dataSource[18]._id)">P6</div>
       <div class="ms-cap-4" (click)="onSelect(dataSource[18]._id)"><span>{{ dataSource[18].occupied }}</span>/4</div>
     </div>
     <div class="ms patio patio-1">
-      <div class="ms-number" (click)="resetTable(dataSource[13]._id)">P1</div>
+      <div class="ms-number" (click)="viewOrders(dataSource[13]._id)">P1</div>
       <div class="ms-cap-4" (click)="onSelect(dataSource[13]._id)"><span>{{ dataSource[13].occupied }}</span>/4</div>
     </div>
     <div class="ms patio patio-7">
-      <div class="ms-number" (click)="resetTable(dataSource[19]._id)">P7</div>
+      <div class="ms-number" (click)="viewOrders(dataSource[19]._id)">P7</div>
       <div class="ms-cap-4" (click)="onSelect(dataSource[19]._id)"><span>{{ dataSource[19].occupied }}</span>/4</div>
     </div>
     <div class="ms patio patio-2">
-      <div class="ms-number" (click)="resetTable(dataSource[14]._id)">P2</div>
+      <div class="ms-number" (click)="viewOrders(dataSource[14]._id)">P2</div>
       <div class="ms-cap-4" (click)="onSelect(dataSource[14]._id)"><span>{{ dataSource[14].occupied }}</span>/4</div>
     </div>
     <div class="ms patio patio-8">
-      <div class="ms-number" (click)="resetTable(dataSource[20]._id)">P8</div>
+      <div class="ms-number" (click)="viewOrders(dataSource[20]._id)">P8</div>
       <div class="ms-cap-4" (click)="onSelect(dataSource[20]._id)"><span>{{ dataSource[20].occupied }}</span>/4</div>
     </div>
     <div class="ms patio patio-3">
-      <div class="ms-number" (click)="resetTable(dataSource[15]._id)">P3</div>
+      <div class="ms-number" (click)="viewOrders(dataSource[15]._id)">P3</div>
       <div class="ms-cap-4" (click)="onSelect(dataSource[15]._id)"><span>{{ dataSource[15].occupied }}</span>/4</div>
     </div>
     <div class="ms patio patio-9">
-      <div class="ms-number" (click)="resetTable(dataSource[21]._id)">P9</div>
+      <div class="ms-number" (click)="viewOrders(dataSource[21]._id)">P9</div>
       <div class="ms-cap-4" (click)="onSelect(dataSource[21]._id)"><span>{{ dataSource[21].occupied }}</span>/4</div>
     </div>
     <div class="ms patio patio-4">
-      <div class="ms-number" (click)="resetTable(dataSource[16]._id)">P4</div>
+      <div class="ms-number" (click)="viewOrders(dataSource[16]._id)">P4</div>
       <div class="ms-cap-4" (click)="onSelect(dataSource[16]._id)"><span>{{ dataSource[16].occupied }}</span>/4</div>
     </div>
     <div class="ms patio patio-10">
-      <div class="ms-number" (click)="resetTable(dataSource[22]._id)">P10</div>
+      <div class="ms-number" (click)="viewOrders(dataSource[22]._id)">P10</div>
       <div class="ms-cap-4" (click)="onSelect(dataSource[22]._id)"><span>{{ dataSource[22].occupied }}</span>/4</div>
     </div>
     <div class="ms patio patio-5">
-      <div class="ms-number" (click)="resetTable(dataSource[17]._id)">P5</div>
+      <div class="ms-number" (click)="viewOrders(dataSource[17]._id)">P5</div>
       <div class="ms-cap-4" (click)="onSelect(dataSource[17]._id)"><span>{{ dataSource[17].occupied }}</span>/4</div>
     </div>
   </article>
   <article class="sec-4">
     <div class="sillas">
-      <div class="silla-h bar-item-6" (click)="onSelect(dataSource[32]._id)">{{ dataSource[32].occupied }}</div>
-      <div class="silla-h bar-item-7" (click)="onSelect(dataSource[33]._id)">{{ dataSource[33].occupied }}</div>
-      <div class="silla-h bar-item-8" (click)="onSelect(dataSource[34]._id)">{{ dataSource[34].occupied }}</div>
+      <div class="ms">
+        <div class="s-number" (click)="viewOrders(dataSource[32]._id)">5</div>
+        <div class="silla-h bar-item-6" (click)="onSelect(dataSource[32]._id)">{{ dataSource[32].occupied }}</div>
+      </div>
+      <div class="ms">
+        <div class="s-number" (click)="viewOrders(dataSource[33]._id)">6</div>
+        <div class="silla-h bar-item-7" (click)="onSelect(dataSource[33]._id)">{{ dataSource[33].occupied }}</div>
+      </div>
+      <div class="ms">
+        <div class="s-number" (click)="viewOrders(dataSource[34]._id)">7</div>
+        <div class="silla-h bar-item-8" (click)="onSelect(dataSource[34]._id)">{{ dataSource[34].occupied }}</div>
+      </div>
       <!-- <div class="silla-h"></div> -->
       <!-- <div class="silla-h"></div> -->
     </div>
@@ -143,8 +164,6 @@
     <div class="detail-cj">
       <div class="description">
         <p>
-          Para limpiar las mesas no te olvides en hacer click en el número de mesa.
-          <br>
           Si hace click en BARRA 1, o BARRA 2, las sillas vuelven a 0.
         </p>
       </div>
@@ -152,23 +171,23 @@
   </article>
   <article class="sec-5">
     <div class="ms ms-extra ms-extra-1">
-      <div class="ms-number" (click)="resetTable(dataSource[23]._id)">X1</div>
+      <div class="ms-number" (click)="viewOrders(dataSource[23]._id)">X1</div>
       <div class="ms-cap-x" (click)="onSelect(dataSource[23]._id)"><span>{{ dataSource[23].occupied }}</span>/4</div>
     </div>
     <div class="ms ms-extra ms-extra-2">
-      <div class="ms-number" (click)="resetTable(dataSource[24]._id)">X2</div>
+      <div class="ms-number" (click)="viewOrders(dataSource[24]._id)">X2</div>
       <div class="ms-cap-x" (click)="onSelect(dataSource[24]._id)"><span>{{ dataSource[24].occupied }}</span>/4</div>
     </div>
     <div class="ms ms-extra ms-extra-3">
-      <div class="ms-number" (click)="resetTable(dataSource[25]._id)">X3</div>
+      <div class="ms-number" (click)="viewOrders(dataSource[25]._id)">X3</div>
       <div class="ms-cap-x" (click)="onSelect(dataSource[25]._id)"><span>{{ dataSource[25].occupied }}</span>/4</div>
     </div>
     <div class="ms ms-extra ms-extra-4">
-      <div class="ms-number" (click)="resetTable(dataSource[26]._id)">X4</div>
+      <div class="ms-number" (click)="viewOrders(dataSource[26]._id)">X4</div>
       <div class="ms-cap-x" (click)="onSelect(dataSource[26]._id)"><span>{{ dataSource[26].occupied }}</span>/4</div>
     </div>
     <div class="ms ms-extra ms-extra-5">
-      <div class="ms-number" (click)="resetTable(dataSource[27]._id)">X5</div>
+      <div class="ms-number" (click)="viewOrders(dataSource[27]._id)">X5</div>
       <div class="ms-cap-x" (click)="onSelect(dataSource[27]._id)"><span>{{ dataSource[27].occupied }}</span>/4</div>
     </div>
   </article>

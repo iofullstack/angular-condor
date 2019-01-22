@@ -22,7 +22,6 @@ export class ClientService {
     private http: HttpClient
   ) {
     this.clientsUrl = urljoin(environment.apiUrl, 'clients')
-    console.log('La verga joder: ', environment.apiUrl)
   }
 
   /** GET users from the server */

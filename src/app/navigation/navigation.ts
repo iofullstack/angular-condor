@@ -49,6 +49,41 @@ export const navigation: FuseNavigation[] = [
               ]
             },
             {
+              id       : 'menu',
+              title    : 'Menu',
+              type     : 'collapsable',
+              children: [
+                {
+                  id       : 'c0',
+                  title    : 'Agregar Categoría',
+                  type     : 'item',
+                  icon     : 'user',
+                  url      : '/menu/categoria'
+                },
+                {
+                  id       : 'c1',
+                  title    : 'Agregar menú',
+                  type     : 'item',
+                  icon     : 'user',
+                  url      : '/menu/registrar'
+                },
+                // {
+                //   id       : 'c2',
+                //   title    : 'Agregar precios',
+                //   type     : 'item',
+                //   icon     : 'user',
+                //   url      : '/menu/precios'
+                // },
+                // {
+                //   id       : 'c3',
+                //   title    : 'Listar menú',
+                //   type     : 'item',
+                //   icon     : 'user',
+                //   url      : '/menu/listar'
+                // }
+              ]
+            },
+            {
               id       : 'mesas',
               title    : 'Tomar Pedido',
               type     : 'collapsable',

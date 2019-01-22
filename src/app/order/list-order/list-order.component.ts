@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, Input } from '@angular/core'
 import { Order } from '../order'
 import { OrderService } from '../order.service'
 import { MatDialog } from '@angular/material'
@@ -13,19 +13,32 @@ import swal from 'sweetalert2'
 })
 export class ListOrderComponent implements OnInit {
   orders: Order[]
+  @Input() idTable: string
 
   constructor(
     public dialog: MatDialog,
     private orderService: OrderService) { }
 
   ngOnInit() {
-    this.getOrder()
+    if (this.idTable)
+      this.getOrderTable(this.idTable)
+    else
+      this.getOrder()
+  }
+
+  getOrderTable(id): void {
+    this.orderService.getOrderTable(id)
+        .subscribe(orders => {
+          this.orders = orders
+          console.log(this.orders)
+        })
   }
 
   getOrder(): void {
     this.orderService.getOrder()
         .subscribe(orders => {
           this.orders = orders
+          console.log(this.orders)
         })
   }
 
@@ -82,7 +95,10 @@ export class ListOrderComponent implements OnInit {
               res.message,
               'success'
             )
-            this.getOrder()
+            if (this.idTable)
+              this.getOrderTable(this.idTable)
+            else
+              this.getOrder()
           }
         })
       }

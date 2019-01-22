@@ -30,17 +30,5 @@ export class ListComponent implements OnInit {
         .subscribe(clients => {
           this.dataSource = clients
         })
-    this.socket
-      .getMessage()
-      .subscribe(
-        msg => {
-          this.msg1 = `Msg on port 8988: ${msg.msg}`
-          console.log(this.msg1)
-        }
-      )
-  }
-
-  sendMsg1(msg) {
-    this.socket.sendMessage(msg);
   }
 }

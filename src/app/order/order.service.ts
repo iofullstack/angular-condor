@@ -77,6 +77,15 @@ export class OrderService {
       )
   }
 
+  /** GET all order from the server */
+  getOrderTable (id): Observable<Order[]> {
+    return this.http.get<Order[]>(urljoin(this.orderUrl, 'today', 'table', id))
+      .pipe(
+        tap(_ => console.log('Find All Orders match Table')),
+        catchError(this.handleError('getOrderTable', []))
+      )
+  }
+
   /** GET order by id. Return `undefined` when id not found */
   getOrderIdNo404<Data>(id: string): Observable<Order> {
     const url = `${this.orderUrl}/?id=${id}`

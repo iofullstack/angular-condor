@@ -16,6 +16,7 @@ import { CuentaComponent } from './cuenta/cuenta.component'
 import { PaymentComponent } from './payment/payment.component'
 import { DetailBoxComponent } from './detail-box/detail-box.component'
 import { ReportComponent } from './report/report.component'
+import { ListOrderTableComponent } from './list-order-table/list-order-table.component'
 
 const components = [
   TablesComponent,
@@ -25,7 +26,8 @@ const components = [
   CuentaComponent,
   PaymentComponent,
   DetailBoxComponent,
-  ReportComponent
+  ReportComponent,
+  ListOrderTableComponent
 ]
 
 @NgModule({
@@ -43,7 +45,7 @@ const components = [
     PaymentComponent,
     DetailBoxComponent,
     ReportComponent,
-    ListOrderComponent
+    ListOrderTableComponent
   ],
   exports: components
 })
