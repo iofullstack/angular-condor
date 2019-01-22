@@ -51,13 +51,25 @@
       <div class="ms-cap-1" (click)="onSelect(dataSource[1]._id)"><span>{{ dataSource[1].occupied }}</span>/4</div>
     </div>
     <div class="bar-2">
-      <div class="silla-v bar-item-1" (click)="onSelect(dataSource[28]._id)">{{ dataSource[28].occupied }}</div>
+      <div class="ms">
+        <div class="s-number" (click)="viewOrders(dataSource[28]._id)">1</div>
+        <div class="silla-v bar-item-1" (click)="onSelect(dataSource[28]._id)">{{ dataSource[28].occupied }}</div>
+      </div>
       <div class="ms bar bar-item-2" (click)="resetBarra(dataSource[28]._id, dataSource[29]._id, dataSource[30]._id, dataSource[31]._id)">
         <h3>BARRA 2</h3>
       </div>
-      <div class="silla-v bar-item-3" (click)="onSelect(dataSource[29]._id)">{{ dataSource[29].occupied }}</div>
-      <div class="silla-v bar-item-4" (click)="onSelect(dataSource[30]._id)">{{ dataSource[30].occupied }}</div>
-      <div class="silla-v bar-item-5" (click)="onSelect(dataSource[31]._id)">{{ dataSource[31].occupied }}</div>
+      <div class="ms">
+        <div class="s-number" (click)="viewOrders(dataSource[29]._id)">2</div>
+        <div class="silla-v bar-item-3" (click)="onSelect(dataSource[29]._id)">{{ dataSource[29].occupied }}</div>
+      </div>
+      <div class="ms">
+        <div class="s-number" (click)="viewOrders(dataSource[30]._id)">3</div>
+        <div class="silla-v bar-item-4" (click)="onSelect(dataSource[30]._id)">{{ dataSource[30].occupied }}</div>
+      </div>
+      <div class="ms">
+        <div class="s-number" (click)="viewOrders(dataSource[31]._id)">4</div>
+        <div class="silla-v bar-item-5" (click)="onSelect(dataSource[31]._id)">{{ dataSource[31].occupied }}</div>
+      </div>
     </div>
     <div class="ms mesa1 mesa-1">
       <div class="ms-number" (click)="viewOrders(dataSource[0]._id)">1</div>
@@ -108,9 +120,18 @@
   </article>
   <article class="sec-4">
     <div class="sillas">
-      <div class="silla-h bar-item-6" (click)="onSelect(dataSource[32]._id)">{{ dataSource[32].occupied }}</div>
-      <div class="silla-h bar-item-7" (click)="onSelect(dataSource[33]._id)">{{ dataSource[33].occupied }}</div>
-      <div class="silla-h bar-item-8" (click)="onSelect(dataSource[34]._id)">{{ dataSource[34].occupied }}</div>
+      <div class="ms">
+        <div class="s-number" (click)="viewOrders(dataSource[32]._id)">5</div>
+        <div class="silla-h bar-item-6" (click)="onSelect(dataSource[32]._id)">{{ dataSource[32].occupied }}</div>
+      </div>
+      <div class="ms">
+        <div class="s-number" (click)="viewOrders(dataSource[33]._id)">6</div>
+        <div class="silla-h bar-item-7" (click)="onSelect(dataSource[33]._id)">{{ dataSource[33].occupied }}</div>
+      </div>
+      <div class="ms">
+        <div class="s-number" (click)="viewOrders(dataSource[34]._id)">7</div>
+        <div class="silla-h bar-item-8" (click)="onSelect(dataSource[34]._id)">{{ dataSource[34].occupied }}</div>
+      </div>
       <!-- <div class="silla-h"></div> -->
       <!-- <div class="silla-h"></div> -->
     </div>
@@ -143,8 +164,6 @@
     <div class="detail-cj">
       <div class="description">
         <p>
-          Para limpiar las mesas no te olvides en hacer click en el número de mesa.
-          <br>
           Si hace click en BARRA 1, o BARRA 2, las sillas vuelven a 0.
         </p>
       </div>
