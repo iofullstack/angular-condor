@@ -6,6 +6,8 @@ export class Menu {
   type: any[]
   extra: any[]
   image: string
+  prices?: any[]
+  _id?: string
 
   constructor(
     category: string,

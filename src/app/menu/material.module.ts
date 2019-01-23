@@ -9,7 +9,8 @@ import {
   MatSelectModule,
   MatDialogModule,
   MatCardModule,
-  MatTabsModule
+  MatTabsModule,
+  MatTableModule
 } from '@angular/material'
 
 const modules = [
@@ -21,7 +22,8 @@ const modules = [
   MatSelectModule,
   MatDialogModule,
   MatCardModule,
-  MatTabsModule
+  MatTabsModule,
+  MatTableModule
 ]
 
 @NgModule({
