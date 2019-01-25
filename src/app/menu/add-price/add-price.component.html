@@ -1,17 +1,51 @@
-<div class="list-menu">
-  <mat-card class="example-card menus">
-    <mat-card-header>
-      <mat-card-title>codigo</mat-card-title>
-      <mat-card-subtitle>Nombre del menú</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <p>
-        Contenido del menú
-      </p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
-    </mat-card-actions>
-  </mat-card>
-</div>
+<mat-tab-group style="width: 100%;" (selectedTabChange)="onLinkClick($event)">
+    <mat-tab label="Sin precios">
+        <div class="list-menu">
+            <div class="menus">
+                <mat-card class="example-card" *ngFor="let m of dataSource">
+                    <mat-card-header>
+                        <mat-card-title>{{ m.code }} </mat-card-title>
+                        <mat-card-subtitle>{{ m.name }} </mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <mat-chip-list #chipList>
+                            <mat-chip *ngFor="let p of m.prices" [selectable]="selectable"
+                                        [removable]="removable" (removed)="remove(m, p)">
+                                        <strong>${{ p.amount }}</strong>&nbsp;- {{ p.name }}
+                                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                            </mat-chip>
+                        </mat-chip-list>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-button (click)="openDialog(m)">Precio</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+    </mat-tab>
+    <mat-tab label="Todos">
+        <div class="list-menu">
+            <div class="menus">
+                <mat-card class="example-card" *ngFor="let m of dataSource">
+                    <mat-card-header>
+                        <mat-card-title>{{ m.code }} </mat-card-title>
+                        <mat-card-subtitle>{{ m.name }} </mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <mat-chip-list #chipList>
+                            <mat-chip *ngFor="let p of m.prices" [selectable]="selectable"
+                                        [removable]="removable" (removed)="remove(m, p)">
+                                        <strong>${{ p.amount }}</strong>&nbsp;- {{ p.name }}
+                                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                            </mat-chip>
+                        </mat-chip-list>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-button (click)="openDialog(m)">Precio</button>
+                        <button mat-button>Descuento</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+    </mat-tab>
+</mat-tab-group>

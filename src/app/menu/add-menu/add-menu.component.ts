@@ -45,7 +45,7 @@ export class AddMenuComponent implements OnInit {
   name: string
 
   public fileInput: File = null
-  public dataImage: any
+  public dataImage: any = ''
   // Config for cropper.js (see official cropper.js repo for complete list of available options)
   public options = {
     minCropWidth: 100, // Implemented in wrapper (not supported in cropper.js)
@@ -159,6 +159,7 @@ export class AddMenuComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
+    console.log(this.dataImage)
     const m = new Menu (
       form.value.category,
       form.value.code,

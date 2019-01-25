@@ -12,6 +12,8 @@ import { MenuService } from '../menu.service'
   styleUrls: ['./add-category.component.scss']
 })
 export class AddCategoryComponent implements OnInit {
+  displayedColumns: string[] = ['position', 'name', 'weight']
+  dataSource: Category[]
 
   constructor(
     private menuService: MenuService,
@@ -19,6 +21,15 @@ export class AddCategoryComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getCategory()
+  }
+
+  getCategory() {
+    this.menuService.getCategoryMenu().subscribe(
+      (response) => {
+        this.dataSource = response
+      }
+    )
   }
 
   onSubmit(form: NgForm) {
@@ -30,13 +41,15 @@ export class AddCategoryComponent implements OnInit {
     this.menuService.addCategoryMenu(c)
         .subscribe(
           (response) => {
-            if(response)
+            if(response) {
               swal({
                 type: 'success',
                 title: 'Cagetoría guardada correctamente',
                 showConfirmButton: false,
                 timer: 1800
               })
+              this.getCategory()
+            }
           }
         )
     form.resetForm();

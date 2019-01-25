@@ -8,6 +8,7 @@ import { environment } from '../../environments/environment'
 
 import { Menu } from './menu'
 import { Category } from './category'
+import { Price } from './price'
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -69,6 +70,23 @@ export class MenuService {
     return this.http.post<Category | any> (this.c_menuUrl, body, httpOptions).pipe(
       tap((c_menu: Category) => console.log(c_menu)),
       catchError(this.handleError<Category> ('addCategoryMenu'))
+    )
+  }
+
+  /** POST: add a new price to the server */
+  addPriceMenu (menu: Menu, price: Price): Observable<Price>  {
+    const body = JSON.stringify(price)
+    return this.http.post<Price | any> ( urljoin(this.menuUrl, menu._id, 'price') , body, httpOptions).pipe(
+      tap((_) => console.log('addPriceMenu')),
+      catchError(this.handleError<Price> ('addPriceMenu'))
+    )
+  }
+
+  /** DELETE: price to the server */
+  deletePriceMenu (menu:Menu, price: Price): Observable<Price>  {
+    return this.http.delete<Price | any> ( urljoin(this.menuUrl, menu._id, 'price', price._id), httpOptions).pipe(
+      tap((response) => console.log(response)),
+      catchError(this.handleError<Price> ('deletePriceMenu'))
     )
   }
 
