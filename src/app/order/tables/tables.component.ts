@@ -103,9 +103,12 @@ export class TablesComponent implements OnInit {
   }
 
   viewOrders(_id): void {
-    this.dialog.open(ListOrderTableComponent, {
+    let dialogRef = this.dialog.open(ListOrderTableComponent, {
       width: '80%',
       data: _id
+    })
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result)
     })
   }
 

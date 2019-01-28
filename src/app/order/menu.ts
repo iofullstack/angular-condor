@@ -5,6 +5,7 @@ export interface Menu {
   extra: any[],
   type: any[],
   price: number,
+  priceVisible: number,
   prices: [
     {
       name: string,
@@ -13,6 +14,14 @@ export interface Menu {
       selected: boolean
     }
   ],
+  discounts: [
+    {
+      percent: number
+      createdAt: Date,
+      selected: boolean
+    }
+  ],
   count: number,
-  selected: boolean
+  selected: boolean,
+  quantity?: number
 }

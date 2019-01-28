@@ -17,6 +17,7 @@ import { PaymentComponent } from './payment/payment.component'
 import { DetailBoxComponent } from './detail-box/detail-box.component'
 import { ReportComponent } from './report/report.component'
 import { ListOrderTableComponent } from './list-order-table/list-order-table.component'
+import { ClientCiComponent } from './client-ci/client-ci.component'
 
 const components = [
   TablesComponent,
@@ -27,7 +28,8 @@ const components = [
   PaymentComponent,
   DetailBoxComponent,
   ReportComponent,
-  ListOrderTableComponent
+  ListOrderTableComponent,
+  ClientCiComponent
 ]
 
 @NgModule({
@@ -41,6 +43,7 @@ const components = [
     RoutingModule
   ],
   entryComponents: [
+    ClientCiComponent,
     CuentaComponent,
     PaymentComponent,
     DetailBoxComponent,

@@ -25,7 +25,7 @@
           </div>
 
           <!-- SEARCH -->
-          <div class="search-input-wrapper ml-sm-16"
+          <!-- <div class="search-input-wrapper ml-sm-16"
               fxFlex="1 0 auto"
               fxLayout="row"
               fxLayoutAlign="start center"
@@ -41,7 +41,7 @@
               >
                   <input id="search" matInput placeholder="Buscar...">
               </mat-form-field>
-          </div>
+          </div> -->
 
           <button mat-raised-button
                     [routerLink]="'/clientes/registrar'"
@@ -102,7 +102,7 @@
               <mat-row *matRowDef="let client; columns: displayedColumns;"
                        class="order"
                        matRipple
-                       [routerLink]="'/detail/'+client.nit_passport">
+                       ><!--  [routerLink]="'/detail/'+client.nit_passport" -->
               </mat-row>
 
           </mat-table>

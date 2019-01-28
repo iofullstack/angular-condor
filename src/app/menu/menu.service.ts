@@ -9,6 +9,7 @@ import { environment } from '../../environments/environment'
 import { Menu } from './menu'
 import { Category } from './category'
 import { Price } from './price'
+import { Discount } from './discount'
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -77,16 +78,31 @@ export class MenuService {
   addPriceMenu (menu: Menu, price: Price): Observable<Price>  {
     const body = JSON.stringify(price)
     return this.http.post<Price | any> ( urljoin(this.menuUrl, menu._id, 'price') , body, httpOptions).pipe(
-      tap((_) => console.log('addPriceMenu')),
+      tap((_) => console.log(_)),
       catchError(this.handleError<Price> ('addPriceMenu'))
+    )
+  }
+  /** POST: add a new discount to the server */
+  addDiscountMenu (menu: Menu, discount: Discount): Observable<Discount>  {
+    const body = JSON.stringify(discount)
+    return this.http.post<Discount | any> ( urljoin(this.menuUrl, menu._id, 'discount') , body, httpOptions).pipe(
+      tap((_) => console.log(_)),
+      catchError(this.handleError<Price> ('addDiscountMenu'))
     )
   }
 
   /** DELETE: price to the server */
   deletePriceMenu (menu:Menu, price: Price): Observable<Price>  {
     return this.http.delete<Price | any> ( urljoin(this.menuUrl, menu._id, 'price', price._id), httpOptions).pipe(
-      tap((response) => console.log(response)),
+      tap((_) => console.log(_)),
       catchError(this.handleError<Price> ('deletePriceMenu'))
+    )
+  }
+
+  deleteDiscountMenu (menu:Menu, discount: Discount): Observable<Discount>  {
+    return this.http.delete<Discount | any> ( urljoin(this.menuUrl, menu._id, 'discount', discount._id), httpOptions).pipe(
+      tap((_) => console.log(_)),
+      catchError(this.handleError<Price> ('deleteDiscountMenu'))
     )
   }
 

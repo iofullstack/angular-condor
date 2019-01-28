@@ -202,12 +202,21 @@
   grid-area: action;
   text-align: center;
   margin: auto;
+  position: relative;
 }
 .waiter-action .waiter-count i {
   padding: 0;
   cursor: pointer;
   font-size: 4.4em;
   font-weight: bold;
+}
+.waiter-action .waiter-quantity {
+  font-size: 1.4em;
+  font-weight: bold;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  right: 50%;
 }
 // .waiter-action span i {
 //   cursor: pointer;

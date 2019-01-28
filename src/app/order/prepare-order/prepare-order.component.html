@@ -11,7 +11,7 @@
             <h1 class="form-title form-title-pedido">
               Realizar Pedido
             </h1>
-          </div>         
+          </div>
         </div>
 
         <!-- mesas -->
@@ -113,12 +113,12 @@
           <section class="waiter-item">
               <div class="waiter-badge">
                 <figure [className]="menu.selected ? 'waiter-icon-select' : ''">
-                  <img [src]="'./assets/img/menu.png'" alt="">
+                  <img [src]="'../img/menu/'+menu.src" alt="">
                 </figure>
               </div>
               <div class="waiter-title">
                 <h3>{{ menu.name }} </h3>
-                <span>Total: {{menu.price}}</span>
+                <span>Total: {{menu.priceVisible}}</span>
               </div>
               <div class="waiter-detail">
                   <mat-chip-list *ngIf="menu.contain.length > 0">
@@ -147,6 +147,7 @@
                   <i class="icon-chevron-up" (click)="pedido(indexProduct)"></i>
                 </span> -->
                 <span class="waiter-count" (click)="pedido(indexProduct)"><i class="icon-check"></i></span>
+                <div class="waiter-quantity">{{ menu.quantity }}</div>
                 <!-- <span>
                   <i class="icon-chevron-down" (click)="removeCount(indexProduct)"></i>
                 </span> -->
@@ -159,6 +160,9 @@
               <div class="waiter-price">
                 <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style">
                   <mat-button-toggle *ngFor="let price of menu.prices; index as indexPrice" (click)="togglePriceProduct(indexProduct,indexPrice)" checked="{{price.selected}}">{{ price.name }} : Bs.{{ price.amount }}</mat-button-toggle>
+                </mat-button-toggle-group>
+                <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style" style="float: right;">
+                  <mat-button-toggle mat-mini-fab *ngFor="let discount of menu.discounts; index as indexDiscount" (click)="viewClient(indexProduct,indexDiscount)" checked="{{discount.selected}}">{{ discount.percent }} %</mat-button-toggle>
                 </mat-button-toggle-group>
               </div>
 

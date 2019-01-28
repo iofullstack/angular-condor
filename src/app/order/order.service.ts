@@ -54,7 +54,7 @@ export class OrderService {
   getMenusCategory (IdCategory): Observable<Menu[]> {
     return this.http.get<Menu[]>(urljoin(this.menuCategoryUrl, IdCategory))
       .pipe(
-        tap(menu => console.log(menu)),
+        tap(_ => console.log(_)),
         catchError(this.handleError('getMenusCategory', []))
       )
   }

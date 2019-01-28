@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core'
 import { Order } from '../order'
 import { OrderService } from '../order.service'
+import { TableService } from '../tables/table.service'
 import { MatDialog } from '@angular/material'
 import { CuentaComponent } from '../cuenta/cuenta.component'
 import { PaymentComponent } from '../payment/payment.component'
@@ -17,6 +18,7 @@ export class ListOrderComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
+    private tableService: TableService,
     private orderService: OrderService) { }
 
   ngOnInit() {
@@ -26,11 +28,19 @@ export class ListOrderComponent implements OnInit {
       this.getOrder()
   }
 
+  resetTable(id): void {
+    this.tableService.resetTable(id)
+        .subscribe(response => {
+          console.log(response)
+        })
+  }
+
   getOrderTable(id): void {
     this.orderService.getOrderTable(id)
         .subscribe(orders => {
           this.orders = orders
-          console.log(this.orders)
+          if(this.orders.length === 0)
+            this.resetTable(id)
         })
   }
 

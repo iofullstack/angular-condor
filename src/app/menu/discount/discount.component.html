@@ -1,0 +1,13 @@
+<div mat-dialog-content>
+  <h2>INGRESE DESCUENTO</h2>
+    <div class="form-grupper-short line-block">
+      <mat-form-field fxFlex="100" class="form-grupper-item">
+        <input matInput [(ngModel)]="data.percent" placeholder="Ingrese en porcentaje" type="number" class="example-right-align">
+        <span matSuffix>%</span>
+      </mat-form-field>
+    </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No gracias</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Listo</button>
+</div>

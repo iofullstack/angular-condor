@@ -13,13 +13,15 @@ import { AddMenuComponent } from './add-menu/add-menu.component'
 import { AddPriceComponent } from './add-price/add-price.component'
 import { ListMenuComponent } from './list-menu/list-menu.component'
 import { AddExtraComponent } from './add-extra/add-extra.component'
+import { DiscountComponent } from './discount/discount.component'
 
 const components = [
   AddCategoryComponent,
   AddMenuComponent,
   AddPriceComponent,
   ListMenuComponent,
-  AddExtraComponent
+  AddExtraComponent,
+  DiscountComponent
 ]
 
 @NgModule({
@@ -33,7 +35,8 @@ const components = [
     NgxCropperJsModule
   ],
   entryComponents: [
-    AddExtraComponent
+    AddExtraComponent,
+    DiscountComponent
   ],
   exports: components
 })
