@@ -33,6 +33,15 @@ export class ClientService {
       )
   }
 
+  /** GET users from the server */
+  getClientCI (ci: string): Observable<Client> {
+    const url = urljoin(this.clientsUrl, 'ci', ci)
+    return this.http.get<Client>(url).pipe(
+        tap(_ => console.log(_)),
+        catchError(this.handleError<Client>('getClient'))
+      )
+  }
+
   /** POST: add a new client to the server */
   addClient (client: Client): Observable<Client>  {
     const body = JSON.stringify(client)

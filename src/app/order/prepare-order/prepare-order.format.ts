@@ -7,6 +7,7 @@ export const PrepareOrderFormat = {
       let contains = []
       let extras = []
       let prices = []
+      let discounts = []
       let types = []
       if( product.type.length !== 0 ) {
         product.type.forEach( (typeName, index) => {
@@ -44,6 +45,16 @@ export const PrepareOrderFormat = {
         product.extra = extras
       }
 
+      if( product.discounts.length !== 0 ) {
+        product.discounts.forEach( (obj)=>{
+          discounts.push({
+            ...obj,
+            selected: false,
+          })
+        })
+        product.discounts = discounts
+      }
+
       if( product.prices.length !== 0 ) {
         product.prices.forEach( (priceElement, index)=>{
           if(index == 0) {
@@ -65,7 +76,9 @@ export const PrepareOrderFormat = {
         product.price = 0
       else
         product.price = product.prices[0].amount
+      product.priceVisible = product.price
       product.selected = false
+      product.quantity = 0
       prodFormat.push(product)
     })
     return prodFormat

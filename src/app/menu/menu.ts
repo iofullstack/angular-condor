@@ -7,6 +7,7 @@ export class Menu {
   extra: any[]
   image: string
   prices?: any[]
+  discounts?: any[]
   _id?: string
 
   constructor(

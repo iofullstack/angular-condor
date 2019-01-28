@@ -131,6 +131,8 @@ export class AddMenuComponent implements OnInit {
   onFilePick(event: any) {
     // Feed selected file to cropper
     this.fileInput = event.target.files.item(0)
+    if(this.fileInput === null)
+      this.dataImage = ''
   }
 
   onFail(error) {
@@ -138,6 +140,7 @@ export class AddMenuComponent implements OnInit {
   }
 
   onFileChange(file: File) {
+    // console.log(file)
     // TODO: upload file to backend
     this.getBase64(file).then(
       data => this.dataImage = data
@@ -151,15 +154,14 @@ export class AddMenuComponent implements OnInit {
     })
     dialogRef.afterClosed().subscribe(result => {
       if(result) {
-        console.log(result)
+        // console.log(result)
         this.extra.push(result)
-        console.log(this.extra)
+        // console.log(this.extra)
       }
     })
   }
 
   onSubmit(form: NgForm) {
-    console.log(this.dataImage)
     const m = new Menu (
       form.value.category,
       form.value.code,
@@ -187,6 +189,7 @@ export class AddMenuComponent implements OnInit {
               this.dataImage = ''
               form.resetForm()
             } else {
+              console.log(response)
               swal({
                 type: 'error',
                 title: 'Puede que la imagen esté demasiado grande, intente de nuevo',

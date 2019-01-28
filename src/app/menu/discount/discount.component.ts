@@ -2,14 +2,14 @@ import { Component, OnInit, Inject } from '@angular/core'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material'
 
 @Component({
-  selector: 'app-add-extra',
-  templateUrl: './add-extra.component.html',
-  styleUrls: ['./add-extra.component.scss']
+  selector: 'app-discount',
+  templateUrl: './discount.component.html',
+  styleUrls: ['./discount.component.scss']
 })
-export class AddExtraComponent implements OnInit {
+export class DiscountComponent implements OnInit {
 
   constructor(
-    public dialogRef: MatDialogRef<AddExtraComponent>,
+    public dialogRef: MatDialogRef<DiscountComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
 
@@ -18,7 +18,7 @@ export class AddExtraComponent implements OnInit {
   }
 
   onNoClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close()
   }
 
 }
