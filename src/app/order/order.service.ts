@@ -22,6 +22,14 @@ export interface Extract {
   tables: any[],
   total: number
 }
+export interface Extract2 {
+  carry: boolean,
+  fecha: string,
+  numOrder: string,
+  saucers: any[],
+  tables: any[],
+  total: number
+}
 
 @Injectable({
   providedIn: 'root'
@@ -135,6 +143,16 @@ export class OrderService {
   }
 
   extract (obj: Extract) {
+    const body = JSON.stringify(obj)
+    const url = urljoin(this.orderUrl, 'extract')
+
+    return this.http.post(url, body, httpOptions).pipe(
+      tap((res) => console.log(res)),
+      catchError(this.handleError<Extract> ('extract'))
+    )
+  }
+
+  totalExtract (obj: Extract2) {
     const body = JSON.stringify(obj)
     const url = urljoin(this.orderUrl, 'extract')
 

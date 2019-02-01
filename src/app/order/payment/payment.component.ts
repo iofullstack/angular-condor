@@ -77,6 +77,7 @@ export class PaymentComponent implements OnInit {
   }
 
   prepararPago(element) {
+    // console.log(element)
     let copia = JSON.parse(JSON.stringify(element))
     let nameSaucer = `${copia.menu.name} (${copia.namePrice})`
     copia.extra.forEach((ex) => {
