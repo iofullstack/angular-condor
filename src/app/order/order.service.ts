@@ -76,6 +76,14 @@ export class OrderService {
         catchError(this.handleError('getOrder', []))
       )
   }
+  /** GET all order from the server */
+  getOrderCook (): Observable<Order[]> {
+    return this.http.get<Order[]>(urljoin(this.orderUrl, 'today', 'cook'))
+      .pipe(
+        tap(_ => console.log(_)),
+        catchError(this.handleError('getOrderCook', []))
+      )
+  }
 
   /** GET all order from the server */
   getOrderTable (id): Observable<Order[]> {

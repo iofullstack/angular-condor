@@ -24,7 +24,7 @@ export class CookComponent implements OnInit {
   }
 
   getOrder(): void {
-    this.orderService.getOrder()
+    this.orderService.getOrderCook()
         .subscribe(orders => {
           this.orders = orders
         })
