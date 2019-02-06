@@ -144,16 +144,26 @@
         <img src="../../../assets/img/monitor.png" alt="monitor">
       </figure>
       <div class="btn-caja">
-        <button mat-fab color="basic" (click)="openingBox()">Abrir</button>
+        <button mat-fab color="basic" (click)="openingBox()">
+          <!-- Abrir -->
+          <mat-icon>attach_money</mat-icon>
+        </button>
       </div>
       <div class="btn-caja">
-        <button mat-fab color="primary" (click)="closingBox()">Cerrar</button>
+        <button mat-fab color="primary" (click)="closingBox()">
+          <!-- Cerrar -->
+          <mat-icon style="color: white;">money_off</mat-icon>
+        </button>
       </div>
       <div class="btn-caja">
-        <button mat-fab color="accent" (click)="viewBoxReport()">Reportes</button>
+        <button mat-fab color="accent" (click)="viewBoxReport()">
+          <mat-icon style="color: white;">find_in_page</mat-icon>
+        </button>
       </div>
       <div class="btn-caja">
-        <button mat-fab color="warn">+</button>
+        <button mat-fab color="warn">
+          <mat-icon style="color: white;">delete</mat-icon>
+        </button>
       </div>
     </div>
     <div class="avatar-cj">

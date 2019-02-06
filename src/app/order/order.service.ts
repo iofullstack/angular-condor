@@ -133,6 +133,15 @@ export class OrderService {
     )
   }
 
+  /** GET delete order by id*/
+  deleteOrderId(id: string): Observable<any> {
+    const url = urljoin(this.orderUrl, 'delete', id)
+    return this.http.get<any>(url).pipe(
+      tap(_ => console.log(_)),
+      catchError(this.handleError<any>(`deleteOrderId id=${id}`))
+    )
+  }
+
   /** POST: add a new order to the server */
   addOrder (order: Order): Observable<Order>  {
     const body = JSON.stringify(order)

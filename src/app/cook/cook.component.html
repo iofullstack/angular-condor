@@ -4,6 +4,7 @@
     <section class="item" *ngFor="let order of orders">
       <div class="item-1">
         <span class="text-space">Mesa(s):</span>
+        <span *ngIf="order.tables.length === 0" class="text-space">Llevar</span>
         <span *ngFor="let table of order.tables" class="text-space">{{ table.numTable }}</span>
       </div>
       <div class="item-2">
@@ -22,7 +23,7 @@
         <button mat-flat-button color="primary" class="button-expand" (click)="hideOrder(order._id)">Listo</button>
       </div>
       <div class="item-5">
-        <button mat-flat-button color="warn" class="button-expand">Cancelar</button>
+        <button mat-flat-button color="warn" class="button-expand" (click)="deleteOrder(order._id)">Cancelar</button>
       </div>
     </section>
 
