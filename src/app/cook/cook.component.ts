@@ -32,7 +32,30 @@ export class CookComponent implements OnInit {
   }
 
   hideOrder(id: string): void {
-    console.log(id)
+    swal({
+      title: '¿Estás seguro?',
+      text: "¡Esta acción afirmará la culminación del pedido!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Aceptar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if(result.value)
+        this.orderService.getHideCookOrderId(id)
+          .subscribe(response => {
+            if(response && !response.error) {
+              swal({
+                type: 'success',
+                title: response.message,
+                showConfirmButton: false,
+                timer: 1800
+              })
+              this.getOrder()
+            }
+          })
+    })
   }
 
   deleteOrder(id: string): void {

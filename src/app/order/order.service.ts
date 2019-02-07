@@ -133,6 +133,14 @@ export class OrderService {
     )
   }
 
+  getHideCookOrderId(id: string): Observable<any> {
+    const url = urljoin(this.orderUrl, id, 'hideViewedCook')
+    return this.http.get<any>(url).pipe(
+      tap(_ => console.log(`fetched hide order id=${id}`)),
+      catchError(this.handleError<any>(`getHideCookOrderId id=${id}`))
+    )
+  }
+
   /** GET delete order by id*/
   deleteOrderId(id: string): Observable<any> {
     const url = urljoin(this.orderUrl, 'delete', id)
