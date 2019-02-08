@@ -23,14 +23,14 @@ export class ReportComponent implements OnInit {
     this.reportService.getReportSales(date)
         .subscribe(response => {
           this.dataSource = response
-          console.log(this.dataSource)
+          // console.log(this.dataSource)
           this.exportExcel(date, this.dataSource)
         })
   }
 
   reportSales(form: NgForm) {
     let date = form.value.fecha.toISOString().substring(0,10)
-    console.log(date)
+    // console.log(date)
     this.getReportSales(date)
   }
 
@@ -45,7 +45,7 @@ export class ReportComponent implements OnInit {
     let wb = XLSX.utils.book_new()
     let sales = this.toArrayData(data.sales)
     let extras = this.toArrayData(data.extras)
-    console.log(sales)
+    // console.log(sales)
     wb.Props = {
       Title: 'Condor-Report',
       Subject: 'Test file',
@@ -65,7 +65,7 @@ export class ReportComponent implements OnInit {
     }
     ws_data.push(Array('', '', 'TOTAL VENTAS'))
     ws_data.push(Array('', '', data.totalExtras))
-    console.log(ws_data)
+    // console.log(ws_data)
     let ws = XLSX.utils.aoa_to_sheet(ws_data)
     wb.Sheets['Reporte diario'] = ws
     let wbout = XLSX.write(wb, {bookType: 'xlsx', type: 'binary'})

@@ -18,6 +18,7 @@ import { DetailBoxComponent } from './detail-box/detail-box.component'
 import { ReportComponent } from './report/report.component'
 import { ListOrderTableComponent } from './list-order-table/list-order-table.component'
 import { ClientCiComponent } from './client-ci/client-ci.component'
+import { ListDeletedComponent } from './list-deleted/list-deleted.component'
 
 const components = [
   TablesComponent,
@@ -29,7 +30,8 @@ const components = [
   DetailBoxComponent,
   ReportComponent,
   ListOrderTableComponent,
-  ClientCiComponent
+  ClientCiComponent,
+  ListDeletedComponent
 ]
 
 @NgModule({
@@ -48,7 +50,8 @@ const components = [
     PaymentComponent,
     DetailBoxComponent,
     ReportComponent,
-    ListOrderTableComponent
+    ListOrderTableComponent,
+    ListDeletedComponent
   ],
   exports: components
 })

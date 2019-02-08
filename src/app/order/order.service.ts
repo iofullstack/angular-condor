@@ -9,6 +9,7 @@ import { environment } from '../../environments/environment'
 import { Menu } from './menu'
 import { cMenu } from './cmenu'
 import { Order } from './order'
+import { Deleted } from './list-deleted/deleted'
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -90,6 +91,15 @@ export class OrderService {
       .pipe(
         tap(_ => console.log(_)),
         catchError(this.handleError('getOrderCook', []))
+      )
+  }
+
+  /** GET all order from the server */
+  getOrderDeleted (): Observable<Deleted | any> {
+    return this.http.get<Deleted>(urljoin(this.orderUrl, 'deleted'))
+      .pipe(
+        tap(_ => console.log(_)),
+        catchError(this.handleError('getOrderDeleted', []))
       )
   }
 

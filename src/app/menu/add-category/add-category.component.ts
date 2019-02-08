@@ -37,7 +37,7 @@ export class AddCategoryComponent implements OnInit {
       form.value.name
     )
 
-    console.log(c)
+    // console.log(c)
     this.menuService.addCategoryMenu(c)
         .subscribe(
           (response) => {

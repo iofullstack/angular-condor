@@ -14,7 +14,7 @@ export class AddExtraComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.data)
+    // console.log(this.data)
   }
 
   onNoClick(): void {

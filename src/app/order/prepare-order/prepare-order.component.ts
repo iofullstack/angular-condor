@@ -102,7 +102,7 @@ export class PrepareOrderComponent implements OnInit {
     this.orderService.getMenus()
         .subscribe(menus => {
           this.menus = PrepareOrderFormat.formatting(menus)
-          console.log(this.menus)
+          // console.log(this.menus)
         })
   }
 
@@ -228,7 +228,7 @@ export class PrepareOrderComponent implements OnInit {
     } else {
       porcentaje = product.discounts[indexDiscount].percent / 100
       descuento = this.redondeo(precio*porcentaje, 0)
-      console.log(precio,porcentaje,descuento)
+      // console.log(precio,porcentaje,descuento)
       product.priceVisible += descuento
       product.discounts[indexDiscount].selected = false
       return
@@ -239,7 +239,7 @@ export class PrepareOrderComponent implements OnInit {
         discount.selected = true
         porcentaje = discount.percent / 100
         descuento = this.redondeo(precio*porcentaje, 0)
-        console.log(precio,porcentaje,descuento)
+        // console.log(precio,porcentaje,descuento)
         this.descuento = descuento
         product.priceVisible -= descuento
       } else {
@@ -297,11 +297,11 @@ export class PrepareOrderComponent implements OnInit {
         this.menus[indexProduct].quantity = this.order.saucers[index].quantity
       }
     }
-    console.log(this.order.saucers)
+    // console.log(this.order.saucers)
   }
 
   checkRepeat(obj) {
-    console.log(obj)
+    // console.log(obj)
     let position = -1
     if(this.order.saucers.length === 0){
       return position
@@ -321,7 +321,7 @@ export class PrepareOrderComponent implements OnInit {
 
     let saucers = []
     this.order.saucers.forEach((saucer, index)=>{
-      console.log(saucer)
+      // console.log(saucer)
       let prepare = {
         quantity: 0,
         contain: [],
@@ -366,19 +366,19 @@ export class PrepareOrderComponent implements OnInit {
     })
     this.prepareOrder.carry = this.llevar
     this.prepareOrder.saucers = saucers
-    console.log('pedido final', this.prepareOrder)
+    // console.log('pedido final', this.prepareOrder)
     this.addOrder(this.prepareOrder)
   }
 
   addOrder(order): void {
-    console.log('Subir una Orden: ', order)
+    // console.log('Subir una Orden: ', order)
     this.orderService.addOrder(order as Order)
       .subscribe(response => {
         if(order.carry)
           this.router.navigate(['/orden/listar'])
         else
           this.router.navigate(['/orden/mesas'])
-        console.log(response)
+        // console.log(response)
       })
   }
 

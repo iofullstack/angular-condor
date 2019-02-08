@@ -97,7 +97,7 @@ export const navigation: FuseNavigation[] = [
                 },
                 {
                   id       : 'c0',
-                  title    : 'Listar',
+                  title    : 'Para llevar',
                   type     : 'item',
                   icon     : 'user',
                   url      : '/orden/listar'

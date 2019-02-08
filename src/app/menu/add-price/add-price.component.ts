@@ -38,7 +38,7 @@ export class AddPriceComponent implements OnInit {
   getMenuNonePrice(): void {
     this.menuService.getMenuNonePrice()
         .subscribe(response => {
-          console.log(response)
+          // console.log(response)
           this.dataSource = response
         })
   }
@@ -46,13 +46,13 @@ export class AddPriceComponent implements OnInit {
   getMenus(): void {
     this.menuService.getMenus()
         .subscribe(response => {
-          console.log(response)
+          // console.log(response)
           this.dataSource = response
         })
   }
 
   remove(m: Menu, p: Price): void {
-    console.log(p)
+    // console.log(p)
     const index = m.prices.indexOf(p)
 
     if (index >= 0) {
@@ -65,7 +65,7 @@ export class AddPriceComponent implements OnInit {
         cancelButtonColor: '#d33',
         confirmButtonText: '¡Si, eliminar!'
       }).then((result) => {
-        console.log(result)
+        // console.log(result)
         if (result.value) {
           this.menuService.deletePriceMenu(m, p)
             .subscribe(
@@ -85,7 +85,7 @@ export class AddPriceComponent implements OnInit {
     }
   }
   removeDiscount(m: Menu, d: Discount): void {
-    console.log(d)
+    // console.log(d)
     const index = m.discounts.indexOf(d)
 
     if (index >= 0) {
@@ -98,7 +98,7 @@ export class AddPriceComponent implements OnInit {
         cancelButtonColor: '#d33',
         confirmButtonText: '¡Si, eliminar!'
       }).then((result) => {
-        console.log(result)
+        // console.log(result)
         if (result.value) {
           this.menuService.deleteDiscountMenu(m, d)
             .subscribe(
@@ -126,11 +126,11 @@ export class AddPriceComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if(result) {
         let price = { amount: result.price, name: result.name }
-        console.log(price)
+        // console.log(price)
         this.menuService.addPriceMenu(m, price)
           .subscribe(
             (response) => {
-              console.log(response)
+              // console.log(response)
               if(response) {
                 swal({
                   type: 'success',
@@ -158,7 +158,7 @@ export class AddPriceComponent implements OnInit {
         this.menuService.addDiscountMenu(m, discount)
           .subscribe(
             (response) => {
-              console.log(response)
+              // console.log(response)
               if(response) {
                 swal({
                   type: 'success',

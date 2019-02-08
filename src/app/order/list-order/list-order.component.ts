@@ -31,7 +31,7 @@ export class ListOrderComponent implements OnInit {
   resetTable(id): void {
     this.tableService.resetTable(id)
         .subscribe(response => {
-          console.log(response)
+          // console.log(response)
         })
   }
 
@@ -48,7 +48,7 @@ export class ListOrderComponent implements OnInit {
     this.orderService.getOrder()
         .subscribe(orders => {
           this.orders = orders
-          console.log(this.orders)
+          // console.log(this.orders)
         })
   }
 
@@ -59,7 +59,7 @@ export class ListOrderComponent implements OnInit {
     })
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result)
+      // console.log(result)
     })
   }
 
@@ -70,13 +70,13 @@ export class ListOrderComponent implements OnInit {
     })
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result)
+      // console.log(result)
     })
   }
 
   cocina(order) {
     this.orderService.printCook(order).subscribe(res => {
-      console.log(res)
+      // console.log(res)
     })
   }
 

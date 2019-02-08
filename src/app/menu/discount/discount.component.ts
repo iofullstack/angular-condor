@@ -14,7 +14,7 @@ export class DiscountComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.data)
+    // console.log(this.data)
   }
 
   onNoClick(): void {

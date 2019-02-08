@@ -70,7 +70,7 @@ export class ListOrderTableComponent implements OnInit {
   }
 
   submitExtract() {
-    console.log(this.extracto)
+    // console.log(this.extracto)
     this.orderService.totalExtract(this.extracto).subscribe(res => {
       this.dialogRef.close(res)
     })

@@ -14,7 +14,7 @@ export class ClientCiComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.data)
+    // console.log(this.data)
   }
 
   onNoClick(): void {

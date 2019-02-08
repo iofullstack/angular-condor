@@ -171,7 +171,7 @@ export class AddMenuComponent implements OnInit {
       this.extra,
       this.dataImage
     )
-    console.log(m)
+    // console.log(m)
     this.menuService.addMenu(m)
         .subscribe(
           (response) => {
@@ -189,7 +189,7 @@ export class AddMenuComponent implements OnInit {
               this.dataImage = ''
               form.resetForm()
             } else {
-              console.log(response)
+              // console.log(response)
               swal({
                 type: 'error',
                 title: 'Puede que la imagen esté demasiado grande, intente de nuevo',

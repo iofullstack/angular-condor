@@ -28,7 +28,7 @@ export class DetailOrderComponent implements OnInit {
     this.orderService.getOrderId(id)
       .subscribe(order => {
         this.order = order
-        console.log(this.order)
+        // console.log(this.order)
       })
   }
 

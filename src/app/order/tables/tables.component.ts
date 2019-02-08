@@ -7,6 +7,7 @@ import { SocketioService } from '../../socketio.service'
 import { DetailBoxComponent } from '../detail-box/detail-box.component'
 import { ReportComponent } from '../report/report.component'
 import { ListOrderTableComponent } from '.././list-order-table/list-order-table.component'
+import { ListDeletedComponent } from '../list-deleted/list-deleted.component'
 import swal from 'sweetalert2'
 
 @Component({
@@ -74,21 +75,21 @@ export class TablesComponent implements OnInit {
     this.tableService.getTables()
         .subscribe(tables => {
           this.dataSource = tables
-          console.log(this.dataSource)
+          // console.log(this.dataSource)
         })
   }
 
   resetTable(id): void {
     this.tableService.resetTable(id)
         .subscribe(response => {
-          console.log(response)
+          // console.log(response)
         })
   }
   resetBarra(...ids): void {
     for(let i = 0; i < ids.length; i++) {
       this.tableService.resetTable(ids[i])
         .subscribe(response => {
-          console.log(response)
+          // console.log(response)
         })
     }
   }
@@ -108,7 +109,7 @@ export class TablesComponent implements OnInit {
       data: _id
     })
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result)
+      // console.log(result)
     })
   }
 
@@ -120,7 +121,7 @@ export class TablesComponent implements OnInit {
             data: response || {}
           })
           dialogRef.afterClosed().subscribe(result => {
-            console.log(result)
+            // console.log(result)
           })
         })
   }
@@ -130,7 +131,16 @@ export class TablesComponent implements OnInit {
       width: '80%'
     })
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result)
+      // console.log(result)
+    })
+  }
+
+  viewDeleted(): void {
+    let dialogRef = this.dialog.open(ListDeletedComponent, {
+      width: '80%'
+    })
+    dialogRef.afterClosed().subscribe(result => {
+      // console.log(result)
     })
   }
 
