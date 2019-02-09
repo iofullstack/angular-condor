@@ -72,7 +72,7 @@ export class CookComponent implements OnInit {
       if(result.value)
         this.orderService.deleteOrderId(id)
           .subscribe(response => {
-            if(response) {
+            if(!response.error) {
               swal({
                 type: 'success',
                 title: 'Pedido cancelado',
@@ -80,6 +80,13 @@ export class CookComponent implements OnInit {
                 timer: 1800
               })
               this.getOrder()
+            } else {
+              swal({
+                type: 'error',
+                title: response.message,
+                showConfirmButton: false,
+                timer: 1800
+              })
             }
           })
     })

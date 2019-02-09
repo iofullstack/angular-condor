@@ -189,14 +189,14 @@ export class OrderService {
     )
   }
 
-  printPago (obj: Extract) {
+  printPago (obj: Extract2) {
     const body = JSON.stringify(obj)
     const url = urljoin(this.orderUrl, 'print', 'pago')
     // console.log(url, body)
 
     return this.http.post(url, body, httpOptions).pipe(
       tap((res) => console.log(res)),
-      catchError(this.handleError<Extract> ('extract'))
+      catchError(this.handleError<Extract2> ('printPago'))
     )
   }
 

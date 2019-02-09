@@ -1,7 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core'
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material'
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material'
 import { OrderService } from '../order.service'
 import { Order } from '../order'
+import { AllPaymentComponent } from '../all-payment/all-payment.component'
+import swal from 'sweetalert2'
 
 @Component({
   selector: 'app-list-order-table',
@@ -23,6 +25,7 @@ export class ListOrderTableComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<ListOrderTableComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
+    public dialog: MatDialog,
     private orderService: OrderService
   ) { }
 
@@ -44,6 +47,56 @@ export class ListOrderTableComponent implements OnInit {
           this.prepareExtract(this.ordersTable)
           this.submitExtract()
         })
+  }
+
+  allPayment(idTable) {
+    const dialogRef = this.dialog.open(AllPaymentComponent, {
+      width: '250px',
+      data: { idTable }
+    })
+
+    dialogRef.afterClosed().subscribe(result  => {
+      if(result == 'ok') {
+        swal({
+          title: '¿Estás seguro?',
+          text: "¡No podrás revertir esto, esta acción archivará todos los pedidos!",
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Archivar pedidos',
+          cancelButtonText: 'Cancelar'
+        }).then((result) => {
+          if (result.value) {
+            this.orderService.getOrderTable(this.data)
+              .subscribe(response => {
+                this.ordersTable = response
+                this.prepareExtract(this.ordersTable)
+                this.ordersTable.forEach((order) =>{
+                  this.orderService.getHideOrderId(order._id).subscribe(res => {
+                    if(res.error) {
+                      swal(
+                        '¡Algo esta mal!',
+                        res.message,
+                        'warning'
+                      )
+                      return
+                    } else {
+                      swal(
+                        '¡Pedidos Archivados!',
+                        'Pedidos almacenados en caja',
+                        'success'
+                      )
+                      this.submitPayment()
+                      this.dialogRef.close()
+                    }
+                  })
+                })
+              })
+          }
+        })
+      }
+    })
   }
 
   prepareExtract(orders) {
@@ -72,6 +125,13 @@ export class ListOrderTableComponent implements OnInit {
   submitExtract() {
     // console.log(this.extracto)
     this.orderService.totalExtract(this.extracto).subscribe(res => {
+      this.dialogRef.close(res)
+    })
+  }
+
+  submitPayment() {
+    // console.log(this.extracto)
+    this.orderService.printPago(this.extracto).subscribe(res => {
       this.dialogRef.close(res)
     })
   }

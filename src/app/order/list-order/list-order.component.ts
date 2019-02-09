@@ -70,7 +70,13 @@ export class ListOrderComponent implements OnInit {
     })
 
     dialogRef.afterClosed().subscribe(result => {
-      // console.log(result)
+      console.log(result)
+      if(result == 'recargar' || !result) {
+        if (this.idTable)
+          this.getOrderTable(this.idTable)
+        else
+          this.getOrder()
+      }
     })
   }
 
@@ -83,7 +89,7 @@ export class ListOrderComponent implements OnInit {
   hideOrder(id) {
     swal({
       title: '¿Estás seguro?',
-      text: "¡No podrás revertir esto, esta acción ocultará el pedido!",
+      text: "¡No podrás revertir esto, esta acción archivará el pedido!",
       type: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',

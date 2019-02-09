@@ -2,6 +2,7 @@ import { SelectionModel } from '@angular/cdk/collections'
 import { Component, OnInit, Inject } from '@angular/core'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material'
 import { OrderService } from '../order.service'
+import swal from 'sweetalert2'
 
 @Component({
   selector: 'app-payment',
@@ -17,7 +18,7 @@ export class PaymentComponent implements OnInit {
   pago = {
     _id: '',
     fecha: '',
-    numOrder : 0,
+    numOrder : '',
     carry: false,
     tables: [],
     saucers: [],
@@ -42,7 +43,8 @@ export class PaymentComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<PaymentComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public orderService: OrderService) { }
+    public orderService: OrderService
+  ) { }
 
   ngOnInit() {
     this.saucers = this.data.saucers
@@ -67,23 +69,25 @@ export class PaymentComponent implements OnInit {
     this.pago.saucers = this.saucers
   }
 
-  save() {
+  save(refresh = false) {
     this.pago.saucers = this.prepare
     this.pago.total = this.total2
     // this.orderService.printPago(this.pago)
     this.orderService.printPago(this.pago).subscribe(res => {
-      this.dialogRef.close(res)
+      if(refresh)
+        this.dialogRef.close('recargar')
+      else
+        this.dialogRef.close(res)
     })
   }
 
   prepararPago(element) {
-    // console.log(element)
     let copia = JSON.parse(JSON.stringify(element))
     let nameSaucer = `${copia.menu.name} (${copia.namePrice})`
     copia.extra.forEach((ex) => {
       nameSaucer += `+ ${ex.price} ${ex.name}`
     })
-
+    
     copia.nameSaucer = nameSaucer
     let repite = false
     let repite2 = false
@@ -91,12 +95,12 @@ export class PaymentComponent implements OnInit {
       if(this.prepare.length > 0) {
         this.prepare.forEach((el, index) => {
           if(el._id === copia._id) {
-            if(el.quantity <  copia.quantity) {
+            // if(el.quantity <  copia.quantity) {
               copia.price /= copia.quantity
               this.prepare[index].quantity = el.quantity + 1
               this.prepare[index].price = this.prepare[index].price + copia.price
               this.total2 += copia.price
-            }
+            // }
             repite = true
           }
         })
@@ -117,7 +121,7 @@ export class PaymentComponent implements OnInit {
       if(this.prepare.length > 0) {
         this.prepare.forEach((el, index) => {
           if(el._id === copia._id)
-            repite2 = true
+          repite2 = true
         })
         if(!repite2) {
           this.total2 += copia.price
@@ -129,7 +133,42 @@ export class PaymentComponent implements OnInit {
         this.prepare.push(copia)
       }
     }
+    this.quitarSaucer(element, copia.price)
     // console.log(this.prepare)
+  }
+
+  quitarSaucer(saucer, price) {
+    const index = this.data.saucers.indexOf(saucer)
+
+    if (index >= 0) {
+      if(this.data.saucers[index].quantity > 0) {
+        this.data.saucers[index].quantity--
+        this.data.saucers[index].price -= price
+        if(this.data.saucers[index].quantity == 0) {
+          this.data.saucers = this.data.saucers.filter(h => h != saucer)
+        }
+      }
+    }
+
+    if(!this.data.saucers.length) {
+      this.orderService.getHideOrderId(this.data._id).subscribe(res => {
+        if(res.error)
+          swal(
+            '¡Algo esta mal!',
+            res.message,
+            'warning'
+          )
+        else {
+          swal(
+            '¡Pedido Archivado!',
+            res.message,
+            'success'
+          )
+          this.save(true)
+          this.dialogRef.close('recargar')
+        }
+      })
+    }
   }
 
 }

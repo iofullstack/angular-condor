@@ -31,4 +31,5 @@ export class ListComponent implements OnInit {
           this.dataSource = clients
         })
   }
+
 }
