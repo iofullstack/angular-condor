@@ -10,6 +10,6 @@
   </div>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="'ok'" cdkFocusInitial disabled="{{ paid - should < 0 || paid == NaN }}">Ok</button>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="'ok'" cdkFocusInitial disabled="{{ paid - should < 0 || paid == NaN }}">Listo</button>
 </div>

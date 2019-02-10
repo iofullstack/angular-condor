@@ -72,7 +72,7 @@ export class ListOrderTableComponent implements OnInit {
               .subscribe(response => {
                 this.ordersTable = response
                 this.prepareExtract(this.ordersTable)
-                this.ordersTable.forEach((order) =>{
+                this.ordersTable.forEach((order, index) =>{
                   this.orderService.getHideOrderId(order._id).subscribe(res => {
                     if(res.error) {
                       swal(
@@ -87,7 +87,8 @@ export class ListOrderTableComponent implements OnInit {
                         'Pedidos almacenados en caja',
                         'success'
                       )
-                      this.submitPayment()
+                      if(index == 0)
+                        this.submitPayment()
                       this.dialogRef.close()
                     }
                   })
