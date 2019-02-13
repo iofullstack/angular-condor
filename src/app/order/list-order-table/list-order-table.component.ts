@@ -102,6 +102,14 @@ export class ListOrderTableComponent implements OnInit {
 
   prepareExtract(orders) {
     let total = 0
+    this.extracto = {
+      fecha: '',
+      numOrder : '',
+      carry: false,
+      tables: [],
+      saucers: [],
+      total: 0
+    }
     orders.forEach((order) => {
       order.saucers.forEach((element) => {
         total += element.price
