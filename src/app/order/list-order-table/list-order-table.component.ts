@@ -72,27 +72,48 @@ export class ListOrderTableComponent implements OnInit {
               .subscribe(response => {
                 this.ordersTable = response
                 this.prepareExtract(this.ordersTable)
-                this.ordersTable.forEach((order, index) =>{
-                  this.orderService.getHideOrderId(order._id).subscribe(res => {
-                    if(res.error) {
-                      swal(
-                        '¡Algo esta mal!',
-                        res.message,
-                        'warning'
-                      )
-                      return
-                    } else {
-                      swal(
-                        '¡Pedidos Archivados!',
-                        'Pedidos almacenados en caja',
-                        'success'
-                      )
-                      if(index == 0)
-                        this.submitPayment()
-                      this.dialogRef.close()
-                    }
-                  })
+                this.orderService.getHideOrders(this.ordersTable).subscribe(res => {
+                  console.log(res)
+                  if(res.error) {
+                    swal(
+                      '¡Algo esta mal!',
+                      res.message,
+                      'warning'
+                    )
+                    return
+                  } else {
+                    swal(
+                      '¡Pedidos Archivados!',
+                      res.message,
+                      'success'
+                    )
+                    this.submitPayment()
+                    this.dialogRef.close()
+                  }
                 })
+                // this.ordersTable.forEach((order, index) =>{
+                //   console.log(order)
+                  // this.orderService.getHideOrderId(order._id).subscribe(res => {
+                  //   console.log(res)
+                  //   if(res.error) {
+                  //     swal(
+                  //       '¡Algo esta mal!',
+                  //       res.message,
+                  //       'warning'
+                  //     )
+                  //     return
+                  //   } else {
+                  //     swal(
+                  //       '¡Pedidos Archivados!',
+                  //       'Pedidos almacenados en caja',
+                  //       'success'
+                  //     )
+                  //     if(index == 0)
+                  //       this.submitPayment()
+                  //     this.dialogRef.close()
+                  //   }
+                  // })
+                // })
               })
           }
         })

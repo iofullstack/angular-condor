@@ -143,6 +143,15 @@ export class OrderService {
     )
   }
 
+  getHideOrders(orders: Order[]): Observable<any> {
+    const body = JSON.stringify(orders)
+    const url = urljoin(this.orderUrl, 'hide', 'all')
+    return this.http.post<any>(url, body, httpOptions).pipe(
+      tap(_ => console.log(_)),
+      catchError(this.handleError<Order>('getHideOrders'))
+    )
+  }
+
   getHideCookOrderId(id: string): Observable<any> {
     const url = urljoin(this.orderUrl, id, 'hideViewedCook')
     return this.http.get<any>(url).pipe(

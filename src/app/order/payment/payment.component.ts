@@ -72,13 +72,12 @@ export class PaymentComponent implements OnInit {
   save(refresh = false) {
     this.pago.saucers = this.prepare
     this.pago.total = this.total2
-    console.log(this.pago)
-    // this.orderService.printPago(this.pago).subscribe(res => {
-    //   if(refresh)
-    //     this.dialogRef.close('recargar')
-    //   else
-    //     this.dialogRef.close(res)
-    // })
+    this.orderService.printPago(this.pago).subscribe(res => {
+      if(refresh)
+        this.dialogRef.close('recargar')
+      else
+        this.dialogRef.close(res)
+    })
   }
 
   prepararPago(element) {
