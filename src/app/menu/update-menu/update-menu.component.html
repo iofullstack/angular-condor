@@ -1,8 +1,8 @@
 <div id="forms" class="page-layout simple fullwidth" fxLayout="column">
 
     <!-- HEADER -->
-    <div class="header accent p-24 h-160" fxLayout="row" fxLayoutAlign="start center">
-        <div fxLayout="column" fxLayoutAlign="center start">
+    <div class="header accent p-24 h-160" fxlayout="column" fxlayout.gt-xs="row" fxlayoutalign="center center" fxlayoutalign.gt-xs="space-between center" style="flex-direction: row; box-sizing: border-box; display: flex; place-content: center space-between; align-items: center;">
+        <div fxlayout="column" fxlayout.gt-xs="column" fxlayoutalign="center center" fxlayoutalign.gt-xs="center start" style="flex-direction: column; box-sizing: border-box; display: flex; place-content: flex-start center; align-items: flex-start;">
             <div class="black-fg" fxLayout="row" fxLayoutAlign="start center">
                 <mat-icon class="secondary-text s-18">home</mat-icon>
                 <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
@@ -12,6 +12,11 @@
             </div>
             <div class="h1 mt-16">Actualizar Menú</div>
         </div>
+        <button mat-raised-button
+                (click)="delete()"
+                class="reference-button mt-16 mt-sm-0 mat-raised-button">
+            <span>Eliminar Del Menú</span>
+        </button>
     </div>
     <!-- / HEADER -->
 

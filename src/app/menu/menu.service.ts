@@ -84,6 +84,13 @@ export class MenuService {
     )
   }
 
+  deleteMenu (id: string): Observable<any>  {
+    return this.http.delete<any> (urljoin(this.menuUrl, id)).pipe(
+      tap((_) => console.log(_)),
+      catchError(this.handleError('deleteMenu'))
+    )
+  }
+
   updateImageMenu (data: any): Observable<any>  {
     const body = JSON.stringify(data)
     return this.http.patch<any> (urljoin(this.menuUrl, 'img'), body, httpOptions).pipe(

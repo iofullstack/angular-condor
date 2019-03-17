@@ -110,6 +110,21 @@ export class UpdateMenuComponent implements OnInit {
       })
   }
 
+  delete(): void {
+    this.menuService.deleteMenu(this.menu._id)
+      .subscribe((res) => {
+        if(res) {
+          swal({
+            type: 'error',
+            title: 'Menú eliminado',
+            showConfirmButton: false,
+            timer: 1800
+          })
+          this.goBack()
+        }
+      })
+  }
+
   addContain(event: MatChipInputEvent): void {
     const input = event.input
     const value = event.value
