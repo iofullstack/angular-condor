@@ -38,12 +38,22 @@ export class MenuService {
       )
   }
 
-  /** GET users from the server */
+  /** GET menus from the server */
   getMenus (): Observable<Menu[]> {
     return this.http.get<Menu[]>(this.menuUrl)
       .pipe(
         tap(_ => console.log('getMenus')),
         catchError(this.handleError('getmenus', []))
+      )
+  }
+
+  /** GET menu from the server */
+  getMenu (id: string): Observable<Menu> {
+    const url = urljoin(this.menuUrl, id)
+    return this.http.get<Menu>(url)
+      .pipe(
+        tap(_ => console.log('getMenu')),
+        catchError(this.handleError<Menu>('getMenu'))
       )
   }
 
@@ -62,6 +72,23 @@ export class MenuService {
     return this.http.post<Menu> (this.menuUrl, body, httpOptions).pipe(
       tap((menu: Menu) => console.log(menu)),
       catchError(this.handleError<Menu> ('addMenu'))
+    )
+  }
+
+  /** POST: add a new menu to the server */
+  updateMenu (menu: Menu): Observable<Menu>  {
+    const body = JSON.stringify(menu)
+    return this.http.patch<Menu> (this.menuUrl, body, httpOptions).pipe(
+      tap((menu: Menu) => console.log(menu)),
+      catchError(this.handleError<Menu> ('updateMenu'))
+    )
+  }
+
+  updateImageMenu (data: any): Observable<any>  {
+    const body = JSON.stringify(data)
+    return this.http.patch<any> (urljoin(this.menuUrl, 'img'), body, httpOptions).pipe(
+      tap((_) => console.log(_)),
+      catchError(this.handleError<any> ('updateImageMenu'))
     )
   }
 

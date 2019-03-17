@@ -14,6 +14,7 @@ import { AddPriceComponent } from './add-price/add-price.component'
 import { ListMenuComponent } from './list-menu/list-menu.component'
 import { AddExtraComponent } from './add-extra/add-extra.component'
 import { DiscountComponent } from './discount/discount.component'
+import { UpdateMenuComponent } from './update-menu/update-menu.component'
 
 const components = [
   AddCategoryComponent,
@@ -21,7 +22,8 @@ const components = [
   AddPriceComponent,
   ListMenuComponent,
   AddExtraComponent,
-  DiscountComponent
+  DiscountComponent,
+  UpdateMenuComponent
 ]
 
 @NgModule({

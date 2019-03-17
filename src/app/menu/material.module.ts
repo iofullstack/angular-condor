@@ -10,6 +10,7 @@ import {
   MatDialogModule,
   MatCardModule,
   MatTabsModule,
+  MatPaginatorModule,
   MatTableModule
 } from '@angular/material'
 
@@ -23,6 +24,7 @@ const modules = [
   MatDialogModule,
   MatCardModule,
   MatTabsModule,
+  MatPaginatorModule,
   MatTableModule
 ]
 

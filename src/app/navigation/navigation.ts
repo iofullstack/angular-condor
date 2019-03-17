@@ -74,13 +74,13 @@ export const navigation: FuseNavigation[] = [
                   icon     : 'user',
                   url      : '/menu/precios'
                 },
-                // {
-                //   id       : 'c3',
-                //   title    : 'Listar menú',
-                //   type     : 'item',
-                //   icon     : 'user',
-                //   url      : '/menu/listar'
-                // }
+                {
+                  id       : 'c3',
+                  title    : 'Listar menú',
+                  type     : 'item',
+                  icon     : 'user',
+                  url      : '/menu/listar'
+                }
               ]
             },
             {
