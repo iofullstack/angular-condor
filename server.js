@@ -9,5 +9,5 @@ app.get('*', function (req, res, next) {
   res.sendFile(path.join(__dirname, 'dist/index.html'))
 })
 const server = http.createServer(app);
-server.listen(3000)
-console.log(`Server listening on 3000`)
+server.listen(8000)
+console.log(`Server listening on 8000`)

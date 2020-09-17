@@ -18,7 +18,6 @@ ngrok
 *.launch
 .settings/
 *.sublime-workspace
-package-lock.json
 
 # IDE - VSCode
 .vscode/*
@@ -36,6 +35,8 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+package-lock.json
+angular.json
 
 # System Files
 .DS_Store
