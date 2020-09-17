@@ -22,7 +22,6 @@ export class ClientService {
     private http: HttpClient
   ) {
     this.clientsUrl = urljoin(environment.apiUrl, 'clients')
-    console.log('La verga joder: ', environment.apiUrl)
   }
 
   /** GET users from the server */
@@ -31,6 +30,15 @@ export class ClientService {
       .pipe(
         tap(clients => console.log(clients)),
         catchError(this.handleError('getClients', []))
+      )
+  }
+
+  /** GET users from the server */
+  getClientCI (ci: string): Observable<Client> {
+    const url = urljoin(this.clientsUrl, 'ci', ci)
+    return this.http.get<Client>(url).pipe(
+        tap(_ => console.log(_)),
+        catchError(this.handleError<Client>('getClient'))
       )
   }
 

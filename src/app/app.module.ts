@@ -24,9 +24,6 @@ import { AppRoutingModule } from './app-routing.module'
 
 /* Module Café Cóndor */
 import { MessagesComponent } from './messages/messages.component'
-// import { CookComponent } from './cook/cook.component'
-// import { WaiterComponent } from './waiter/waiter.component'
-// import { CashierComponent } from './cashier/cashier.component'
 
 import { MAT_DATE_LOCALE } from '@angular/material'
 
@@ -44,10 +41,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3500', options: {} }
   ],
   declarations: [
     AppComponent,
-    MessagesComponent,
-    // CookComponent,
-    // WaiterComponent,
-    // CashierComponent
+    MessagesComponent
   ],
   imports: [
     BrowserModule,

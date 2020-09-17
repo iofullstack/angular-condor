@@ -1,0 +1,175 @@
+<div id="prepareOrder" class="page-layout simple">
+
+  <!-- HEADER -->
+  <div class="prepareOrder-container">
+
+    <div class="prepare-header">
+      <div class="prepare-header-container">
+        <!-- numero -->
+        <div class="prepare-header-numero">
+          <div class="form-inline">
+            <h1 class="form-title form-title-pedido">
+              Realizar Pedido
+            </h1>
+          </div>
+        </div>
+
+        <!-- mesas -->
+        <div class="prepare-header-mesas">
+            <div class="form-inline">
+              <h4 class="form-label">
+                Mesa(s)
+              </h4>
+              <span class="form-chip" *ngFor="let tb of tables">
+                {{ tb.numTable }}
+              </span>
+              <!-- <button mat-mini-fab class="form-add">
+                <mat-icon aria-label="Agregar mesa">add</mat-icon>
+              </button> -->
+            </div>          
+        </div>
+
+        <!-- comensales -->
+        <div class="prepare-header-comensales">
+            <div class="form-inline">
+              <h4 class="form-label">
+                Comensales
+              </h4>
+              <input type="number" id="comensales" [(ngModel)]="comensales" min="1" class="form-input-number">
+              <button mat-mini-fab class="form-add" (click)="addComensal()">
+                <mat-icon aria-label="Agregar mesa">add</mat-icon>
+              </button>
+              <button mat-mini-fab color="warn" class="form-add" (click)="removeComensal()">
+                  <mat-icon aria-label="Agregar mesa">remove</mat-icon>
+              </button>
+            </div>          
+        </div>
+
+        <!-- pedido -->
+        <div class="prepare-header-pedido">
+
+        <div class="mesas-container" [@animate]="{value:'*',params:{delay:'100ms', y:'25px'}}" *ngIf="order.saucers.length > 0">
+          <div class="mesas-list">
+            <!-- list items -->
+            <div class="item-3">
+
+              <div *ngFor="let s of order.saucers" [ngClass]="['order', s.product.category.color]">
+                <span>{{ s.product.code }}</span>
+                <div class="quantity color-light">
+                  <span>{{ s.quantity }}</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- llevar -->
+        <div class="prepare-header-llevar">
+          <div class="form-inline">
+            <div class="form-big">
+              <mat-slide-toggle [(ngModel)]="llevar" [color]="warn">
+                <h1 class="form-title">Llevar</h1>
+              </mat-slide-toggle>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Guardar Pedido -->
+        <div class="prepare-header-guardar">
+          <button mat-raised-button class="form-btn-big" (click)="finishPedido()" color="accent" disabled="{{ !order.saucers.length }}">
+              Terminar Pedido
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Search -->
+
+  <div class="order-container" fxLayout="column" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+      <div fxLayout="row" fxLayoutAlign="center" fxFlex="80%">
+          <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style" style="overflow:auto;">
+            <mat-button-toggle value="all" checked (click)="getMenus()">Todos</mat-button-toggle>
+            <mat-button-toggle value="c.name" *ngFor="let c of c_menu" (click)="getMenusCategory(c._id)">{{ c.name }}</mat-button-toggle>
+          </mat-button-toggle-group>
+      </div>
+      <!-- <div fxLayout="row" fxLayoutAlign="center">
+          <mat-form-field fxFlex="80%">
+              <input matInput class="input-prepare" type="search" autocomplete="off" placeholder="Buscar">
+              <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+      </div> -->
+  </div>
+
+  <!-- List Menu -->
+  <section class="waiter-container" style="margin: 2em auto;">
+      <article class="waiter-list-item">
+        <div *ngFor="let menu of menus; index as indexProduct">
+
+          <!--Item para elegir opciones -->
+          <section class="waiter-item">
+              <div class="waiter-badge">
+                <figure [className]="menu.selected ? 'waiter-icon-select' : ''">
+                  <img [src]="'assets/img/menu/'+menu.src" alt="">
+                </figure>
+              </div>
+              <div class="waiter-title">
+                <h3>{{ menu.name }} </h3>
+                <span>Total: {{menu.priceVisible}}</span>
+              </div>
+              <div class="waiter-detail">
+                  <mat-chip-list *ngIf="menu.contain.length > 0">
+                    <span *ngFor="let content of menu.contain; index as indexContain">
+                      <mat-chip class="mano" color="default" color="warn" *ngIf="content.selected" (click)="toggleContainProduct(indexProduct,indexContain)" selected>{{ content.name }}</mat-chip>
+                      <mat-chip class="mano" color="default" *ngIf="!content.selected" (click)="toggleContainProduct(indexProduct,indexContain)" selected>{{ content.name }}</mat-chip>
+                    </span>
+                  </mat-chip-list>
+
+                  <mat-chip-list *ngIf="menu.type.length > 0">
+                    <span *ngFor="let type of menu.type; index as indexType">
+                      <mat-chip class="mano" color="default" color="accent" *ngIf="type.selected" (click)="toggleTypeProduct(indexProduct,indexType)" selected>{{ type.name }}</mat-chip>
+                      <mat-chip class="mano" color="default" *ngIf="!type.selected" (click)="toggleTypeProduct(indexProduct,indexType)" selected>{{ type.name }}</mat-chip>
+                    </span>
+                  </mat-chip-list>
+
+                  <mat-chip-list *ngIf="menu.extra.length > 0">
+                    <span *ngFor="let extra of menu.extra; index as indexExtra">
+                      <mat-chip class="mano" color="default" color="primary" *ngIf="extra.selected" (click)="toggleExtraProduct(indexProduct, indexExtra)" selected>+{{extra.price}} {{ extra.name }} </mat-chip>
+                      <mat-chip class="mano" color="default" *ngIf="!extra.selected" (click)="toggleExtraProduct(indexProduct, indexExtra)" selected>+{{extra.price}} {{ extra.name }} </mat-chip>
+                    </span>
+                  </mat-chip-list>
+              </div>
+              <div class="waiter-action">
+                <!-- <span>
+                  <i class="icon-chevron-up" (click)="pedido(indexProduct)"></i>
+                </span> -->
+                <span class="waiter-count" (click)="pedido(indexProduct)"><i class="icon-check"></i></span>
+                <div class="waiter-quantity">{{ menu.quantity }}</div>
+                <!-- <span>
+                  <i class="icon-chevron-down" (click)="removeCount(indexProduct)"></i>
+                </span> -->
+              </div>
+
+              <div class="waiter-divider">
+                <mat-divider></mat-divider>
+              </div>
+
+              <div class="waiter-price">
+                <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style">
+                  <mat-button-toggle *ngFor="let price of menu.prices; index as indexPrice" (click)="togglePriceProduct(indexProduct,indexPrice)" checked="{{price.selected}}">{{ price.name }} : Bs.{{ price.amount }}</mat-button-toggle>
+                </mat-button-toggle-group>
+                <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style" style="float: right;">
+                  <mat-button-toggle mat-mini-fab *ngFor="let discount of menu.discounts; index as indexDiscount" (click)="viewClient(indexProduct,indexDiscount)" checked="{{discount.selected}}">{{ discount.percent }} %</mat-button-toggle>
+                </mat-button-toggle-group>
+              </div>
+
+          </section>
+
+        </div>
+      </article>
+  </section>
+
+</div>

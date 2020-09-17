@@ -1,0 +1,92 @@
+.swal2-popup, .swal2-modal, .swal2-show {
+  font-size: 16px !important;
+}
+
+.list-orders {
+  margin: 32px auto;
+  width: 90%;
+  padding: 0;
+  font-size: 12px;
+}
+
+.orders {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  grid-gap: 15px;
+  // grid-auto-rows: minmax(50px, 60px);
+  padding: 0;
+  list-style-type: none;
+}
+
+.orders li {
+  display: grid;
+  grid-template: repeat(2, 1fr) / 50px 1fr;
+  grid-template-areas: "badge content" "badge button";
+  background-color: #EEE;
+  border-radius: 4px;
+}
+
+.orders li:hover {
+  color: #607D8B;
+  background-color: #DDD;
+  left: .1em;
+}
+
+.badge {
+  display: inline-block;
+  grid-area: badge;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #EEE;
+  font-size: 2em;
+  background-color: #607D8B;
+  border-radius: 4px 0 0 4px;
+}
+
+.content {
+  text-decoration: none;
+  display: inline-block;
+  grid-area: content;
+  color: rgb(83, 83, 83);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 0 0 0;
+}
+
+.content div {
+  display: inline-block;
+}
+
+.buttons {
+  grid-area: button;
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3px 0 6px 0;
+}
+
+.great {
+  font-weight: bold;
+  font-size: 1.1em;
+  color: rgb(36, 36, 36);
+}
+
+button {
+  background-color: gray;
+  border: none;
+  padding: 3px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  cursor: hand;
+  font-family: Arial;
+  margin-right: 5px;
+  color: white;
+  font-size: 12px !important;
+}
+
+button.buttonModal:hover {
+  background-color: #515151 !important;
+}

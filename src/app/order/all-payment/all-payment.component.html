@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>PAGO TOTAL</h2>
+<div mat-dialog-content>
+  <h3>CUENTA TOTAL: {{ should }}</h3>
+  <p>¿Cuánto está cancelando?</p>
+  <mat-form-field>
+    <input type="number" matInput [(ngModel)]="paid">
+  </mat-form-field>
+  <div class="center" *ngIf="paid">
+    <span class="cambio">{{ paid - should }} Bs.</span>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="'ok'" cdkFocusInitial disabled="{{ paid - should < 0 || paid == NaN }}">Listo</button>
+</div>

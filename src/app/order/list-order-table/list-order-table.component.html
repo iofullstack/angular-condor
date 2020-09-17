@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>
+  LISTADO DE PEDIDOS POR MESA
+</h2>
+
+<div mat-dialog-content>
+  <app-list-order [idTable]="data"></app-list-order>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Aceptar</button>
+  <button *ngIf="viewed" mat-button style="margin: 0 0 0 auto;" (click)="allBill(data)">Total Cuenta</button>
+  <button *ngIf="viewed" mat-button style="margin: 0;" (click)="allPayment(data)">Total Pago</button>
+</div>

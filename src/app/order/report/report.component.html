@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>
+  REPORTES
+</h2>
+
+<div mat-dialog-content>
+  <form (ngSubmit)="reportSales(f)" #f="ngForm">
+    <mat-form-field class="example-full-width">
+      <input matInput [matDatepicker]="picker" placeholder="Ventas del día" name="fecha" ngModel>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker touchUi #picker></mat-datepicker>
+    </mat-form-field>
+
+    <button type="submit" mat-stroked-button color="primary">Aceptar</button>
+  </form>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cerrar</button>
+</div>

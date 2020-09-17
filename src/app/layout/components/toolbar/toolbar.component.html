@@ -20,7 +20,8 @@
             </div>
 
             <div class="px-8 px-md-16">
-                <fuse-shortcuts [navigation]="navigation"></fuse-shortcuts>
+                <!-- <fuse-shortcuts [navigation]="navigation"></fuse-shortcuts> -->
+                <h6 style="font-size: 14px !important;">&copy;iofullstack.com</h6>
             </div>
 
         </div>
@@ -30,15 +31,15 @@
             <button mat-button [matMenuTriggerFor]="userMenu"
                     class="user-button">
                 <div fxLayout="row" fxLayoutAlign="center center">
-                    <img class="avatar mr-0 mr-sm-16" src="assets/images/avatars/jc-profile.jpg">
-                    <span class="username mr-12" fxHide fxShow.gt-sm>Jose Chirinos</span>
+                    <img class="avatar mr-0 mr-sm-16" src="assets/img/avatar.png">
+                    <span class="username mr-12" fxHide fxShow.gt-sm>Condor Cafe</span>
                     <mat-icon class="s-16" fxHide.xs>keyboard_arrow_down</mat-icon>
                 </div>
             </button>
 
             <mat-menu #userMenu="matMenu" [overlapTrigger]="false">
 
-                <button mat-menu-item>
+                <!-- <button mat-menu-item>
                     <mat-icon>account_circle</mat-icon>
                     <span>Mi Perfil</span>
                 </button>
@@ -46,7 +47,7 @@
                 <button mat-menu-item class="">
                     <mat-icon>mail</mat-icon>
                     <span>Mensajes</span>
-                </button>
+                </button> -->
 
                 <button mat-menu-item class="">
                     <mat-icon>exit_to_app</mat-icon>

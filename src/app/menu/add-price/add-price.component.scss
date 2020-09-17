@@ -1,0 +1,16 @@
+.example-card {
+  max-width: 400px;
+  display: block;
+}
+
+.list-menu {
+  margin: 32px auto;
+  width: 90%;
+  padding: 0;
+}
+
+.menus {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 15px;
+}

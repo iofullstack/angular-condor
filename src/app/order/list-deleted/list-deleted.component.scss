@@ -1,0 +1,33 @@
+.order {
+  margin: 3px 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.order .left {
+  text-align: left;
+}
+
+.order .rigth {
+  text-align: right
+}
+
+.tables {
+  text-align: center;
+  margin: 3px 0;
+}
+
+.tables span {
+  margin-left: 3px;
+}
+
+table {
+  width: 100%;
+}
+
+.total {
+  text-align: right;
+}
+
+.contentDel {
+  position: relative;
+}

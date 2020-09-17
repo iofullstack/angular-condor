@@ -1,0 +1,415 @@
+@import "src/@fuse/scss/fuse";
+
+.prepare-header{
+  background: #3F51B5;
+  padding: 30px 15px;
+  display: grid;
+  grid-template-columns: minmax(auto, 1024px);
+  justify-content: center;
+}
+.prepare-header-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "numero numero"
+                       "mesas comensales"
+                       "pedido pedido"
+                       "llevar llevar"
+                       "guardar guardar";
+  gap:10px;
+}
+
+.prepare-header-numero{
+  grid-area: numero;
+  text-align: center;
+}
+
+.prepare-header-comensales{
+  grid-area: comensales;
+  text-align: center;
+}
+
+.prepare-header-mesas{
+  grid-area: mesas;
+  text-align: center;
+}
+
+.prepare-header-llevar{
+  grid-area: llevar;
+  text-align: center;
+}
+.prepare-header-pedido{
+  grid-area: pedido;
+  text-align: center;
+}
+.prepare-header-guardar{
+  grid-area: guardar;
+  text-align: center;
+  padding: 25px 0px;
+  font-size: 25px;
+}
+/* forms */
+.form-title-pedido{
+  font-size: 35px;
+}
+.form-inline{
+  display: inline-block;
+}
+.form-big{
+  background: rgba(0, 0, 0, 0.5);;
+  padding: 16px;
+  border-radius: 10px;
+}
+.form-title{
+  color: #fff;
+}
+.form-label{
+  display: inline-block;
+  font-size: 20px;
+  color:#fff;
+}
+.form-chip{
+  display: inline-block;
+  background: #d7d7d7;
+  color: #2d2d2d;
+  font-weight: bold;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 5px 15px;
+  margin-left: 15px;
+}
+.form-add{
+  margin-left: 15px;
+}
+.form-input-number{
+  padding: 5px;
+  border-radius: 6px;
+  margin-left: 15px;
+  width: 60px;
+  font-size: 16px;
+}
+.form-btn-big{
+  font-size: 25px;
+  padding: 15px;
+}
+/* search styles */
+.search-category{
+  padding: 12px 20px;
+  font-size: 15px;
+}
+
+/* Container Order */
+.order-container{
+  padding: 60px 0px;
+  width: 650px;
+  margin: 0 auto;
+}
+
+/* waiter  styles */
+.waiter-container {
+  margin: 32px auto;
+  width: 90%;
+}
+
+.waiter-list-item {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  grid-gap: 15px;
+}
+
+.waiter-item {
+  background-color: #ffffff;
+  box-shadow: 1px 1px 5px -2px #2d2d2d;
+  display: grid;
+  grid-template: 70px / 170px 1fr 70px;
+  grid-gap: 10px;
+  grid-template-areas: "badge title action"
+                       "badge detail action"
+                       "divider divider divider"
+                       "price price price";
+  border-radius: 10px;
+  padding: 15px;
+  position: relative;
+}
+
+.waiter-badge {
+  grid-area: badge;
+}
+
+.waiter-badge figure {
+  margin: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.waiter-badge figure img {
+  height: auto;
+}
+.waiter-icon-select {
+  position: relative;
+  height: 100%;
+}
+.waiter-icon-select:before {
+  font-family: 'icomoon' !important;
+  content: "\e904";
+  font-size: 10em;
+  color: #263238cf;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.waiter-badge figure img {
+  width: 100%;
+  vertical-align: top;
+  border-radius: 50%;
+  border: 12px solid #929aa0;
+}
+
+.waiter-title {
+  grid-area: title;
+}
+.waiter-title h3 {
+  font-size: 1.5em;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.waiter-title span {
+  font-weight: 900;
+  font-size: 1.2em;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.waiter-detail {
+  grid-area: detail;
+  padding: 10px;
+}
+.waiter-detail p {
+  margin: 0;
+}
+
+.waiter-action {
+  grid-area: action;
+  text-align: center;
+  margin: auto;
+  position: relative;
+}
+.waiter-action .waiter-count i {
+  padding: 0;
+  cursor: pointer;
+  font-size: 4.4em;
+  font-weight: bold;
+}
+.waiter-action .waiter-quantity {
+  font-size: 1.4em;
+  font-weight: bold;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  right: 50%;
+}
+// .waiter-action span i {
+//   cursor: pointer;
+//   font-weight: bold;
+// }
+.waiter-divider{
+  grid-area: divider;
+}
+.waiter-price{
+  grid-area: price;
+}
+
+@media screen and (max-width: 650px) {
+  .waiter-list-item {
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+  }
+  .waiter-badge figure img {
+    border: 7px solid #929aa0;
+  }
+  .waiter-item {
+    grid-template-columns: 140px 1fr;
+    grid-gap: 5px;
+    grid-template-areas: "title title"
+                         "badge action"
+                         "badge detail"
+                         "divider divider"
+                         "price price";
+  }
+
+  .waiter-action .waiter-count {
+    display: inline;
+    padding: 0 5px;
+  }
+  .icon-chevron-down:before {
+    content: "\e903";
+  }
+  .icon-chevron-up:before {
+    content: "\e902";
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .waiter-item {
+    grid-template-rows: auto;
+    grid-template-areas: "action action"
+                         "badge badge"
+                         "badge badge"
+                         "title title"
+                         "detail detail"
+                         "divider divider"
+                         "price price";
+  }
+  .waiter-action .waiter-count {
+    padding: 0 30px;
+  }
+}
+
+/* mesas */
+.mesas-container{
+  position: relative;
+  width: 650px;
+  margin: 20px auto;
+  padding: 25px;
+  background: rgba(0, 0, 0, 0.3686274509803922);
+  border-radius: 10px;
+}
+.mesas-add{
+  position: absolute;
+  left: 24px;
+  top: 55px;
+  z-index: 1;
+}
+.mesas-list{
+  text-align: left;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 5px 5px 5px 5px;
+}
+.item-3 {
+  padding: 15px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 100px);
+  grid-gap: 15px;
+  justify-content: center;
+  align-content: center;
+}
+.order {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  /* background-color: #3F51B5; 500 */
+  color: white;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.order span {
+  font-weight: bold;
+  font-family: 'Kaushan Script', Arial, Helvetica, sans-serif;
+}
+.order .quantity {
+  border-radius: 50%;
+  width: 60%;
+  height: 60%;
+  /* background-color: #9FA8DA; 200 */
+  color: #263238;
+  position: absolute;
+  bottom: -25%;
+  display: flex;
+  justify-content: center;
+}
+.order .quantity span {
+  margin-top: 8px;
+  font-size: 1.1em;
+}
+@media (max-width: 650px){
+  .prepare-header-container{
+    grid-template-columns: 1fr;
+    grid-template-areas: "numero"
+                         "mesas"
+                         "comensales"
+                         "pedido"
+                         "llevar"
+                         "guardar";
+  }
+  .prepare-header-numero,
+  .prepare-header-mesas,
+  .prepare-header-comensales,
+  .prepare-header-llevar,
+  .prepare-header-guardar,
+  .prepare-header-pedido,
+  .prepare-header-guardar{
+    text-align: center;
+  }
+  
+}
+
+@media (max-width: 700px){
+  .mesas-container{
+    width: 90vw!important;
+  }
+}
+/* colors */
+.color-light{
+  background-color: rgba(255, 255, 255, 0.70)!important;
+}
+// .color-1 {
+//   background-color: #FF3D00;
+// }
+// .color-2 {
+//   background-color: #5D4037;
+// }
+// .color-3 {
+//   background-color: #558B2F;
+// }
+// .color-4 {
+//   background-color: #7E57C2;
+// }
+// .color-5 {
+//   background-color: #0D47A1;
+// }
+// .color-6 {
+//   background-color: #AD1457;
+// }
+// .color-7 {
+//   background-color: #FFD600;
+// }
+// .color-8 {
+//   background-color: #00838F;
+// }
+// .color-9 {
+//   background-color: #00695C;
+// }
+// .color-10 {
+//   background-color: #4A148C;
+// }
+// .color-11 {
+//   background-color: #1B5E20;
+// }
+// .color-12 {
+//   background-color: #0288D1;
+// }
+
+/* btn colors */
+.mat-button-toggle-checked {
+  background-color: #2d2d2d!important;
+  color: #ffffff!important;
+}
+
+.mano {
+  cursor: pointer;
+}
