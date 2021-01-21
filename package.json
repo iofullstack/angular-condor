@@ -96,6 +96,6 @@
     "typescript": "2.7.2",
     "webpack-bundle-analyzer": "2.13.1",
     "@types/socket.io": "^1.4.36",
-    "socket.io": "^2.1.1"
+    "socket.io": "^2.4.0"
   }
 }
