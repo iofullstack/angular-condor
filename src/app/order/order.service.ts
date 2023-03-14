@@ -10,6 +10,7 @@ import { Menu } from './menu'
 import { cMenu } from './cmenu'
 import { Order } from './order'
 import { Deleted } from './list-deleted/deleted'
+import { saveAs } from 'file-saver'
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -216,6 +217,19 @@ export class OrderService {
     return this.http.post(url, body, httpOptions).pipe(
       tap((res) => console.log(res)),
       catchError(this.handleError<Order> ('printCook'))
+    )
+  }
+  printCookPDF (obj: Order) {
+    const body = JSON.stringify(obj)
+    const url = urljoin(this.orderUrl, 'print', 'pdf', 'cook')
+
+    return this.http.post(url, body, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'blob'}).pipe(
+      tap((content) => {
+        const blob = new Blob([content], {type: 'application/pdf'})
+        saveAs(blob, 'comanda')
+      }),
+      map(() => true),
+      catchError(this.handleError<Order> ('printCookPDF'))
     )
   }
 

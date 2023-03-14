@@ -85,6 +85,11 @@ export class ListOrderComponent implements OnInit {
       // console.log(res)
     })
   }
+  cocinaPDF(order) {
+    this.orderService.printCookPDF(order).subscribe(res => {
+      // console.log(res)
+    })
+  }
 
   hideOrder(id) {
     swal({
